@@ -24,7 +24,7 @@ Sheryians-Cohort-2.0/
 
 | Episode | Topic / Concept | Folder Link | Status |
 | :---: | :--- | :---: | :---: |
-| **01** | HTML Fundamentals & Modern Semantic Tags | [Episode 1 - Code](./Episode%201%20-%20Code/) | 🔄 In Progress |
+| **01** | How the Internet Works (Web 1.0-3.0, Networking & DNS) | [Episode 1 - Code](./Episode%201%20-%20Code/) | ✅ Completed |
 | **02** | CSS Basics, Box Model & Modern Layouts | Upcoming | ⏳ Pending |
 | **03** | Advanced CSS, Flexbox & Grid | Upcoming | ⏳ Pending |
 | **04** | Responsive Web Design & Media Queries | Upcoming | ⏳ Pending |
