@@ -1,22 +1,256 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sheryians Cohort 2.0 - Episode 1</title>
+    <title>Episode 1 - Web Architecture & Networking Basics | Sheryians Cohort 2.0</title>
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent: #38bdf8;
+            --accent-glow: rgba(56, 189, 248, 0.15);
+            --border-color: #334155;
+            --tag-bg: #0369a1;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.7;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            padding-bottom: 2.5rem;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 2.5rem;
+        }
+
+        .badge {
+            display: inline-block;
+            background-color: var(--accent-glow);
+            color: var(--accent);
+            border: 1px solid var(--accent);
+            padding: 0.3rem 0.8rem;
+            border-radius: 9999px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            color: #ffffff;
+        }
+
+        header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        .topic-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.8rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .topic-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+        }
+
+        .topic-card h2 {
+            font-size: 1.4rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        h3 {
+            font-size: 1.1rem;
+            color: #e2e8f0;
+            margin: 1.2rem 0 0.4rem 0;
+        }
+
+        p,
+        li {
+            color: #cbd5e1;
+            font-size: 0.98rem;
+        }
+
+        ul,
+        ol {
+            padding-left: 1.5rem;
+            margin-top: 0.5rem;
+        }
+
+        li {
+            margin-bottom: 0.4rem;
+        }
+
+        code {
+            background-color: rgba(15, 23, 42, 0.7);
+            color: #38bdf8;
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+
+        .step-box {
+            background-color: rgba(15, 23, 42, 0.5);
+            border-left: 3px solid var(--accent);
+            padding: 1rem 1.2rem;
+            margin-top: 1rem;
+            border-radius: 0 8px 8px 0;
+        }
+
+        footer {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 3rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+    </style>
 </head>
+
 <body>
-    <header>
-        <h1>Sheryians Coding School - Cohort 2.0</h1>
-        <p>Episode 1: HTML Fundamentals & Semantic Tags</p>
-    </header>
 
-    <main>
-        <!-- Write your episode 1 practice code here -->
-    </main>
+    <div class="container">
+        <!-- Header Section -->
+        <header>
+            <span class="badge">Sheryians Coding School • 2.0 Cohort</span>
+            <h1>Episode 1: Web Architecture & Networking Basics</h1>
+            <p>Notes & Key Takeaways by Abhishek</p>
+        </header>
 
-    <footer>
-        <p>Learner: Abhishek | Cohort 2.0</p>
-    </footer>
+        <main>
+            <!-- Topic 1 -->
+            <article class="topic-card">
+                <h2>🌐 1. History of the Web (Web 1.0 to Web 3.0)</h2>
+
+                <h3>Web 1.0 (Read-Only Era)</h3>
+                <p>1990s ka shuruati internet. Isme websites static hoti thi (sirf text aur basic images). User sirf
+                    information read kar sakta tha (jaise online encyclopedia ya digital newspaper). Koi login,
+                    interaction ya content creation nahi tha.</p>
+
+                <h3>Web 2.0 (Read + Write / Interactive Era)</h3>
+                <p>Aaj ka modern internet (YouTube, Instagram, Facebook). Isme <strong>User-Generated Content</strong>
+                    hota hai — har koi content publish, like aur share kar sakta hai. Data central tech giants ke
+                    servers par store hota hai.</p>
+
+                <h3>Web 3.0 (Read + Write + Own / Decentralized Era)</h3>
+                <p>Blockchain aur smart contracts par based internet. Yahan central companies ke control ke bina users
+                    ke paas apne data, identity aur digital assets ka direct ownership hota hai.</p>
+            </article>
+
+            <!-- Topic 2 -->
+            <article class="topic-card">
+                <h2>💻 2. How Computers Communicate With Each Other</h2>
+                <ul>
+                    <li><strong>Protocols (Rules):</strong> Computers aapas me baat karne ke liye pre-defined rules use
+                        karte hain jinhe <strong>Protocols</strong> kehte hain (e.g., <code>HTTP</code>,
+                        <code>HTTPS</code>, <code>TCP/IP</code>).</li>
+                    <li><strong>Client-Server Architecture:</strong>
+                        <ul>
+                            <li><strong>Client:</strong> Request bhejne wala device (e.g., aapka browser ya smartphone).
+                            </li>
+                            <li><strong>Server:</strong> 24/7 chalne wala powerful computer jo request accept karke
+                                website/data wapas bhejta hai.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Data Packets:</strong> Badi files ya pages ek saath nahi bheje jaate, balki
+                        chhote-chhote chunks (packets) me split hokar travel karte hain aur destination par wapas
+                        assemble hote hain.</li>
+                </ul>
+            </article>
+
+            <!-- Topic 3 -->
+            <article class="topic-card">
+                <h2>🌍 3. How Computers Send Data All Over the World</h2>
+                <ul>
+                    <li><strong>Submarine Cables (Undersea Fiber Optics):</strong> Internet satellite se kam aur
+                        samundar ke neeche bichhi hui lakho kilometer lambi optical fiber cables se 99% chalta hai.</li>
+                    <li><strong>Speed of Light:</strong> Data glass fiber ke andar <strong>light pulses
+                            (photons)</strong> ke form me travel karta hai, isliye transatlantic transfer milliseconds
+                        me ho jata hai.</li>
+                    <li><strong>Routers & Switches:</strong> Raste me packets ko traffic control karke unke destination
+                        tak sabse fast raste se deliver karte hain.</li>
+                </ul>
+            </article>
+
+            <!-- Topic 4 -->
+            <article class="topic-card">
+                <h2>🔍 4. Domain Name, IP, MAC Address & Routing</h2>
+                <ul>
+                    <li><strong>Domain Name:</strong> Insaan ke yaad rakhne ke liye website ka readable naam (e.g.,
+                        <code>sheryians.com</code>, <code>google.com</code>).</li>
+                    <li><strong>IP Address (Logical Address):</strong> Internet par connected har device ka virtual
+                        identity/address (e.g., <code>142.250.190.46</code>). Network badalne par IP change ho sakta
+                        hai.</li>
+                    <li><strong>MAC Address (Physical Address):</strong> Network Card (NIC) ka permanent hardware
+                        address jo manufacturer assign karta hai. Yeh device ka permanent fingerprint hai.</li>
+                    <li><strong>Routing:</strong> Data packets ko source se destination tak pahunchane ke liye sabse
+                        efficient route choose karne ka process.</li>
+                </ul>
+            </article>
+
+            <!-- Topic 5 -->
+            <article class="topic-card">
+                <h2>⚡ 5. How ISP and DNS Work Together to Deliver Data</h2>
+                <p><strong>ISP (Internet Service Provider):</strong> Airtel, Jio, etc., jo aapke device ko physical
+                    internet network se connect karte hain.</p>
+                <p><strong>DNS (Domain Name System):</strong> Internet ki phonebook jo domain names (jaise
+                    <code>google.com</code>) ko computer ke samajhne yogya IP address me translate karti hai.</p>
+
+                <div class="step-box">
+                    <strong>🔄 Workflow: Jab aap browser me website open karte ho:</strong>
+                    <ol>
+                        <li>Aap browser me <code>sheryians.com</code> type karke Enter dabate ho.</li>
+                        <li>Request aapke <strong>ISP</strong> ke paas jaati hai.</li>
+                        <li>ISP <strong>DNS Server</strong> se query karta hai: <em>"sheryians.com ka IP address kya
+                                hai?"</em></li>
+                        <li>DNS server specific IP address return karta hai.</li>
+                        <li>ISP us IP address wale server se HTML, CSS aur JS files fetch karke aapke browser me render
+                            kar deta hai.</li>
+                    </ol>
+                </div>
+            </article>
+        </main>
+
+        <!-- Footer -->
+        <footer>
+            <p>Sheryians Coding School 2.0 Cohort • Maintained by Abhishek</p>
+        </footer>
+    </div>
+
 </body>
+
 </html>
