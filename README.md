@@ -10,9 +10,10 @@ This repository tracks my daily coding progress, projects, assignments, and note
 ```plaintext
 Sheryians-Cohort-2.0/
 │
-├── Episode 1 - Code/          # Episode 1 notes & practice code
-│   ├── index.html
-│   └── style.css
+├── Episode 1 - Code/
+│   ├── Topic 1 - How the Internet Works/
+│   │   └── index.html
+│   └── Topic 2 - ... (Coming soon)
 │
 ├── Episode 2 - Code/          # Upcoming episodes...
 └── README.md                  # Progress tracker & roadmap
@@ -24,7 +25,7 @@ Sheryians-Cohort-2.0/
 
 | Episode | Topic / Concept | Folder Link | Status |
 | :---: | :--- | :---: | :---: |
-| **01** | How the Internet Works (Web 1.0-3.0, Networking & DNS) | [Episode 1 - Code](./Episode%201%20-%20Code/) | ✅ Completed |
+| **01** | **Episode 1: Foundations**<br>• Topic 1: How the Internet Works<br>• Topic 2: Upcoming | [Episode 1 - Code](./Episode%201%20-%20Code/) | 🔄 In Progress |
 | **02** | CSS Basics, Box Model & Modern Layouts | Upcoming | ⏳ Pending |
 | **03** | Advanced CSS, Flexbox & Grid | Upcoming | ⏳ Pending |
 | **04** | Responsive Web Design & Media Queries | Upcoming | ⏳ Pending |
