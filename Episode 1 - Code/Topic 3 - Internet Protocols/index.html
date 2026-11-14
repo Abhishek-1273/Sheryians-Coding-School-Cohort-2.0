@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Episode 1: Topic 3 - Internet Protocols (TCP vs UDP) | Sheryians Cohort 2.0</title>
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent: #38bdf8;
+            --accent-glow: rgba(56, 189, 248, 0.15);
+            --border-color: #334155;
+            --tag-bg: #0369a1;
+            --table-header: #0e3a5a;
+            --success: #4ade80;
+            --warning: #facc15;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.7;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            padding-bottom: 2.5rem;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 2.5rem;
+        }
+
+        .badge {
+            display: inline-block;
+            background-color: var(--accent-glow);
+            color: var(--accent);
+            border: 1px solid var(--accent);
+            padding: 0.3rem 0.8rem;
+            border-radius: 9999px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            color: #ffffff;
+        }
+
+        header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        .topic-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.8rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .topic-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+        }
+
+        .topic-card h2 {
+            font-size: 1.35rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        h3 {
+            font-size: 1.08rem;
+            color: #e2e8f0;
+            margin: 1.2rem 0 0.4rem 0;
+        }
+
+        p, li {
+            color: #cbd5e1;
+            font-size: 0.98rem;
+        }
+
+        ul, ol {
+            padding-left: 1.5rem;
+            margin-top: 0.5rem;
+        }
+
+        li {
+            margin-bottom: 0.4rem;
+        }
+
+        code {
+            background-color: rgba(15, 23, 42, 0.7);
+            color: #38bdf8;
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+
+        .step-box {
+            background-color: rgba(15, 23, 42, 0.5);
+            border-left: 3px solid var(--accent);
+            padding: 1rem 1.2rem;
+            margin-top: 1rem;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .handshake-step {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 0.8rem 0;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .step-number {
+            background-color: var(--tag-bg);
+            color: #ffffff;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+
+        .compare-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+            border-radius: 8px;
+            overflow: hidden;
+            font-size: 0.93rem;
+        }
+
+        .compare-table th, .compare-table td {
+            padding: 0.8rem 1rem;
+            border: 1px solid var(--border-color);
+            text-align: left;
+        }
+
+        .compare-table th {
+            background-color: var(--table-header);
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .compare-table tr:nth-child(even) {
+            background-color: rgba(15, 23, 42, 0.3);
+        }
+
+        .tag-reliable {
+            color: var(--success);
+            font-weight: 600;
+        }
+
+        .tag-fast {
+            color: var(--warning);
+            font-weight: 600;
+        }
+
+        footer {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 3rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <span class="badge">Sheryians Coding School • Cohort 2.0</span>
+            <h1>Topic 3: Internet Protocols (TCP vs UDP)</h1>
+            <p>Episode 1 • Transport Layer Protocols, 3-Way Handshake & Connection Mechanisms</p>
+        </header>
+
+        <main>
+            <!-- Sub-topic 1 -->
+            <article class="topic-card">
+                <h2>🛡️ 1. What is TCP Protocol & Why is it Widely Used?</h2>
+                <p><strong>TCP (Transmission Control Protocol)</strong> internet ka sabse reliable aur fundamental <strong>Connection-Oriented</strong> protocol hai jo Transport Layer par kaam karta hai.</p>
+                
+                <h3>Kyun itna widely use hota hai? (Key Features):</h3>
+                <ul>
+                    <li><strong class="tag-reliable">100% Reliable Delivery:</strong> TCP guarantee deta hai ki har packet apni destination par zaroor pahuchega. Agar raste me koi packet drop ya lost ho jaye, toh TCP use <strong>re-transmit</strong> (dobara send) karta hai.</li>
+                    <li><strong>In-Order Delivery (Sequential):</strong> Packets chahe kisi bhi raste se aage-peechhe pahunchein, TCP unhe correct serial number ke hisab se wapas jodta hai.</li>
+                    <li><strong>Flow & Congestion Control:</strong> Yeh check karta hai ki receiver device ya network jam na ho jaye, aur speed ko automatically regulate karta hai.</li>
+                    <li><strong>Where is it used?</strong> Jahan <em>Data Accuracy</em> sabse zyada important hoti hai:
+                        <ul>
+                            <li>Web Pages browsing (<code>HTTP / HTTPS</code>)</li>
+                            <li>Files download karna (<code>FTP</code>)</li>
+                            <li>Emails bhejna (<code>SMTP</code>)</li>
+                            <li>Online Banking & payments</li>
+                        </ul>
+                    </li>
+                </ul>
+            </article>
+
+            <!-- Sub-topic 2 -->
+            <article class="topic-card">
+                <h2>🤝 2. How Connection is Established in TCP: 3-Way Handshake</h2>
+                <p>Data bhejne se pehle Client aur Server aapas me 3 steps me ek solid connection banate hain, jise <strong>TCP 3-Way Handshake</strong> kehte hain:</p>
+
+                <div class="handshake-step">
+                    <div class="step-number">1</div>
+                    <div>
+                        <strong>SYN (Synchronize):</strong>
+                        <p>Client server ko bolta hai: <em>"Hello! Kya tum available ho? Mai tumhare sath ek connection banana chahta hoon."</em> (Client ek random Sequence Number bhejta hai).</p>
+                    </div>
+                </div>
+
+                <div class="handshake-step">
+                    <div class="step-number">2</div>
+                    <div>
+                        <strong>SYN-ACK (Synchronize-Acknowledge):</strong>
+                        <p>Server client ki baat sunta hai aur reply deta hai: <em>"Haan, mujhe tumhara message mil gaya (ACK), aur mai bhi ready hoon (SYN)!"</em></p>
+                    </div>
+                </div>
+
+                <div class="handshake-step">
+                    <div class="step-number">3</div>
+                    <div>
+                        <strong>ACK (Acknowledge):</strong>
+                        <p>Client aakhiri confirmation deta hai: <em>"Great! Mujhe tumhara response mil gaya. Connection establish ho gaya hai, ab mai real data bhej raha hoon!"</em></p>
+                    </div>
+                </div>
+
+                <div class="step-box">
+                    <strong>📞 Simple Real-Life Analogy (Phone Call):</strong>
+                    <p>1. Aap call karke bolte ho: <em>"Hello, meri aawaz aa rahi hai?"</em> <strong>(SYN)</strong></p>
+                    <p>2. Saamne wala bolta hai: <em>"Haan, aa rahi hai! Meri aawaz aa rahi hai?"</em> <strong>(SYN-ACK)</strong></p>
+                    <p>3. Aap bolte ho: <em>"Haan, sunai de raha hai!"</em> <strong>(ACK)</strong> ➡️ Ab main baat shuru hoti hai.</p>
+                </div>
+            </article>
+
+            <!-- Sub-topic 3 -->
+            <article class="topic-card">
+                <h2>⚡ 3. What is UDP & Why is it Used for Fast Communication?</h2>
+                <p><strong>UDP (User Datagram Protocol)</strong> ek lightweight aur <strong>Connectionless</strong> protocol hai. Iska ek hi goal hota hai: <em>Maximum Speed with Minimum Latency!</em></p>
+                
+                <h3>Kyun use hota hai fast communication ke liye?</h3>
+                <ul>
+                    <li><strong class="tag-fast">No Handshake, Zero Delay:</strong> Data bhejne se pehle koi 3-way handshake nahi karta. Direct data packets (datagrams) send karna shuru kar deta hai.</li>
+                    <li><strong>No Acknowledgement (Fire & Forget):</strong> UDP yeh check nahi karta ki saamne wale ko packet mila ya nahi. Agar koi packet gir gaya, toh chhod do, aage badho!</li>
+                    <li><strong>Small Header Overhead:</strong> TCP ka header 20-60 bytes ka hota hai, jabki UDP ka header sirf <strong>8 bytes</strong> ka hota hai. Isliye network par bohot halka rehta hai.</li>
+                    <li><strong>Where is it used?</strong> Jahan <em>Real-Time Speed</em> matter karti hai aur 1-2 packets drop hone se koi fark nahi padta:
+                        <ul>
+                            <li>Online Multiplayer Gaming (Valorant, BGMI, CS:GO - zero ping priority)</li>
+                            <li>Live Video Streaming (YouTube Live, Twitch, IPL live match)</li>
+                            <li>Voice/Video Calling (Zoom, Discord, WhatsApp call)</li>
+                            <li>DNS Lookups (fast domain to IP conversion)</li>
+                        </ul>
+                    </li>
+                </ul>
+            </article>
+
+            <!-- Sub-topic 4 -->
+            <article class="topic-card">
+                <h2>🔌 4. How UDP Establishes Connection?</h2>
+                <div class="step-box" style="border-left-color: var(--warning);">
+                    <strong>⚠️ Trick Concept: UDP connection establish hi NAHI karta!</strong>
+                    <p>UDP ek <strong>Connectionless Protocol</strong> hai. Isme koi session creation, koi handshake aur koi acknowledgment nahi hota.</p>
+                </div>
+                <p style="margin-top: 1rem;">Client bas data ko <em>Datagrams</em> me pack karta hai, destination ka IP aur Port number likhta hai aur network me throw kar deta hai (Jaise sadak par flyers phekna ya radio broadcast karna). Saamne wala sun raha ho ya nahi, UDP ko koi matlab nahi hota.</p>
+            </article>
+
+            <!-- Sub-topic 5 -->
+            <article class="topic-card">
+                <h2>⚖️ 5. Comprehensive Difference: TCP vs UDP</h2>
+                <table class="compare-table">
+                    <thead>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>TCP (Transmission Control Protocol)</th>
+                            <th>UDP (User Datagram Protocol)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Connection Type</strong></td>
+                            <td>Connection-Oriented (3-Way Handshake)</td>
+                            <td>Connectionless (No handshake)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Reliability</strong></td>
+                            <td><span class="tag-reliable">100% Reliable</span> (Lost packets re-sent)</td>
+                            <td><span class="tag-fast">Best Effort</span> (Lost packets dropped)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Speed & Latency</strong></td>
+                            <td>Slower (Handshake + Ack overhead)</td>
+                            <td>Super Fast & Ultra-low Latency</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Packet Ordering</strong></td>
+                            <td>Guaranteed sequential order</td>
+                            <td>No order guarantee (Jumbled aa sakte hain)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Header Size</strong></td>
+                            <td>Heavy (20 to 60 Bytes)</td>
+                            <td>Lightweight (Fixed 8 Bytes)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Error Checking</strong></td>
+                            <td>Extensive error checking & recovery</td>
+                            <td>Basic error detection (No recovery)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Analogy</strong></td>
+                            <td>Registered Post (Signature & delivery receipt)</td>
+                            <td>Live Megaphone / Radio Announcement</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Real-World Use</strong></td>
+                            <td>Websites (HTTP/HTTPS), Email, Banking, File Downloads</td>
+                            <td>Live Gaming, Video Calls, Live Streams, DNS</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </article>
+        </main>
+
+        <!-- Footer -->
+        <footer>
+            <p>Sheryians Coding School • 2.0 Cohort • Maintained by Abhishek</p>
+        </footer>
+    </div>
+
+</body>
+</html>
