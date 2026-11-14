@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Episode 1: Topic 5 - Preparing Your Machine | Sheryians Cohort 2.0</title>
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent: #38bdf8;
+            --accent-glow: rgba(56, 189, 248, 0.15);
+            --border-color: #334155;
+            --tag-bg: #0369a1;
+            --table-header: #0e3a5a;
+            --success: #4ade80;
+            --warning: #facc15;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.7;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            padding-bottom: 2.5rem;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 2.5rem;
+        }
+
+        .badge {
+            display: inline-block;
+            background-color: var(--accent-glow);
+            color: var(--accent);
+            border: 1px solid var(--accent);
+            padding: 0.3rem 0.8rem;
+            border-radius: 9999px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            color: #ffffff;
+        }
+
+        header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        .hero-banner {
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.1), rgba(74, 222, 128, 0.1));
+            border: 1px solid var(--accent);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .hero-banner h2 {
+            font-size: 2rem;
+            color: var(--success);
+            margin-bottom: 0.5rem;
+        }
+
+        .topic-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.8rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .topic-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+        }
+
+        .topic-card h2 {
+            font-size: 1.35rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        h3 {
+            font-size: 1.08rem;
+            color: #e2e8f0;
+            margin: 1.2rem 0 0.4rem 0;
+        }
+
+        p, li {
+            color: #cbd5e1;
+            font-size: 0.98rem;
+        }
+
+        ul, ol {
+            padding-left: 1.5rem;
+            margin-top: 0.5rem;
+        }
+
+        li {
+            margin-bottom: 0.4rem;
+        }
+
+        code {
+            background-color: rgba(15, 23, 42, 0.7);
+            color: #38bdf8;
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+
+        .step-box {
+            background-color: rgba(15, 23, 42, 0.5);
+            border-left: 3px solid var(--accent);
+            padding: 1rem 1.2rem;
+            margin-top: 1rem;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .extension-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .extension-card {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1rem;
+        }
+
+        .extension-card strong {
+            color: var(--accent);
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+
+        footer {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 3rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <span class="badge">Sheryians Coding School • Cohort 2.0</span>
+            <h1>Topic 5: Preparing Your Machine</h1>
+            <p>Episode 1 • Dev Setup, VS Code Extensions & First Webpage Test</p>
+        </header>
+
+        <main>
+            <!-- Namaste Duniya Hero -->
+            <section class="hero-banner">
+                <h2>🙏 Namaste Duniya!</h2>
+                <p>Environment Test: <strong>Passed (100% Ready for Cohort 2.0)</strong></p>
+            </section>
+
+            <!-- Dev Setup -->
+            <article class="topic-card">
+                <h2>⚙️ 1. Developer Environment & VS Code Setup</h2>
+                <ul>
+                    <li><strong>VS Code:</strong> Modern industry-standard code editor with built-in Git, terminal, and intelligent syntax highlighting.</li>
+                    <li><strong>Browser DevTools:</strong> Chrome/Firefox Developer Tools (F12 or Inspect) for debugging DOM, CSS styles, Network requests, and responsive mobile layouts.</li>
+                    <li><strong>Folder Organization:</strong> Keeping separate clean directories per episode and topic to maintain clean git history.</li>
+                </ul>
+            </article>
+
+            <!-- Essential Extensions -->
+            <article class="topic-card">
+                <h2>🔌 2. Essential VS Code Extensions</h2>
+                <div class="extension-grid">
+                    <div class="extension-card">
+                        <strong>⚡ Live Server</strong>
+                        <p>File save karte hi browser automatically reload ho jata hai without manual refresh.</p>
+                    </div>
+                    <div class="extension-card">
+                        <strong>🎨 Prettier</strong>
+                        <p>Code formatting tool jo messy HTML/CSS/JS ko perfectly align aur clean kar deta hai.</p>
+                    </div>
+                    <div class="extension-card">
+                        <strong>🏷️ Auto Rename Tag</strong>
+                        <p>Opening tag change karne par uska matching closing tag apne aap update ho jata hai.</p>
+                    </div>
+                    <div class="extension-card">
+                        <strong>📁 Material Icon Theme</strong>
+                        <p>File types (.html, .css, .js) ke aage sleek visual icons render karta hai.</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Milestone -->
+            <article class="topic-card">
+                <h2>🏁 3. Episode 1 Milestone Achieved!</h2>
+                <div class="step-box" style="border-left-color: var(--success);">
+                    <strong>🎉 Episode 1 Complete Syllabus Finished:</strong>
+                    <ol>
+                        <li>Topic 1: How the Internet Works</li>
+                        <li>Topic 2: Client-Server Architecture</li>
+                        <li>Topic 3: Internet Protocols (TCP vs UDP)</li>
+                        <li>Topic 4: Understanding HTTP & HTTPS</li>
+                        <li>Topic 5: Preparing Your Machine (Namaste Duniya)</li>
+                    </ol>
+                    <p style="margin-top: 0.5rem; color: var(--success); font-weight: 600;">Next Stop: Episode 2 (HTML5 & Modern Web Development) 🚀</p>
+                </div>
+            </article>
+        </main>
+
+        <!-- Footer -->
+        <footer>
+            <p>Sheryians Coding School • 2.0 Cohort • Maintained by Abhishek</p>
+        </footer>
+    </div>
+
+</body>
+</html>
