@@ -3,9 +3,358 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Topic 2 - Client-Server Architecture</title>
+    <title>Episode 1: Topic 2 - Client-Server Architecture | Sheryians Cohort 2.0</title>
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent: #38bdf8;
+            --accent-glow: rgba(56, 189, 248, 0.15);
+            --border-color: #334155;
+            --tag-bg: #0369a1;
+            --table-header: #0e3a5a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.7;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            padding-bottom: 2.5rem;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 2.5rem;
+        }
+
+        .badge {
+            display: inline-block;
+            background-color: var(--accent-glow);
+            color: var(--accent);
+            border: 1px solid var(--accent);
+            padding: 0.3rem 0.8rem;
+            border-radius: 9999px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            color: #ffffff;
+        }
+
+        header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        .topic-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.8rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .topic-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+        }
+
+        .topic-card h2 {
+            font-size: 1.35rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        h3 {
+            font-size: 1.08rem;
+            color: #e2e8f0;
+            margin: 1.2rem 0 0.4rem 0;
+        }
+
+        p, li {
+            color: #cbd5e1;
+            font-size: 0.98rem;
+        }
+
+        ul, ol {
+            padding-left: 1.5rem;
+            margin-top: 0.5rem;
+        }
+
+        li {
+            margin-bottom: 0.4rem;
+        }
+
+        code {
+            background-color: rgba(15, 23, 42, 0.7);
+            color: #38bdf8;
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+
+        .step-box {
+            background-color: rgba(15, 23, 42, 0.5);
+            border-left: 3px solid var(--accent);
+            padding: 1rem 1.2rem;
+            margin-top: 1rem;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .compare-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+            border-radius: 8px;
+            overflow: hidden;
+            font-size: 0.93rem;
+        }
+
+        .compare-table th, .compare-table td {
+            padding: 0.8rem 1rem;
+            border: 1px solid var(--border-color);
+            text-align: left;
+        }
+
+        .compare-table th {
+            background-color: var(--table-header);
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .compare-table tr:nth-child(even) {
+            background-color: rgba(15, 23, 42, 0.3);
+        }
+
+        footer {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 3rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+    </style>
 </head>
 <body>
-    <h1>Episode 1: Topic 2 - Client-Server Architecture</h1>
+
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <span class="badge">Sheryians Coding School • Cohort 2.0</span>
+            <h1>Topic 2: Client-Server Architecture</h1>
+            <p>Episode 1 • Foundations of Web Architecture & Communication</p>
+        </header>
+
+        <main>
+            <!-- Sub-topic 1 -->
+            <article class="topic-card">
+                <h2>🏛️ 1. What is Client-Server Model?</h2>
+                <p><strong>Client-Server Model</strong> ek distributed network architecture hai jisme work do main components ke beech divide hota hai:</p>
+                <ul>
+                    <li><strong>Client (Service Requester):</strong> Woh device ya application jo data ya service ke liye request bhejta hai.</li>
+                    <li><strong>Server (Service Provider):</strong> Woh centralized machine jo requests ko sunta hai, process karta hai aur response return karta hai.</li>
+                </ul>
+                <div class="step-box">
+                    <strong>💡 Restaurant Analogy:</strong>
+                    <p>Aap (Customer) = <strong>Client</strong> (Khana order karte ho / Request bhejte ho).</p>
+                    <p>Waiter = <strong>HTTP Protocol</strong> (Aapka order kitchen tak le jata hai).</p>
+                    <p>Kitchen (Chef) = <strong>Server</strong> (Khana ready karta hai aur aap tak bhejta hai / Response deta hai).</p>
+                </div>
+            </article>
+
+            <!-- Sub-topic 2 -->
+            <article class="topic-card">
+                <h2>⚖️ 2. Client vs Server: Main Differences</h2>
+                <table class="compare-table">
+                    <thead>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Client (e.g. Chrome, Firefox)</th>
+                            <th>Server (Hosting Machine)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Primary Role</strong></td>
+                            <td>Requests bhejta hai aur UI render karta hai.</td>
+                            <td>Requests sunta hai, process karta hai aur data serve karta hai.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Availability</strong></td>
+                            <td>Jab user chahe tab on/off hota hai.</td>
+                            <td><strong>24/7/365</strong> bina ruke online rehta hai.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Hardware & Location</strong></td>
+                            <td>User ka laptop, mobile, tablet.</td>
+                            <td>High-end Data Centers me secure cloud servers.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Code Execution</strong></td>
+                            <td>Browser me HTML, CSS, JavaScript run hoti hai.</td>
+                            <td>Node.js, Python, Databases, Business logic run hoti hai.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </article>
+
+            <!-- Sub-topic 3 -->
+            <article class="topic-card">
+                <h2>🔄 3. How HTTP Request & Response Cycle Works</h2>
+                <p>Browser aur Server ke beech communication <strong>HTTP (HyperText Transfer Protocol)</strong> ke niyam (rules) par chalta hai:</p>
+                
+                <h3>1. HTTP Request (Browser ➡️ Server):</h3>
+                <ul>
+                    <li><strong>HTTP Methods:</strong>
+                        <ul>
+                            <li><code>GET</code> : Server se data/page mangwana (e.g. website kholna).</li>
+                            <li><code>POST</code> : Server par naya data bhejna (e.g. login form, sign up).</li>
+                            <li><code>PUT / PATCH</code> : Existing data update karna.</li>
+                            <li><code>DELETE</code> : Data delete karna.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Headers:</strong> Request ke baare me metadata (e.g., Browser type, Authentication tokens, Content-Type).</li>
+                </ul>
+
+                <h3>2. HTTP Response (Server ➡️ Browser):</h3>
+                <ul>
+                    <li><strong>Status Codes (Result status):</strong>
+                        <ul>
+                            <li><code>200 OK</code> : Request successful rahi, data mil gaya.</li>
+                            <li><code>301 / 302 Redirect</code> : Page kisi doosre link par move ho gaya.</li>
+                            <li><code>404 Not Found</code> : Server par mangi hui file/page maujood nahi hai.</li>
+                            <li><code>500 Internal Server Error</code> : Server ke code ya database me koi gadbad ho gayi.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Response Body:</strong> Real content jo browser display karega (HTML, CSS, JSON, Images).</li>
+                </ul>
+            </article>
+
+            <!-- Sub-topic 4 -->
+            <article class="topic-card">
+                <h2>🚀 4. What Happens When You Visit a Website?</h2>
+                <p>Jab aap browser address bar me URL likhte ho (jaise <code>https://sheryians.com</code>):</p>
+                
+                <div class="step-box">
+                    <ol>
+                        <li><strong>URL Input:</strong> User ne browser me address type kiya aur Enter dabaya.</li>
+                        <li><strong>DNS Lookup:</strong> Browser ISP aur DNS phonebook se puchta hai: <em>"sheryians.com ka IP kya hai?"</em> DNS IP address (e.g. <code>104.21.x.x</code>) return karta hai.</li>
+                        <li><strong>TCP / SSL Handshake:</strong> Browser us IP par secure connection establish karta hai (3-way handshake + HTTPS security certificate verify karta hai).</li>
+                        <li><strong>HTTP GET Request:</strong> Browser server ko bolta hai: <em>"Mujhe homepage ka HTML de do."</em></li>
+                        <li><strong>Server Response:</strong> Server request process karke <code>200 OK</code> ke sath <code>index.html</code> bhejta hai.</li>
+                        <li><strong>Parsing & Rendering:</strong> Browser HTML padhta hai, link kiye huye CSS aur JS download karta hai, aur visual web page screen par draw (render) karta hai.</li>
+                    </ol>
+                </div>
+            </article>
+
+            <!-- Sub-topic 5 -->
+            <article class="topic-card">
+                <h2>🎨 5. Front-end vs Back-end</h2>
+                <table class="compare-table">
+                    <thead>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Front-end (Client-Side)</th>
+                            <th>Back-end (Server-Side)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Kya hota hai?</strong></td>
+                            <td>Website ka look, feel aur visual interface jo user ko dikhta hai.</td>
+                            <td>Parde ke peeche ka dimag (business logic, security & database).</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Technologies</strong></td>
+                            <td><code>HTML5</code>, <code>CSS3</code>, <code>JavaScript</code>, React, Tailwind.</td>
+                            <td><code>Node.js</code>, Express, Python, Java, MongoDB, PostgreSQL.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Focus Area</strong></td>
+                            <td>UI/UX, Responsiveness, Animations, User Experience.</td>
+                            <td>APIs, Authentication, Server performance, Data storage.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Kahan chalta hai?</strong></td>
+                            <td>User ke browser ke andar.</td>
+                            <td>Remote cloud server par.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </article>
+
+            <!-- Sub-topic 6 -->
+            <article class="topic-card">
+                <h2>📄 6. Static Websites vs Dynamic Websites</h2>
+                
+                <h3>Static Websites:</h3>
+                <ul>
+                    <li>Fixed pre-written files (HTML, CSS, JS) hoti hain.</li>
+                    <li>Har user ko bilkul **same content** dikhta hai chahe koi bhi kab bhi visit kare.</li>
+                    <li>Koi database ya server processing ki jarurat nahi hoti.</li>
+                    <li><em>Examples:</em> Portfolio sites, documentation pages, restaurant menus.</li>
+                </ul>
+
+                <h3>Dynamic Websites:</h3>
+                <ul>
+                    <li>Content database aur user ke according **on-the-fly change** hota hai.</li>
+                    <li>Har user ko alag data dikh sakta hai (e.g. logged-in profile, cart items).</li>
+                    <li>Server-side scripting aur databases ke sath interact karti hain.</li>
+                    <li><em>Examples:</em> Instagram, Amazon, Netflix, YouTube.</li>
+                </ul>
+            </article>
+
+            <!-- Sub-topic 7 -->
+            <article class="topic-card">
+                <h2>☁️ 7. What is Web Hosting & How It Works?</h2>
+                <p><strong>Web Hosting</strong> ek aisi service hai jisme ek hosting company apne powerful servers par aapki website ki files (HTML, CSS, JS, images) ko store karne ki space provide karti hai.</p>
+                <ul>
+                    <li><strong>Kaise kaam karta hai?</strong> Server high-speed internet se 24/7 connected rehta hai. Jab koi user aapka domain type karta hai, hosting server turant us user ko aapki files deliver kar deta hai.</li>
+                    <li><strong>Common Hosting Types:</strong>
+                        <ul>
+                            <li><strong>Shared Hosting:</strong> Ek hi server ke resources kai websites aapas me share karti hain (budget-friendly).</li>
+                            <li><strong>VPS (Virtual Private Server):</strong> Server par dedicated virtual slice milti hai.</li>
+                            <li><strong>Dedicated Server:</strong> Pura physical server sirf aapki ek website ke liye reserve hota hai.</li>
+                            <li><strong>Modern Cloud Platforms:</strong> Vercel, Netlify, Render, AWS, Google Cloud (auto-scaling & instant deployment).</li>
+                        </ul>
+                    </li>
+                </ul>
+            </article>
+        </main>
+
+        <!-- Footer -->
+        <footer>
+            <p>Sheryians Coding School • 2.0 Cohort • Maintained by Abhishek</p>
+        </footer>
+    </div>
+
 </body>
 </html>
