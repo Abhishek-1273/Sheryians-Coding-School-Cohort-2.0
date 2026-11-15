@@ -1,0 +1,79 @@
+/* ==========================================================================
+   Sheryians Coding School - Live Cohort
+   Assignment 1: Full-Screen Hero Section ("Maybe your Best ride!")
+   Author: Abhishek
+   ========================================================================== */
+
+/* 1. Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    /* Avoid accidental scrollbars on 100vh */
+}
+
+/* 2. Hero Container (Flexbox Centering & Cinematic Background) */
+.hero {
+    height: 100vh;
+    width: 100%;
+    background-color: #000000;
+    /* Black Coupe on Black Surface (Pexels) - Placed majestically at bottom */
+    background-image: url('https://images.pexels.com/photos/261985/pexels-photo-261985.jpeg?auto=compress&cs=tinysrgb&w=1920');
+    background-repeat: no-repeat;
+    background-position: center bottom 3vh;
+    background-size: auto 75vh;
+
+    /* Center both text and button vertically and horizontally */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
+    padding-top: 6vh;
+}
+
+/* 3. Cursive Hero Heading */
+.hero-txt {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(2.5rem, 5.5vw, 4.2rem);
+    color: #ffffff;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.9), 0 0 40px rgba(255, 255, 255, 0.15);
+    margin-bottom: 10px;
+    padding-top: 40px;
+    user-select: none;
+}
+
+/* 4. Call-To-Action (CTA) Button */
+.button {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: #ffffff;
+    background: linear-gradient(135deg, #f97316, #ea580c);
+    border: none;
+    padding: 8px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(234, 88, 12, 0.45);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 5. Button Hover Effect (Scale + Glow) */
+.button:hover {
+    background: linear-gradient(135deg, #fb923c, #f97316);
+    transform: scale(1.08);
+    box-shadow: 0 6px 25px rgba(234, 88, 12, 0.7);
+}
+
+.button:active {
+    transform: scale(0.98);
+}

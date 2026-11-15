@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Episode 2: Topic 4 - Styling With CSS | Sheryians Cohort 2.0</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <span class="badge">Sheryians Coding School • Cohort 2.0</span>
+            <h1>Episode 2: Styling With CSS</h1>
+            <p>Colors, CSS Units, Box Model, Borders, Backgrounds & Shadows</p>
+        </header>
+
+        <main>
+            <!-- Sub-topic 1 -->
+            <article class="topic-card">
+                <h2>🎨 1. Working With Colors in CSS</h2>
+                <p>CSS me colors define karne ke 4 main tarike hote hain:</p>
+
+                <div class="color-swatch-grid">
+                    <div class="swatch" style="background-color: dodgerblue;">
+                        Named Color<br><code>dodgerblue</code>
+                    </div>
+                    <div class="swatch" style="background-color: #38bdf8; color: #0f172a;">
+                        HEX Code<br><code>#38bdf8</code>
+                    </div>
+                    <div class="swatch" style="background-color: rgb(74, 222, 128); color: #0f172a;">
+                        RGB Format<br><code>rgb(74, 222, 128)</code>
+                    </div>
+                    <div class="swatch" style="background-color: rgba(248, 113, 113, 0.7);">
+                        RGBA (Opacity)<br><code>rgba(..., 0.7)</code>
+                    </div>
+                    <div class="swatch" style="background-color: hsl(271, 91%, 65%);">
+                        HSL Format<br><code>hsl(271, 91%, 65%)</code>
+                    </div>
+                </div>
+
+                <div class="step-box" style="margin-top: 1rem;">
+                    <strong>💡 Alpha Channel (Opacity):</strong>
+                    <p><code>rgba(r, g, b, alpha)</code> ya <code>hsla(...)</code> me 'a' ka matlab hota hai <strong>Alpha (Transparency)</strong> jo <code>0.0</code> (fully transparent) se <code>1.0</code> (fully solid) tak hota hai.</p>
+                </div>
+            </article>
+
+            <!-- Sub-topic 2 -->
+            <article class="topic-card">
+                <h2>📏 2. Mastering CSS Units (Absolute vs Relative)</h2>
+                
+                <table class="custom-table">
+                    <thead>
+                        <tr>
+                            <th>Unit</th>
+                            <th>Type</th>
+                            <th>Relative To</th>
+                            <th>Best Used For</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>px</code></td>
+                            <td>Absolute</td>
+                            <td>Fixed Screen Pixels</td>
+                            <td>Fine borders, fixed icons, box-shadows.</td>
+                        </tr>
+                        <tr>
+                            <td><code>rem</code></td>
+                            <td>Relative</td>
+                            <td><strong>Root Element (<code>&lt;html&gt;</code>)</strong> font-size (Default 1rem = 16px)</td>
+                            <td><strong style="color: var(--success);">Industry Standard</strong> for typography, padding & margins (Responsive!).</td>
+                        </tr>
+                        <tr>
+                            <td><code>em</code></td>
+                            <td>Relative</td>
+                            <td><strong>Parent element</strong> ka font-size</td>
+                            <td>Component-scoped scaling (e.g. icon relative to button text).</td>
+                        </tr>
+                        <tr>
+                            <td><code>%</code></td>
+                            <td>Relative</td>
+                            <td>Parent container ka width/height</td>
+                            <td>Fluid grid columns, responsive card widths.</td>
+                        </tr>
+                        <tr>
+                            <td><code>vw</code> / <code>vh</code></td>
+                            <td>Relative</td>
+                            <td><strong>Viewport Width & Height</strong> (1vw = 1% screen width, 100vh = full screen height)</td>
+                            <td>Hero sections (<code>min-height: 100vh</code>), full-screen overlays.</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>CSS Math Functions (Modern Layout Magic):</h3>
+                <ul>
+                    <li><code>min(50%, 500px)</code> ➡️ Dono me se jo chhota hoga, use apply karega.</li>
+                    <li><code>max(300px, 20vw)</code> ➡️ Dono me se jo bada hoga, use apply karega.</li>
+                    <li><code>clamp(1rem, 2.5vw, 2.5rem)</code> ➡️ Responsive font size (Minimum, Preferred, Maximum limit).</li>
+                </ul>
+            </article>
+
+            <!-- Sub-topic 3 & 4 -->
+            <article class="topic-card">
+                <h2>📦 3. The CSS Box Model & Box Properties</h2>
+                <p>Browser me <strong>har HTML element ek rectangle box hota hai</strong> jisme 4 layers hoti hain:</p>
+
+                <!-- Box Model Visual Diagram -->
+                <div class="box-model-diagram">
+                    MARGIN (Outside element spacing)
+                    <div class="b-border-layer">
+                        BORDER (Visible outline boundary)
+                        <div class="b-padding-layer">
+                            PADDING (Inside space between border & text)
+                            <div class="b-content-layer">
+                                CONTENT (Text, Image, Inner elements)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 1.5rem;">The Golden Property: <code>box-sizing: border-box</code> vs <code>content-box</code></h3>
+                <table class="custom-table">
+                    <thead>
+                        <tr>
+                            <th>Property Value</th>
+                            <th>Total Width Calculation Formula</th>
+                            <th>Real Life Effect</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>content-box</code> (Default)</td>
+                            <td><code>Total = width + padding + border</code></td>
+                            <td>Agar 200px box me 20px padding doge toh box 240px ka hokar layout tod dega! ❌</td>
+                        </tr>
+                        <tr>
+                            <td><code>border-box</code> (<strong style="color: var(--success);">Best Practice</strong>)</td>
+                            <td><code>Total = exact specified width</code></td>
+                            <td>Padding aur border box ke andar adjust ho jate hain, layout kabhi nahi toot ta! ✅</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </article>
+
+            <!-- Sub-topic 5 -->
+            <article class="topic-card">
+                <h2>🖼️ 4. Borders & Border Styling</h2>
+                
+                <div class="border-demo-grid">
+                    <div class="border-box" style="border: 2px solid #38bdf8;">
+                        <code>border: 2px solid</code>
+                    </div>
+                    <div class="border-box" style="border: 2px dashed #facc15;">
+                        <code>border: 2px dashed</code>
+                    </div>
+                    <div class="border-box" style="border: 2px dotted #4ade80;">
+                        <code>border: 2px dotted</code>
+                    </div>
+                    <div class="border-box" style="border: 4px double #f43f5e;">
+                        <code>border: 4px double</code>
+                    </div>
+                    <div class="border-box" style="border: 2px solid #a855f7; border-radius: 9999px;">
+                        <code>border-radius: 9999px</code> (Pill)
+                    </div>
+                    <div class="border-box" style="border: 2px solid #38bdf8; border-top-left-radius: 16px; border-bottom-right-radius: 16px;">
+                        Custom Corners Radius
+                    </div>
+                </div>
+
+                <div class="step-box" style="margin-top: 1rem;">
+                    <strong>💡 Border vs Outline (Interview Nuance):</strong>
+                    <p><code>border</code> box model ka hissa hota hai aur space leta hai. Lekin <code>outline</code> box model ke bahar draw hoti hai aur page ka koi space occupy nahi karti (Focus indicators me use hoti hai).</p>
+                </div>
+            </article>
+
+            <!-- Sub-topic 6 -->
+            <article class="topic-card">
+                <h2>🌄 5. Background Properties & Gradients</h2>
+                <ul>
+                    <li><code>background-color</code> : Solid ya transparent background color.</li>
+                    <li><code>background-image: url('image.jpg')</code> : Background me photo lagana.</li>
+                    <li><code>background-size</code> :
+                        <ul>
+                            <li><code>cover</code> ➡️ Pura container fill karta hai (aspect ratio maintain karke, crop ho sakta hai).</li>
+                            <li><code>contain</code> ➡️ Puri image dikhata hai bina crop kiye (khali space chhoot sakti hai).</li>
+                        </ul>
+                    </li>
+                    <li><code>background-repeat: no-repeat</code> ➡️ Image ko baar-baar tile hone se rokta hai.</li>
+                    <li><code>background-position: center</code> ➡️ Image ko horizontal aur vertical center karta hai.</li>
+                    <li><code>background-attachment: fixed</code> ➡️ Page scroll hone par bhi photo apni jagah freeze rehti hai (Parallax Effect!).</li>
+                </ul>
+
+                <h3>CSS Linear & Radial Gradients:</h3>
+                <div class="gradient-box-linear">
+                    linear-gradient(135deg, #38bdf8, #a855f7, #f43f5e)
+                </div>
+            </article>
+
+            <!-- Sub-topic 7 -->
+            <article class="topic-card">
+                <h2>☁️ 6. Implementing Shadow Properties (Box Shadow)</h2>
+                <pre>/* Syntax */
+box-shadow: offset-x  offset-y  blur-radius  spread-radius  color;</pre>
+
+                <div class="shadow-grid">
+                    <div class="shadow-card" style="box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5);">
+                        <strong>Soft Drop Shadow</strong><br>
+                        <code>0 4px 6px -1px rgba(...)</code>
+                    </div>
+                    <div class="shadow-card" style="box-shadow: 0 0 20px rgba(56, 189, 248, 0.4); border: 1px solid #38bdf8;">
+                        <strong>Glowing Neon Halo</strong><br>
+                        <code>0 0 20px rgba(sky, 0.4)</code>
+                    </div>
+                    <div class="shadow-card" style="box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.6); background-color: #0b1329;">
+                        <strong>Inner Inset Shadow</strong><br>
+                        <code>inset 0 2px 8px rgba(...)</code>
+                    </div>
+                </div>
+            </article>
+        </main>
+
+        <!-- Footer -->
+        <footer>
+            <p>Sheryians Coding School • 2.0 Cohort • Maintained by Abhishek</p>
+        </footer>
+    </div>
+
+</body>
+</html>
