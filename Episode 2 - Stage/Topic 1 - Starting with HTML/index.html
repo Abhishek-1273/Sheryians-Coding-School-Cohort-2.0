@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Episode 2: Topic 1 - Starting with HTML | Sheryians Cohort 2.0</title>
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent: #38bdf8;
+            --accent-glow: rgba(56, 189, 248, 0.15);
+            --border-color: #334155;
+            --tag-bg: #0369a1;
+            --table-header: #0e3a5a;
+            --success: #4ade80;
+            --warning: #facc15;
+            --code-bg: #090d16;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.7;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 2rem;
+        }
+
+        .badge {
+            display: inline-block;
+            background-color: var(--accent-glow);
+            color: var(--accent);
+            border: 1px solid var(--accent);
+            padding: 0.3rem 0.8rem;
+            border-radius: 9999px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            color: #ffffff;
+        }
+
+        header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        /* Nav Bar for Multi-page demo */
+        nav {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 0.8rem 1.5rem;
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+
+        .topic-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.8rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .topic-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+        }
+
+        .topic-card h2 {
+            font-size: 1.35rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        h3 {
+            font-size: 1.08rem;
+            color: #e2e8f0;
+            margin: 1.2rem 0 0.4rem 0;
+        }
+
+        p, li {
+            color: #cbd5e1;
+            font-size: 0.98rem;
+        }
+
+        ul, ol {
+            padding-left: 1.5rem;
+            margin-top: 0.5rem;
+        }
+
+        li {
+            margin-bottom: 0.4rem;
+        }
+
+        code {
+            background-color: var(--code-bg);
+            color: #38bdf8;
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+
+        pre {
+            background-color: var(--code-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1rem;
+            overflow-x: auto;
+            color: #38bdf8;
+            font-family: "Courier New", Courier, monospace;
+            font-size: 0.9rem;
+            margin: 0.8rem 0;
+        }
+
+        .step-box {
+            background-color: rgba(15, 23, 42, 0.5);
+            border-left: 3px solid var(--accent);
+            padding: 1rem 1.2rem;
+            margin-top: 1rem;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .demo-box {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px dashed var(--border-color);
+            border-radius: 8px;
+            padding: 1.2rem;
+            margin-top: 1rem;
+        }
+
+        .demo-box h4 {
+            color: var(--warning);
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .btn-link {
+            display: inline-block;
+            background-color: var(--tag-bg);
+            color: #ffffff;
+            padding: 0.4rem 1rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-top: 0.5rem;
+        }
+
+        .btn-link:hover {
+            background-color: var(--accent);
+            color: #0f172a;
+        }
+
+        footer {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 3rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <span class="badge">Sheryians Coding School • Cohort 2.0</span>
+            <h1>Episode 2: Starting with HTML</h1>
+            <p>Structure, Tags, Text Elements, Lists, Media & Navigation</p>
+        </header>
+
+        <!-- Navigation Bar Demo -->
+        <nav>
+            <span>📍 <strong>Page Navigation Demo:</strong></span>
+            <div>
+                <a href="#structure">Structure</a> &bull;
+                <a href="#text">Text Elements</a> &bull;
+                <a href="#lists">Lists</a> &bull;
+                <a href="#media">Media</a> &bull;
+                <a href="about.html" class="btn-link" style="margin-top: 0; margin-left: 10px;">Go to About Page &rarr;</a>
+            </div>
+        </nav>
+
+        <main>
+            <!-- Sub-topic 1 -->
+            <article class="topic-card">
+                <h2>🧱 1. Understanding HTML & Its Use Cases</h2>
+                <p><strong>HTML (HyperText Markup Language)</strong> kisi bhi website ka <strong>Skeleton (Dhaancha)</strong> hota hai.</p>
+                <ul>
+                    <li><strong>HyperText:</strong> Aisa text jisme doosre pages ke links (Hyperlinks) embedded hote hain.</li>
+                    <li><strong>Markup Language:</strong> Yeh programming language nahi hai; yeh tags (<code>&lt;tag&gt;</code>) ke zariye browser ko batati hai ki kaunsa content heading hai, kaunsa paragraph hai, aur kahan image aayegi.</li>
+                    <li><strong>Analogy:</strong> HTML = Makaan ki eent aur cement (Structure), CSS = Paint aur interior design (Styling), JavaScript = Bijli ke switches aur pankhe (Functionality).</li>
+                </ul>
+            </article>
+
+            <!-- Sub-topic 2 & 3 -->
+            <article class="topic-card" id="structure">
+                <h2>🏗️ 2. The Anatomy of an HTML Document</h2>
+                <p>Har standard HTML document ka ek fixed boiler-plate structure hota hai:</p>
+                <pre>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Page Title&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Visible Content Goes Here&lt;/h1&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</pre>
+
+                <ul>
+                    <li><code>&lt;!DOCTYPE html&gt;</code> : Browser ko batata hai ki hum modern <strong>HTML5</strong> use kar rahe hain.</li>
+                    <li><code>&lt;html&gt;</code> : Root element jisme pura webpage wrap hota hai.</li>
+                    <li><code>&lt;head&gt;</code> : Brain of the page — isme metadata, title, CSS links aate hain jo screen par visually nahi dikhte.</li>
+                    <li><code>&lt;title&gt;</code> : Browser ke tab bar par dikhne wala page ka naam.</li>
+                    <li><code>&lt;body&gt;</code> : Sabhi visible elements (text, images, buttons) body ke andar aate hain.</li>
+                </ul>
+            </article>
+
+            <!-- Sub-topic 4 -->
+            <article class="topic-card" id="text">
+                <h2>✍️ 3. Working with Text Elements</h2>
+                
+                <h3>Headings (<code>&lt;h1&gt;</code> to <code>&lt;h6&gt;</code>):</h3>
+                <p>H1 sabse important (aur sabse bada) hota hai, H6 sabse chhota. SEO ke liye ek page par sirf <strong>ek hi <code>&lt;h1&gt;</code></strong> hona chahiye.</p>
+
+                <h3>Paragraphs & Line Breaks:</h3>
+                <ul>
+                    <li><code>&lt;p&gt;</code> : Paragraph text ke liye block-level element.</li>
+                    <li><code>&lt;br&gt;</code> : Self-closing tag jo nayi line (line break) insert karta hai.</li>
+                </ul>
+
+                <h3>Inline Formatting & Code:</h3>
+                <ul>
+                    <li><code>&lt;span&gt;</code> : Inline container jo specific text ko style ya target karne ke kaam aata hai bina line break ke.</li>
+                    <li><code>&lt;code&gt;</code> : Inline code snippet dikhane ke liye monospace font use karta hai.</li>
+                    <li><code>&lt;pre&gt;</code> : Preformatted text — isme spaces aur newlines bilkul jaise type kiye gaye hain waise hi display hote hain!</li>
+                </ul>
+
+                <div class="demo-box">
+                    <h4>🔍 Live Demo:</h4>
+                    <p>Yeh ek normal paragraph hai jisme ek <span style="color: var(--accent); font-weight: bold;">colored span</span> aur inline <code>console.log("Hello")</code> code hai.<br>Aur yeh line <code>&lt;br&gt;</code> ke baad aayi hai!</p>
+                </div>
+            </article>
+
+            <!-- Sub-topic 5 & 6 -->
+            <article class="topic-card" id="lists">
+                <h2>📋 4. HTML Lists & Nested Elements</h2>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                    <div>
+                        <h3>Unordered List (<code>&lt;ul&gt;</code>):</h3>
+                        <p>Bullet points ke liye:</p>
+                        <ul>
+                            <li>HTML5 Basics</li>
+                            <li>Modern CSS3</li>
+                            <li>JavaScript ES6</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>Ordered List (<code>&lt;ol&gt;</code>):</h3>
+                        <p>Numbered steps ke liye:</p>
+                        <ol>
+                            <li>Learn Fundamentals</li>
+                            <li>Build Projects</li>
+                            <li>Crack Interviews</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <h3>Concept of Nested Elements:</h3>
+                <p>Jab ek tag ke andar doosra tag place kiya jata hai, use <strong>Nesting (Parent-Child Relationship)</strong> kehte hain:</p>
+                <ul>
+                    <li>Parent: <code>&lt;ul&gt;</code>
+                        <ul>
+                            <li>Child 1: <code>&lt;li&gt;Frontend&lt;/li&gt;</code>
+                                <ul>
+                                    <li>Nested Sub-child: <code>&lt;li&gt;React.js&lt;/li&gt;</code></li>
+                                </ul>
+                            </li>
+                            <li>Child 2: <code>&lt;li&gt;Backend&lt;/li&gt;</code></li>
+                        </ul>
+                    </li>
+                </ul>
+            </article>
+
+            <!-- Sub-topic 7 & 8 -->
+            <article class="topic-card" id="media">
+                <h2>🎬 5. Media Tags & HTML Attributes</h2>
+                <p><strong>Attributes</strong> tags ko extra information ya behavior provide karte hain (jaise <code>src</code>, <code>alt</code>, <code>href</code>):</p>
+
+                <h3>1. Image Tag (<code>&lt;img&gt;</code> - Self Closing):</h3>
+                <pre>&lt;img src="image.jpg" alt="Description" width="300" height="200"&gt;</pre>
+                <ul>
+                    <li><code>src</code> : Image ka file path ya online URL.</li>
+                    <li><code>alt</code> : Alternative text — agar image load na ho ya blind users screen-reader use karein toh alt text padha jata hai (SEO ke liye mandatory).</li>
+                    <li><code>width</code> & <code>height</code> : Image dimensions set karne ke liye.</li>
+                </ul>
+
+                <h3>2. Audio & Video Tags:</h3>
+                <pre>&lt;audio controls src="audio.mp3"&gt;&lt;/audio&gt;
+&lt;video controls width="400" src="video.mp4"&gt;&lt;/video&gt;</pre>
+                <ul>
+                    <li><code>controls</code> : Play, pause aur volume buttons display karta hai.</li>
+                </ul>
+            </article>
+
+            <!-- Sub-topic 9 -->
+            <article class="topic-card">
+                <h2>🔗 6. Hyperlinks & Page Navigation</h2>
+                <p>Webpages ko aapas me connect karne ke liye <strong>Anchor Tag (<code>&lt;a&gt;</code>)</strong> use hota hai:</p>
+                <ul>
+                    <li><code>href</code> : Destination URL ya file path (e.g. <code>href="about.html"</code>).</li>
+                    <li><code>target="_blank"</code> : Link ko ek naye tab me open karta hai.</li>
+                    <li><code>target="_self"</code> (Default) : Same tab me kholta hai.</li>
+                </ul>
+
+                <div class="step-box">
+                    <strong>🚀 Multi-Page Navigation Live Test:</strong>
+                    <p>Maine aapke liye ek second page [about.html](about.html) bhi banaya hai. Niche button click karke test karo:</p>
+                    <a href="about.html" class="btn-link">Open about.html &rarr;</a>
+                </div>
+            </article>
+        </main>
+
+        <!-- Footer -->
+        <footer>
+            <p>Sheryians Coding School • 2.0 Cohort • Maintained by Abhishek</p>
+        </footer>
+    </div>
+
+</body>
+</html>
