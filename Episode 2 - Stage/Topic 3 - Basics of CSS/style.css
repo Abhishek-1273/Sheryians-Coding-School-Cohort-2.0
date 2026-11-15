@@ -1,0 +1,233 @@
+/* ==========================================================================
+   External CSS Demo - Sheryians Coding School (Cohort 2.0)
+   Episode 2: Topic 3 - Basics of CSS
+   ========================================================================== */
+
+:root {
+    --bg-color: #0f172a;
+    --card-bg: #1e293b;
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --accent: #38bdf8;
+    --accent-glow: rgba(56, 189, 248, 0.15);
+    --border-color: #334155;
+    --tag-bg: #0369a1;
+    --table-header: #0e3a5a;
+    --success: #4ade80;
+    --warning: #facc15;
+    --danger: #f87171;
+    --code-bg: #090d16;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    line-height: 1.7;
+    padding: 2rem 1rem;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+header {
+    text-align: center;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 2rem;
+}
+
+.badge {
+    display: inline-block;
+    background-color: var(--accent-glow);
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    padding: 0.3rem 0.8rem;
+    border-radius: 9999px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+h1 {
+    font-size: 2.2rem;
+    margin-bottom: 0.5rem;
+    color: #ffffff;
+}
+
+header p {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+}
+
+.topic-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.8rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.topic-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent);
+}
+
+.topic-card h2 {
+    font-size: 1.35rem;
+    color: var(--accent);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+h3 {
+    font-size: 1.08rem;
+    color: #e2e8f0;
+    margin: 1.2rem 0 0.4rem 0;
+}
+
+p, li {
+    color: #cbd5e1;
+    font-size: 0.98rem;
+}
+
+ul, ol {
+    padding-left: 1.5rem;
+    margin-top: 0.5rem;
+}
+
+li {
+    margin-bottom: 0.4rem;
+}
+
+code {
+    background-color: var(--code-bg);
+    color: #38bdf8;
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+pre {
+    background-color: var(--code-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1rem;
+    overflow-x: auto;
+    color: #38bdf8;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 0.9rem;
+    margin: 0.8rem 0;
+}
+
+.step-box {
+    background-color: rgba(15, 23, 42, 0.5);
+    border-left: 3px solid var(--accent);
+    padding: 1rem 1.2rem;
+    margin-top: 1rem;
+    border-radius: 0 8px 8px 0;
+}
+
+.demo-box {
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px dashed var(--border-color);
+    border-radius: 8px;
+    padding: 1.2rem;
+    margin-top: 1rem;
+}
+
+.demo-box h4 {
+    color: var(--warning);
+    margin-bottom: 0.6rem;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Custom Table */
+table.custom-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    border-radius: 8px;
+    overflow: hidden;
+    font-size: 0.93rem;
+}
+
+table.custom-table th, table.custom-table td {
+    padding: 0.8rem 1rem;
+    border: 1px solid var(--border-color);
+    text-align: left;
+}
+
+table.custom-table th {
+    background-color: var(--table-header);
+    color: var(--accent);
+    font-weight: 600;
+}
+
+table.custom-table tr:nth-child(even) {
+    background-color: rgba(15, 23, 42, 0.3);
+}
+
+/* Text Styling Demos */
+.demo-text-shadow {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #ffffff;
+    text-shadow: 2px 2px 8px #38bdf8, -2px -2px 10px rgba(74, 222, 128, 0.6);
+    margin: 0.5rem 0;
+}
+
+.demo-transform-upper {
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+}
+
+.demo-transform-cap {
+    text-transform: capitalize;
+    color: var(--success);
+}
+
+.demo-letter-spacing {
+    letter-spacing: 0.25em;
+    font-weight: bold;
+    color: var(--warning);
+}
+
+.demo-word-spacing {
+    word-spacing: 1.5rem;
+    color: #e2e8f0;
+}
+
+.demo-line-height {
+    line-height: 2.4;
+    background-color: rgba(15, 23, 42, 0.4);
+    padding: 0.8rem;
+    border-radius: 6px;
+    border-left: 3px solid var(--success);
+}
+
+footer {
+    text-align: center;
+    padding-top: 2rem;
+    margin-top: 3rem;
+    border-top: 1px solid var(--border-color);
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}

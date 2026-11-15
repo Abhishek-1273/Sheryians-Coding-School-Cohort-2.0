@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Episode 2: Topic 3 - Basics of CSS | Sheryians Cohort 2.0</title>
+
+    <!-- 1. External CSS Link (Best Practice) -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- 2. Internal CSS (Demo) -->
+    <style>
+        /* This is an internal CSS comment */
+        .internal-demo {
+            color: #4ade80;
+            font-weight: 600;
+        }
+
+        #special-id-demo {
+            border-left: 3px solid #facc15;
+            padding-left: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <span class="badge">Sheryians Coding School • Cohort 2.0</span>
+            <h1>Episode 2: Basics of CSS</h1>
+            <p>Syntax, Selectors, 3 Ways to Add CSS, Specificity & Text Styling</p>
+        </header>
+
+        <main>
+            <!-- Sub-topic 1 -->
+            <article class="topic-card">
+                <h2>🎨 1. Introduction to CSS & Why It's Important</h2>
+                <p><strong>CSS (Cascading Style Sheets)</strong> ek presentation language hai jo batati hai ki HTML elements screen par visually kaise dikhenge.</p>
+                
+                <div class="step-box">
+                    <strong>💡 Human Body Analogy:</strong>
+                    <p>• <strong>HTML:</strong> Skeleton (Haddiyan / Kankaal) — sirf structure deta hai.</p>
+                    <p>• <strong>CSS:</strong> Skin, clothes, hairstyle, makeup — appearance, layout aur sundarta deta hai.</p>
+                    <p>• <strong>JavaScript:</strong> Muscles aur dimag — movement, logic aur action deta hai.</p>
+                </div>
+
+                <p style="margin-top: 1rem;"><strong>Cascading ka matlab kya hai?</strong><br>
+                Rules top to bottom "cascade" (jharna/flow) karte hain. Agar ek hi element par do same rules apply ho rahe hon, toh unki <em>Specificity</em> aur <em>Order of Appearance</em> decide karta hai ki kaunsa style jeetega.</p>
+            </article>
+
+            <!-- Sub-topic 2 -->
+            <article class="topic-card">
+                <h2>📐 2. CSS Syntax, Selectors & Comments</h2>
+                
+                <h3>CSS Rule Anatomy:</h3>
+                <pre>/* CSS Comment: Iska syntax yeh hota hai */
+selector {
+    property: value;   /* Declaration */
+    color: #38bdf8;
+    font-size: 16px;
+}</pre>
+
+                <ul>
+                    <li><strong>Selector:</strong> HTML element jise style karna hai (e.g. <code>h1</code>, <code>.card</code>).</li>
+                    <li><strong>Property:</strong> Jo feature badalna hai (e.g. <code>color</code>, <code>font-size</code>).</li>
+                    <li><strong>Value:</strong> Property ko di gayi setting (e.g. <code>red</code>, <code>24px</code>).</li>
+                    <li><strong>Declaration:</strong> Ek <code>property: value;</code> ke jode ko declaration bolte hain.</li>
+                </ul>
+            </article>
+
+            <!-- Sub-topic 3 -->
+            <article class="topic-card">
+                <h2>🔌 3. Three Ways to Add CSS to HTML</h2>
+                
+                <table class="custom-table">
+                    <thead>
+                        <tr>
+                            <th>Method</th>
+                            <th>Syntax & Location</th>
+                            <th>When to Use & Pros/Cons</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>1. Inline CSS</strong></td>
+                            <td>Element ke andar <code>style=""</code> attribute:<br><code>&lt;p style="color: red;"&gt;Text&lt;/p&gt;</code></td>
+                            <td><strong style="color: var(--danger);">Avoid in production!</strong> Sirf quick testing ya emails ke liye. Highest priority hoti hai par maintain karna mushkil.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>2. Internal CSS</strong></td>
+                            <td>HTML ke <code>&lt;head&gt;</code> ke andar <code>&lt;style&gt;</code> tag:<br><code>&lt;style&gt; p { color: blue; } &lt;/style&gt;</code></td>
+                            <td>Single page websites ke liye theek hai, par multiple pages me code duplicate ho jata hai.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>3. External CSS</strong></td>
+                            <td>Alag <code>style.css</code> file aur <code>&lt;link&gt;</code> tag:<br><code>&lt;link rel="stylesheet" href="style.css"&gt;</code></td>
+                            <td><strong style="color: var(--success);">Industry Standard & Best Practice!</strong> Pura design ek hi jagah rehta hai aur browser cache kar sakta hai (fast loading).</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="demo-box">
+                    <h4>🔍 Live Demo:</h4>
+                    <p style="color: #f87171; font-weight: bold;">This text is styled via Inline CSS (style="color: #f87171;")</p>
+                    <p class="internal-demo">This text is styled via Internal CSS (.internal-demo)</p>
+                    <p style="color: var(--accent);">This entire page layout & card design is styled via External CSS (style.css)!</p>
+                </div>
+            </article>
+
+            <!-- Sub-topic 4 & 5 -->
+            <article class="topic-card">
+                <h2>🎯 4. Selectors & Specificity Hierarchy (Precedence)</h2>
+                
+                <h3>Core Selectors:</h3>
+                <ul>
+                    <li><strong>Element Selector:</strong> <code>p { color: white; }</code> ➡️ Page ke sabhi <code>&lt;p&gt;</code> ko style karega.</li>
+                    <li><strong>Class Selector (<code>.</code>):</strong> <code>.btn { padding: 8px; }</code> ➡️ Multiple elements par reuse ho sakta hai (e.g. <code>class="btn"</code>).</li>
+                    <li><strong>ID Selector (<code>#</code>):</strong> <code>#navbar { background: black; }</code> ➡️ Page par sirf <strong>ek unique element</strong> ke liye hota hai (e.g. <code>id="navbar"</code>).</li>
+                </ul>
+
+                <h3>Specificity Ladder (Kaun Jeetega?):</h3>
+                <div class="step-box">
+                    <p><strong>1. <code>!important</code></strong> ➡️ Sabhi rules ko tod kar zabardasti jeet jata hai (Use rarely!).</p>
+                    <p><strong>2. Inline Style (Score: 1000)</strong> ➡️ <code>style="color: red;"</code></p>
+                    <p><strong>3. ID Selector (Score: 100)</strong> ➡️ <code>#hero-banner</code></p>
+                    <p><strong>4. Class / Attribute / Pseudo-class (Score: 10)</strong> ➡️ <code>.card</code>, <code>:hover</code></p>
+                    <p><strong>5. Element Selector (Score: 1)</strong> ➡️ <code>p</code>, <code>div</code>, <code>h1</code></p>
+                    <p><strong>6. Universal Selector (Score: 0)</strong> ➡️ <code>*</code></p>
+                </div>
+
+                <div class="demo-box" id="special-id-demo">
+                    <h4>🔍 Specificity Battle Example:</h4>
+                    <pre>p { color: white; }            /* Score: 1 */
+.card-text { color: green; }   /* Score: 10 (Wins over element!) */
+#special-text { color: gold; } /* Score: 100 (Wins over class!) */</pre>
+                </div>
+            </article>
+
+            <!-- Sub-topic 6 -->
+            <article class="topic-card">
+                <h2>✍️ 5. Mastering Text Styling in CSS</h2>
+                <p>Text ke look and feel ko customize karne ke liye main CSS properties:</p>
+
+                <table class="custom-table">
+                    <thead>
+                        <tr>
+                            <th>Property</th>
+                            <th>Common Values</th>
+                            <th>Purpose & Effect</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>font-family</code></td>
+                            <td><code>Inter, Roboto, sans-serif</code></td>
+                            <td>Font type/style set karta hai (hamesha fallback stack provide karo).</td>
+                        </tr>
+                        <tr>
+                            <td><code>font-style</code></td>
+                            <td><code>normal</code>, <code>italic</code>, <code>oblique</code></td>
+                            <td>Text ko slant/italic karne ke liye.</td>
+                        </tr>
+                        <tr>
+                            <td><code>font-weight</code></td>
+                            <td><code>normal</code>, <code>bold</code>, <code>100-900</code></td>
+                            <td>Text ki thickness/motai control karta hai (e.g. <code>700</code> = bold).</td>
+                        </tr>
+                        <tr>
+                            <td><code>line-height</code></td>
+                            <td><code>1.5</code>, <code>1.8</code>, <code>24px</code></td>
+                            <td>Lines ke beech vertical spacing (readability badhane ke liye).</td>
+                        </tr>
+                        <tr>
+                            <td><code>text-decoration</code></td>
+                            <td><code>none</code>, <code>underline</code>, <code>line-through</code></td>
+                            <td>Underline ya strikethrough set/remove karta hai (links me <code>none</code>).</td>
+                        </tr>
+                        <tr>
+                            <td><code>text-align</code></td>
+                            <td><code>left</code>, <code>center</code>, <code>right</code>, <code>justify</code></td>
+                            <td>Horizontal text alignment.</td>
+                        </tr>
+                        <tr>
+                            <td><code>text-transform</code></td>
+                            <td><code>uppercase</code>, <code>lowercase</code>, <code>capitalize</code></td>
+                            <td>Casing change karta hai bina HTML text retype kiye.</td>
+                        </tr>
+                        <tr>
+                            <td><code>letter-spacing</code></td>
+                            <td><code>1px</code>, <code>2px</code>, <code>0.1em</code></td>
+                            <td>Characters/Letters ke beech ka horizontal gap.</td>
+                        </tr>
+                        <tr>
+                            <td><code>word-spacing</code></td>
+                            <td><code>4px</code>, <code>10px</code></td>
+                            <td>Words ke beech ka horizontal gap.</td>
+                        </tr>
+                        <tr>
+                            <td><code>text-shadow</code></td>
+                            <td><code>x-offset y-offset blur color</code></td>
+                            <td>Text ke peeche glowing ya 3D drop shadow effect deta hai.</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="demo-box">
+                    <h4>🔍 Visual Live Text Effects:</h4>
+                    <p class="demo-text-shadow">Glowing Text Shadow</p>
+                    <p><span class="demo-transform-upper">text-transform: uppercase;</span> &bull; <span class="demo-transform-cap">text-transform: capitalize each word;</span></p>
+                    <p class="demo-letter-spacing">L E T T E R - S P A C I N G : 0 . 2 5 E M</p>
+                    <p class="demo-word-spacing">word - spacing : 1 . 5 r e m (wide words gap)</p>
+                    <div class="demo-line-height">
+                        <strong>line-height: 2.4;</strong><br>
+                        Notice how comfortable this paragraph is to read because of the generous vertical spacing between each line of text!
+                    </div>
+                </div>
+            </article>
+        </main>
+
+        <!-- Footer -->
+        <footer>
+            <p>Sheryians Coding School • 2.0 Cohort • Maintained by Abhishek</p>
+        </footer>
+    </div>
+
+</body>
+</html>

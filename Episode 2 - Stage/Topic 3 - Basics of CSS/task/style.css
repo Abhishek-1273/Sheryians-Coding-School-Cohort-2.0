@@ -1,0 +1,135 @@
+/* ==========================================================================
+   Sheryians Coding School - Cohort 2.0 (Topic 3 Practical Task)
+   Resume Website - Pastel Color-Blocking Theme (Sir's Exact Design)
+   ========================================================================== */
+
+/* 1. Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+body {
+    background-color: #ffffff;
+    text-align: center;
+    color: #1f2937;
+    line-height: 1.6;
+}
+
+/* 2. Header Section (Full-Width Dark Navy Strip) */
+.sec-header {
+    background-color: #1a233a;
+    color: #ffffff;
+    padding: 55px 20px;
+    width: 100%;
+}
+
+.sec-header h1 {
+    font-size: 2.3rem;
+    font-weight: 800;
+    letter-spacing: 3px;
+    margin-bottom: 8px;
+}
+
+.sec-header p {
+    font-size: 1rem;
+    color: #cbd5e1;
+    font-style: italic;
+    letter-spacing: 0.5px;
+}
+
+/* 3. Colored Section Blocks (Wide with spacing in-between) */
+section {
+    width: 90%;
+    max-width: 950px;
+    margin: 30px auto; /* Sections ke beech me clean gap */
+    padding: 45px 30px;
+    border-radius: 8px; /* Clean rounded edges */
+}
+
+section h2 {
+    font-size: 1.4rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: #111827;
+    margin-bottom: 22px;
+}
+
+/* 4. White Card Items (Wide inside colored box) */
+.card-item {
+    background-color: #ffffff;
+    width: 82%; /* Wide width inside section */
+    max-width: 780px;
+    margin: 12px auto;
+    padding: 14px 20px;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    color: #1f2937;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.card-item a {
+    color: #1f2937;
+    text-decoration: none;
+}
+
+.card-item a:hover {
+    text-decoration: underline;
+    color: #0284c7;
+}
+
+/* ==========================================================================
+   PASTEL COLOR-BLOCKING FOR EACH SECTION
+   ========================================================================== */
+
+/* Section 1: About Me */
+.sec-about {
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+}
+
+.sec-about .card-item {
+    line-height: 1.8;
+    color: #4b5563;
+    font-size: 1rem;
+}
+
+/* Section 2: Education (Pastel Soft Baby Blue) */
+.sec-education {
+    background-color: #dff0fe;
+}
+
+/* Section 3: Skills (Pastel Soft Butter Yellow) */
+.sec-skills {
+    background-color: #fef3c7;
+}
+
+/* Section 4: Projects (Pastel Soft Lilac / Lavender) */
+.sec-projects {
+    background-color: #eee9fe;
+}
+
+/* Section 5: Contact Me (Pastel Soft Mint Green) */
+.sec-contact {
+    background-color: #dcfce7;
+}
+
+/* 5. Footer Section (Full-Width Dark Navy Matching Header) */
+.sec-footer {
+    background-color: #1a233a;
+    color: #94a3b8;
+    padding: 30px 20px;
+    font-size: 0.82rem;
+    letter-spacing: 1.5px;
+    width: 100%;
+    margin-top: 40px;
+}
