@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Topic 7: Interesting things about CSS - Pseudo-Elements, 3D Transforms & Animations | Sheryians Cohort 2.0</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Header Section -->
+    <header class="main-header">
+        <div class="header-container">
+            <span class="cohort-tag">Cohort 2.0 • Episode 2</span>
+            <h1>Topic 7: Interesting things about CSS ✌️</h1>
+            <p class="subtitle">Deep dive into Pseudo-classes & Elements (::before/::after), Transition Timing Curves, 3D Perspective Transforms, and Custom @keyframes Animations.</p>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="page-container">
+
+        <!-- ==========================================
+             SECTION 1: PSEUDO-CLASSES & PSEUDO-ELEMENTS
+             ========================================== -->
+        <section class="topic-card">
+            <div class="card-header">
+                <span class="badge">Dynamic Selectors</span>
+                <h2>1. Pseudo-Classes & Pseudo-Elements</h2>
+            </div>
+            <p class="section-desc">
+                <strong>Pseudo-classes (<code>:</code>)</strong> target elements in a specific temporary state. <strong>Pseudo-elements (<code>::</code>)</strong> let you style virtual sub-elements or inject content without cluttering your HTML.
+            </p>
+
+            <div class="grid-2col">
+                <!-- Pseudo-Classes -->
+                <div class="sub-card">
+                    <h3>1.1 Pseudo-Classes (<code>:hover</code>, <code>:focus</code>, <code>:active</code>)</h3>
+                    <ul class="pseudo-list">
+                        <li><strong><code>:hover</code></strong> &rarr; Triggers when the mouse cursor enters the element.</li>
+                        <li><strong><code>:focus</code></strong> &rarr; Triggers when an element (like an input or button) receives keyboard or click focus.</li>
+                        <li><strong><code>:active</code></strong> &rarr; Triggers at the exact moment the element is being clicked down.</li>
+                    </ul>
+
+                    <div class="interactive-input-stage">
+                        <input type="text" class="demo-input" placeholder="Click to test :focus state...">
+                        <button class="demo-btn-active">Click & Hold Me (:active)</button>
+                    </div>
+                </div>
+
+                <!-- Pseudo-Elements -->
+                <div class="sub-card highlight-subcard">
+                    <h3>1.2 Pseudo-Elements (<code>::before</code> & <code>::after</code>)</h3>
+                    <p>Inserts cosmetic virtual elements <strong>before</strong> or <strong>after</strong> the element's actual content. <em>Always requires <code>content: "";</code></em>.</p>
+
+                    <!-- Animated Underline Demo -->
+                    <div class="demo-link-container">
+                        <span class="demo-caption">Hover to see <code>::after</code> underline expand:</span>
+                        <a href="#" class="pseudo-link">Creative Web Development</a>
+                    </div>
+
+                    <!-- Glowing Badge Demo -->
+                    <div class="badge-stage">
+                        <div class="glow-card">
+                            <span>Card with <code>::before</code> Gradient Glow</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================
+             SECTION 2: CSS TRANSITIONS MASTERY
+             ========================================== -->
+        <section class="topic-card">
+            <div class="card-header">
+                <span class="badge">Smooth Physics</span>
+                <h2>2. CSS Transitions & Timing Curves</h2>
+            </div>
+            <p class="section-desc">
+                Transitions enable smooth state changes over time instead of instantaneous jumps.
+            </p>
+
+            <div class="syntax-breakdown-box">
+                <span class="syntax-title">Master Shorthand:</span>
+                <code>transition: [property] [duration] [timing-function] [delay];</code>
+                <div class="syntax-example">
+                    <code>transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s;</code>
+                </div>
+            </div>
+
+            <!-- Timing Function Comparison Track -->
+            <div class="timing-track-card">
+                <h3>Timing Function Comparison (Hover the track):</h3>
+                <div class="racetrack">
+                    <div class="race-lane">
+                        <span class="lane-label">linear</span>
+                        <div class="race-box box-linear"></div>
+                    </div>
+                    <div class="race-lane">
+                        <span class="lane-label">ease (Default)</span>
+                        <div class="race-box box-ease"></div>
+                    </div>
+                    <div class="race-lane">
+                        <span class="lane-label">ease-in</span>
+                        <div class="race-box box-ease-in"></div>
+                    </div>
+                    <div class="race-lane">
+                        <span class="lane-label">ease-out</span>
+                        <div class="race-box box-ease-out"></div>
+                    </div>
+                    <div class="race-lane">
+                        <span class="lane-label">ease-in-out</span>
+                        <div class="race-box box-ease-in-out"></div>
+                    </div>
+                </div>
+                <p class="track-hint">💡 Hover over the racetrack to see how acceleration and deceleration differ!</p>
+            </div>
+        </section>
+
+        <!-- ==========================================
+             SECTION 3: 3D TRANSFORMS & PERSPECTIVE
+             ========================================== -->
+        <section class="topic-card highlight-card">
+            <div class="card-header">
+                <span class="badge special-badge">True 3D Space</span>
+                <h2>3. 3D Transforms (Perspective, translate3d, rotate3d)</h2>
+            </div>
+            <p class="section-desc">
+                By setting <code>perspective</code> on a parent container, we unlock the <strong>Z-axis (depth)</strong>. Elements can pop out toward the viewer or recede into the screen!
+            </p>
+
+            <div class="grid-2col">
+                <!-- 3D Concepts -->
+                <div class="sub-card">
+                    <h3>3.1 Core 3D Functions</h3>
+                    <ul class="prop-list">
+                        <li><code>perspective: 800px;</code> &rarr; Defines how far the viewer is from the 3D plane (creates optical depth).</li>
+                        <li><code>translateZ(50px)</code> &rarr; Pulls element closer to your eyes along the Z-axis.</li>
+                        <li><code>rotateX(45deg)</code> &bull; <code>rotateY(45deg)</code> &bull; <code>rotateZ(45deg)</code> &rarr; Rotates along 3D axes.</li>
+                        <li><code>transform-style: preserve-3d;</code> &rarr; Keeps child elements in true 3D space instead of flattening them.</li>
+                    </ul>
+                </div>
+
+                <!-- 3D Flip Card Demo -->
+                <div class="sub-card flip-demo-card">
+                    <h3>3.2 Live 3D Flip Card (Hover Me!)</h3>
+                    <div class="flip-scene">
+                        <div class="flip-card">
+                            <div class="flip-card-face flip-front">
+                                <h4>Front Face</h4>
+                                <p>Hover to flip in 3D &rarr;</p>
+                            </div>
+                            <div class="flip-card-face flip-back">
+                                <h4>Back Face</h4>
+                                <p><code>rotateY(180deg)</code></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================
+             SECTION 4: CSS ANIMATIONS & @KEYFRAMES
+             ========================================== -->
+        <section class="topic-card">
+            <div class="card-header">
+                <span class="badge">Autonomous Motion</span>
+                <h2>4. CSS Animations (<code>@keyframes</code>)</h2>
+            </div>
+            <p class="section-desc">
+                Unlike transitions (which need a user trigger like <code>:hover</code>), <strong>Animations run automatically</strong>, loop infinitely, and navigate through complex multi-step intermediate keyframes (<code>0% &rarr; 50% &rarr; 100%</code>).
+            </p>
+
+            <div class="syntax-breakdown-box">
+                <span class="syntax-title">Anatomy of an Animation:</span>
+                <code>@keyframes pulseGlow {<br>&nbsp;&nbsp;0% { transform: scale(1); opacity: 0.8; }<br>&nbsp;&nbsp;50% { transform: scale(1.15); opacity: 1; }<br>&nbsp;&nbsp;100% { transform: scale(1); opacity: 0.8; }<br>}</code>
+            </div>
+
+            <div class="animation-grid">
+                <!-- Demo 1: Floating Element -->
+                <div class="anim-card">
+                    <span class="anim-label">1. Floating Physics</span>
+                    <div class="anim-stage">
+                        <div class="floating-box">🛸 Float</div>
+                    </div>
+                    <code>animation: float 3s ease-in-out infinite;</code>
+                </div>
+
+                <!-- Demo 2: Pulse Radar Ring -->
+                <div class="anim-card">
+                    <span class="anim-label">2. Pulsing Radar Ring</span>
+                    <div class="anim-stage">
+                        <div class="radar-dot">
+                            <div class="radar-ring"></div>
+                        </div>
+                    </div>
+                    <code>animation: pulseRing 1.8s infinite;</code>
+                </div>
+
+                <!-- Demo 3: Modern Infinite Spinner -->
+                <div class="anim-card">
+                    <span class="anim-label">3. 3D Gradient Spinner</span>
+                    <div class="anim-stage">
+                        <div class="spinner-ring"></div>
+                    </div>
+                    <code>animation: spin3D 1.2s linear infinite;</code>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <p>Sheryians Coding School • 2.0 Cohort | Developed with ❤️ by <strong>Abhishek</strong></p>
+    </footer>
+
+</body>
+
+</html>
