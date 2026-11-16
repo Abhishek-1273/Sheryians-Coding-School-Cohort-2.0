@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Topic 6: More about CSS - Display, Flexbox, Grid, Overflow & Selectors | Sheryians Cohort 2.0</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Header Section -->
+    <header class="main-header">
+        <div class="header-container">
+            <span class="cohort-tag">Cohort 2.0 • Episode 2</span>
+            <h1>Topic 6: More about CSS</h1>
+            <p class="subtitle">Mastering Display models, the Complete Flexbox Architecture, CSS Grid fundamentals, Overflow behaviors, and Advanced Grouping/Nested Selectors.</p>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="page-container">
+
+        <!-- ==========================================
+             SECTION 1: DISPLAY PROPERTIES
+             ========================================== -->
+        <section class="topic-card">
+            <div class="card-header">
+                <span class="badge">Layout Fundamentals</span>
+                <h2>1. Display Properties in CSS</h2>
+            </div>
+            <p class="section-desc">
+                The <code>display</code> property determines how an element renders in the document flow and behaves with respect to its surrounding siblings and dimensions.
+            </p>
+
+            <div class="display-grid">
+                <!-- Block -->
+                <div class="sub-card">
+                    <h3>1.1 <code>display: block;</code></h3>
+                    <p>Starts on a new line and takes up the full width available. Supports <code>width</code>, <code>height</code>, <code>margin</code>, and <code>padding</code> on all 4 sides.</p>
+                    <div class="demo-stage">
+                        <div class="block-box">Block 1 (Full Width)</div>
+                        <div class="block-box">Block 2 (Starts on next line)</div>
+                    </div>
+                    <span class="tag-examples">Examples: &lt;div&gt;, &lt;p&gt;, &lt;h1-h6&gt;, &lt;section&gt;</span>
+                </div>
+
+                <!-- Inline -->
+                <div class="sub-card">
+                    <h3>1.2 <code>display: inline;</code></h3>
+                    <p>Flows within existing text without line breaks. Takes only necessary content width. <strong>Ignores <code>width</code> and <code>height</code></strong>; vertical margins do not push siblings.</p>
+                    <div class="demo-stage">
+                        <span class="inline-box">Inline A</span>
+                        <span class="inline-box">Inline B</span>
+                        <span class="inline-box">Inline C (side-by-side)</span>
+                    </div>
+                    <span class="tag-examples">Examples: &lt;span&gt;, &lt;a&gt;, &lt;strong&gt;, &lt;em&gt;</span>
+                </div>
+
+                <!-- Inline-Block -->
+                <div class="sub-card">
+                    <h3>1.3 <code>display: inline-block;</code></h3>
+                    <p>The best of both worlds! Sits <strong>side-by-side</strong> like inline, but <strong>fully respects <code>width</code>, <code>height</code>, <code>margin</code>, and <code>padding</code></strong>.</p>
+                    <div class="demo-stage">
+                        <div class="ib-box">IB 1 (100x40px)</div>
+                        <div class="ib-box">IB 2 (100x40px)</div>
+                        <div class="ib-box">IB 3 (100x40px)</div>
+                    </div>
+                    <span class="tag-examples">Examples: &lt;button&gt;, &lt;input&gt;, customized badges</span>
+                </div>
+
+                <!-- None -->
+                <div class="sub-card">
+                    <h3>1.4 <code>display: none;</code> vs <code>visibility: hidden;</code></h3>
+                    <p><code>display: none;</code> removes element completely from document flow (zero space occupied). <code>visibility: hidden;</code> hides element visually but preserves its physical layout space.</p>
+                    <div class="demo-stage">
+                        <div class="visible-box">Normal Box</div>
+                        <div class="hidden-box-demo">[display: none = Gone!]</div>
+                        <div class="visible-box">Next Sibling</div>
+                    </div>
+                    <span class="tag-examples">Essential for modals, dropdown toggles, responsive menus</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================
+             SECTION 2: FLEXBOX ARCHITECTURE
+             ========================================== -->
+        <section class="topic-card highlight-card">
+            <div class="card-header">
+                <span class="badge special-badge">Core Modern Layout</span>
+                <h2>2. Complete FlexBox (Container Properties)</h2>
+            </div>
+            <p class="section-desc">
+                Flexbox is a <strong>One-Dimensional (1D)</strong> layout model designed to distribute space and align items along either a horizontal or vertical axis.
+            </p>
+
+            <!-- Axis Anatomy -->
+            <div class="axis-explainer">
+                <div class="axis-box">
+                    <h4>Main Axis & Cross Axis Concept:</h4>
+                    <p>When <code>flex-direction: row;</code> &rarr; <strong>Main Axis</strong> is Horizontal (X), <strong>Cross Axis</strong> is Vertical (Y).</p>
+                    <p>When <code>flex-direction: column;</code> &rarr; <strong>Main Axis</strong> is Vertical (Y), <strong>Cross Axis</strong> is Horizontal (X).</p>
+                </div>
+            </div>
+
+            <!-- Flex Properties Grid -->
+            <div class="flex-props-grid">
+                <!-- flex-direction -->
+                <div class="prop-card">
+                    <h3>2.1 <code>flex-direction</code></h3>
+                    <p>Defines the direction of the Main Axis.</p>
+                    <ul class="prop-options">
+                        <li><code>row</code> (Default): Left to right</li>
+                        <li><code>row-reverse</code>: Right to left</li>
+                        <li><code>column</code>: Top to bottom</li>
+                        <li><code>column-reverse</code>: Bottom to top</li>
+                    </ul>
+                    <div class="mini-flex-stage dir-row">
+                        <div class="f-item">1</div>
+                        <div class="f-item">2</div>
+                        <div class="f-item">3</div>
+                    </div>
+                </div>
+
+                <!-- justify-content -->
+                <div class="prop-card">
+                    <h3>2.2 <code>justify-content</code></h3>
+                    <p>Aligns items along the <strong>Main Axis</strong>.</p>
+                    <ul class="prop-options">
+                        <li><code>flex-start</code>: Packed at start</li>
+                        <li><code>center</code>: Centered on axis</li>
+                        <li><code>flex-end</code>: Packed at end</li>
+                        <li><code>space-between</code>: Edges touch container</li>
+                        <li><code>space-around</code>: Equal space around items</li>
+                        <li><code>space-evenly</code>: Equal space everywhere</li>
+                    </ul>
+                    <div class="mini-flex-stage jc-between">
+                        <div class="f-item">1</div>
+                        <div class="f-item">2</div>
+                        <div class="f-item">3</div>
+                    </div>
+                </div>
+
+                <!-- align-items -->
+                <div class="prop-card">
+                    <h3>2.3 <code>align-items</code></h3>
+                    <p>Aligns items along the <strong>Cross Axis</strong> (single line).</p>
+                    <ul class="prop-options">
+                        <li><code>stretch</code> (Default): Stretches to fill</li>
+                        <li><code>center</code>: Centered on cross axis</li>
+                        <li><code>flex-start</code>: Aligned to cross start</li>
+                        <li><code>flex-end</code>: Aligned to cross end</li>
+                        <li><code>baseline</code>: Aligns text baselines</li>
+                    </ul>
+                    <div class="mini-flex-stage ai-center">
+                        <div class="f-item f-tall">Tall</div>
+                        <div class="f-item">Mid</div>
+                        <div class="f-item f-short">Low</div>
+                    </div>
+                </div>
+
+                <!-- flex-wrap & align-content -->
+                <div class="prop-card">
+                    <h3>2.4 <code>flex-wrap</code> & <code>align-content</code></h3>
+                    <p>Controls multi-line wrapping and spacing.</p>
+                    <ul class="prop-options">
+                        <li><code>flex-wrap: nowrap;</code> (Default: squishes items)</li>
+                        <li><code>flex-wrap: wrap;</code> (Wraps to next row)</li>
+                        <li><code>align-content</code>: Distributes multi-line rows along cross axis (like <code>justify-content</code> for rows!)</li>
+                    </ul>
+                    <div class="mini-flex-stage wrap-stage">
+                        <div class="f-item w-item">A</div>
+                        <div class="f-item w-item">B</div>
+                        <div class="f-item w-item">C</div>
+                        <div class="f-item w-item">D</div>
+                        <div class="f-item w-item">E</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================
+             SECTION 3: FLEX ITEMS IN-DEPTH
+             ========================================== -->
+        <section class="topic-card">
+            <div class="card-header">
+                <span class="badge">Item-Level Rules</span>
+                <h2>3. Flex Item Properties & Shorthands</h2>
+            </div>
+            <p class="section-desc">
+                Properties applied directly to the individual flex child items to customize sizing, growth, shrinking, and ordering.
+            </p>
+
+            <div class="grid-2col">
+                <div class="sub-card">
+                    <h3>3.1 <code>flex-grow</code>, <code>flex-shrink</code> & <code>flex-basis</code></h3>
+                    <ul class="item-rules-list">
+                        <li><strong><code>flex-grow: [number];</code></strong>: How much remaining positive space this item absorbs. (e.g. <code>flex-grow: 2</code> grows twice as fast as <code>1</code>).</li>
+                        <li><strong><code>flex-shrink: [number];</code></strong>: How much this item shrinks when space is negative/overflowing. <code>0</code> prevents shrinking!</li>
+                        <li><strong><code>flex-basis: [size];</code></strong>: Default initial size of the item before grow/shrink occurs (like ideal width).</li>
+                    </ul>
+
+                    <div class="syntax-box">
+                        <span class="syntax-title">The Master Shorthand:</span>
+                        <code>flex: &lt;flex-grow&gt; &lt;flex-shrink&gt; &lt;flex-basis&gt;;</code>
+                        <div class="common-shorthands">
+                            <span><code>flex: 1;</code> &rarr; <code>flex: 1 1 0%;</code> (Evenly expands)</span>
+                            <span><code>flex: auto;</code> &rarr; <code>flex: 1 1 auto;</code></span>
+                            <span><code>flex: 0 0 250px;</code> &rarr; Fixed sidebar width (never shrinks/grows)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sub-card">
+                    <h3>3.2 <code>order</code> & <code>align-self</code></h3>
+                    <ul class="item-rules-list">
+                        <li><strong><code>order: [integer];</code></strong>: Rearranges the visual order of items without modifying HTML DOM order! Default is <code>0</code>. Negative values move forward.</li>
+                        <li><strong><code>align-self: [align];</code></strong>: Overrides the parent container's <code>align-items</code> for this single specific item.</li>
+                    </ul>
+
+                    <div class="order-demo-container">
+                        <div class="f-item order-item ord-normal">HTML 1 (order: 0)</div>
+                        <div class="f-item order-item ord-vip">HTML 2 (order: -1) &rarr; First!</div>
+                        <div class="f-item order-item ord-self">HTML 3 (align-self: flex-end)</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================
+             SECTION 4: INTRODUCTION TO CSS GRID
+             ========================================== -->
+        <section class="topic-card">
+            <div class="card-header">
+                <span class="badge">2D Architecture</span>
+                <h2>4. Introduction to CSS Grid (Flex vs Grid)</h2>
+            </div>
+            <p class="section-desc">
+                While Flexbox is <strong>1-Dimensional</strong> (row OR column), CSS Grid is <strong>2-Dimensional</strong> (handling rows AND columns simultaneously).
+            </p>
+
+            <div class="comparison-banner">
+                <div class="comp-col">
+                    <h4>Flexbox (1D)</h4>
+                    <p>Best for linear content: Navbars, button rows, badge lists, single-direction component alignment.</p>
+                </div>
+                <div class="comp-col highlight-col">
+                    <h4>CSS Grid (2D)</h4>
+                    <p>Best for page skeletons: Photo galleries, dashboard cards, complex editorial multi-row/multi-column layouts.</p>
+                </div>
+            </div>
+
+            <div class="grid-syntax-card">
+                <h3>Core Grid Properties:</h3>
+                <div class="code-snippets">
+                    <code>display: grid;</code>
+                    <code>grid-template-columns: repeat(3, 1fr); /* 3 equal columns */</code>
+                    <code>gap: 16px; /* Row and column gutter */</code>
+                </div>
+
+                <div class="live-grid-demo">
+                    <div class="grid-cell">Cell 1</div>
+                    <div class="grid-cell">Cell 2</div>
+                    <div class="grid-cell">Cell 3</div>
+                    <div class="grid-cell span-cell">Cell 4 (Spans 2 cols)</div>
+                    <div class="grid-cell">Cell 5</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================
+             SECTION 5: UNDERSTANDING OVERFLOW
+             ========================================== -->
+        <section class="topic-card">
+            <div class="card-header">
+                <span class="badge">Boundary Control</span>
+                <h2>5. Understanding CSS <code>overflow</code></h2>
+            </div>
+            <p class="section-desc">
+                What happens when an element's content exceeds its defined <code>width</code> or <code>height</code>? The <code>overflow</code> property controls visibility and scrollbars.
+            </p>
+
+            <div class="overflow-grid">
+                <!-- visible -->
+                <div class="sub-card">
+                    <h3>5.1 <code>overflow: visible;</code> (Default)</h3>
+                    <p>Content bleeds outside the boundary box and overlaps other elements.</p>
+                    <div class="overflow-box of-visible">
+                        <div class="spill-content">I am spilling out of my parent box! Notice how this content overflows the dashed boundary.</div>
+                    </div>
+                </div>
+
+                <!-- hidden -->
+                <div class="sub-card">
+                    <h3>5.2 <code>overflow: hidden;</code></h3>
+                    <p>Clips everything beyond the boundary. Great for circular avatars, card corners, and preventing layout breaks.</p>
+                    <div class="overflow-box of-hidden">
+                        <div class="spill-content">I am very long text that gets neatly clipped by my parent box!</div>
+                    </div>
+                </div>
+
+                <!-- scroll -->
+                <div class="sub-card">
+                    <h3>5.3 <code>overflow: scroll;</code></h3>
+                    <p>Always forces scrollbars (both X and Y), even if the content doesn't need them.</p>
+                    <div class="overflow-box of-scroll">
+                        <div class="spill-content">Scrollbars are permanently visible here.</div>
+                    </div>
+                </div>
+
+                <!-- auto -->
+                <div class="sub-card">
+                    <h3>5.4 <code>overflow: auto;</code> (Best Practice)</h3>
+                    <p>Adds scrollbars <strong>only when content overflows</strong>. Cleanest user experience.</p>
+                    <div class="overflow-box of-auto">
+                        <div class="spill-content">Scroll inside me! Scrollbars only appear when content genuinely exceeds dimensions. Smooth and professional.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- overflow-x and overflow-y -->
+            <div class="sub-card of-axes-card">
+                <h3>Directional Axes: <code>overflow-x</code> & <code>overflow-y</code></h3>
+                <p>You can independently control horizontal and vertical overflow: e.g. <code>overflow-x: hidden; overflow-y: auto;</code> (Standard for modal dialogs and scrollable dashboards).</p>
+            </div>
+        </section>
+
+        <!-- ==========================================
+             SECTION 6: GROUPING & NESTED SELECTORS
+             ========================================== -->
+        <section class="topic-card">
+            <div class="card-header">
+                <span class="badge">CSS Architecture</span>
+                <h2>6. Grouping Selectors & Nested (Combinator) Selectors</h2>
+            </div>
+            <p class="section-desc">
+                Writing clean, efficient, and scalable CSS by eliminating repetition and scoping styles precisely.
+            </p>
+
+            <div class="grid-2col">
+                <!-- Grouping -->
+                <div class="sub-card">
+                    <h3>6.1 Grouping Selectors (DRY Principle)</h3>
+                    <p>When multiple selectors share identical styles, combine them with commas <code>,</code> to keep code Don't Repeat Yourself (DRY).</p>
+                    <div class="syntax-box">
+                        <span class="syntax-title">Example:</span>
+                        <code>h1, h2, h3, .custom-title {<br>&nbsp;&nbsp;font-family: 'Poppins', sans-serif;<br>&nbsp;&nbsp;color: #ffffff;<br>}</code>
+                    </div>
+                </div>
+
+                <!-- Nested / Combinator -->
+                <div class="sub-card">
+                    <h3>6.2 Nested & Combinator Selectors</h3>
+                    <p>Targeting elements based on their hierarchical relationship in the HTML tree.</p>
+                    <ul class="selector-rules">
+                        <li>
+                            <strong>Descendant Selector (Space): <code>#card p</code></strong><br>
+                            Matches <em>any</em> &lt;p&gt; inside #card at any nesting level.
+                        </li>
+                        <li>
+                            <strong>Child Selector (<code>&gt;</code>): <code>#card &gt; p</code></strong><br>
+                            Matches <em>only direct child</em> &lt;p&gt; of #card (ignores grandchildren).
+                        </li>
+                        <li>
+                            <strong>Adjacent Sibling (<code>+</code>): <code>h2 + p</code></strong><br>
+                            Matches the &lt;p&gt; immediately following an &lt;h2&gt;.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="why-nested-box">
+                <h4>💡 Why Do We Use Nested Selectors in Real Projects?</h4>
+                <ol>
+                    <li><strong>Scoping & Modularization:</strong> Ensures styles for <code>.nav a</code> don't accidentally override links in <code>.footer a</code>.</li>
+                    <li><strong>Eliminates Class Overload:</strong> Avoids having to put <code>class="header-nav-list-item-link"</code> on every single element.</li>
+                    <li><strong>Clean DOM Hierarchy:</strong> Keeps CSS aligned with the semantic structure of your HTML.</li>
+                </ol>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <p>Sheryians Coding School • 2.0 Cohort | Developed with ❤️ by <strong>Abhishek</strong></p>
+    </footer>
+
+</body>
+
+</html>
