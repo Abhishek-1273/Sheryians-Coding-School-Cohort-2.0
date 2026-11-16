@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Topic 5: Mastering CSS Positioning & Transforms | Sheryians Cohort 2.0</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Fixed Floating Badge (Demonstrates position: fixed) -->
+    <div class="fixed-badge">
+        <span>📍 position: fixed</span>
+    </div>
+
+    <!-- Header / Navbar -->
+    <header class="main-header">
+        <div class="header-container">
+            <span class="cohort-tag">Cohort 2.0 • Episode 2</span>
+            <h1>Topic 5: Mastering CSS Positioning & Transforms</h1>
+            <p class="subtitle">Complete deep dive into document flow, position types, offset coordinates, transform matrix & smooth transitions.</p>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="page-container">
+
+        <!-- ==========================================
+             SECTION 1: CSS POSITIONING TYPES
+             ========================================== -->
+        <section class="topic-card">
+            <div class="card-header">
+                <span class="badge">Core Concept</span>
+                <h2>1. The 5 CSS Position Properties</h2>
+            </div>
+            <p class="section-desc">
+                By default, elements follow the <strong>Normal Document Flow</strong> (block elements stack vertically, inline elements sit side-by-side). The <code>position</code> property allows us to take elements out of normal flow or position them precisely.
+            </p>
+
+            <div class="grid-2col">
+                <!-- Static Card -->
+                <div class="sub-card">
+                    <h3>1.1 <code>position: static;</code> (Default)</h3>
+                    <p>Default value for every HTML element. Follows natural document flow. Properties like <code>top</code>, <code>bottom</code>, <code>left</code>, <code>right</code>, and <code>z-index</code> have <strong>no effect</strong>.</p>
+                    <div class="demo-box static-demo">
+                        <div class="box-element static-elem">Static Box (Default Flow)</div>
+                    </div>
+                </div>
+
+                <!-- Relative Card -->
+                <div class="sub-card">
+                    <h3>1.2 <code>position: relative;</code></h3>
+                    <p>Element is positioned <strong>relative to its own original position</strong>. Importantly: <em>It leaves its original space intact in the document flow</em>. Often used as an anchor parent for absolute children.</p>
+                    <div class="demo-box relative-demo">
+                        <div class="box-element ghost-elem">Original Ghost Spot</div>
+                        <div class="box-element relative-elem">Shifted (top: 15px, left: 25px)</div>
+                    </div>
+                </div>
+
+                <!-- Absolute Card -->
+                <div class="sub-card">
+                    <h3>1.3 <code>position: absolute;</code></h3>
+                    <p>Completely <strong>removed from document flow</strong> (surrounding elements act like it doesn't exist). Positioned relative to its <em>nearest ancestor with a position other than static</em> (usually a parent with <code>position: relative</code>). If none exists, it anchors to <code>&lt;body&gt;</code>.</p>
+                    <div class="demo-box parent-relative-demo">
+                        <span class="parent-label">Parent Container (position: relative)</span>
+                        <div class="box-element absolute-elem">Absolute Child (top: 15px, right: 15px)</div>
+                    </div>
+                </div>
+
+                <!-- Fixed Card -->
+                <div class="sub-card">
+                    <h3>1.4 <code>position: fixed;</code></h3>
+                    <p>Removed from document flow and pinned <strong>relative to the Browser Viewport</strong>. It does not move when the user scrolls the page. (See floating badge in top-right corner!)</p>
+                    <div class="demo-box fixed-mini-demo">
+                        <div class="box-element fixed-elem-demo">Fixed to Viewport (Stays during scroll)</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sticky Demo Inside Card -->
+            <div class="sub-card sticky-subcard">
+                <h3>1.5 <code>position: sticky;</code> (Hybrid)</h3>
+                <p>Toggles between <code>relative</code> and <code>fixed</code>. It behaves like <code>relative</code> until the page reaches a specified scroll threshold (e.g. <code>top: 0</code>), then it "sticks" to the screen within its parent container.</p>
+                <div class="sticky-scroll-container">
+                    <div class="sticky-header">📌 I am Sticky! (Scroll inside this box to see me stick)</div>
+                    <div class="sticky-content">
+                        <p>Line 1: Scroll down through this container...</p>
+                        <p>Line 2: Notice how the header sticks to the top!</p>
+                        <p>Line 3: Sticky elements only stick inside their parent boundaries.</p>
+                        <p>Line 4: Once parent scrolls away, sticky element leaves with it.</p>
+                        <p>Line 5: Awesome for sticky table headers, sidebars, and section titles.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================
+             SECTION 2: OFFSET PROPERTIES & Z-INDEX
+             ========================================== -->
+        <section class="topic-card">
+            <div class="card-header">
+                <span class="badge">Coordinates & Layers</span>
+                <h2>2. Offset Properties (top, bottom, left, right) & z-index</h2>
+            </div>
+            <p class="section-desc">
+                Offset properties specify how far an element moves from its anchor point. <code>z-index</code> controls the stacking order along the 3D Z-axis (which element appears on top).
+            </p>
+
+            <div class="grid-2col">
+                <div class="sub-card">
+                    <h3>2.1 Offset Direction Rules</h3>
+                    <ul class="concept-list">
+                        <li><code>top: 20px;</code> &rarr; Pushes element <strong>downwards</strong> by 20px from top edge.</li>
+                        <li><code>bottom: 20px;</code> &rarr; Pushes element <strong>upwards</strong> by 20px from bottom edge.</li>
+                        <li><code>left: 20px;</code> &rarr; Pushes element <strong>rightwards</strong> by 20px from left edge.</li>
+                        <li><code>right: 20px;</code> &rarr; Pushes element <strong>leftwards</strong> by 20px from right edge.</li>
+                    </ul>
+                </div>
+
+                <div class="sub-card">
+                    <h3>2.2 Stacking Order (z-index)</h3>
+                    <p>Only works on elements with <code>position: relative / absolute / fixed / sticky</code> (NOT on <code>static</code> unless flex/grid items).</p>
+                    <div class="zindex-demo">
+                        <div class="z-box z1">z-index: 1</div>
+                        <div class="z-box z2">z-index: 2 (Hover to pop z-index: 10!)</div>
+                        <div class="z-box z3">z-index: 3</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================
+             SECTION 3: CSS TRANSFORM PROPERTIES
+             ========================================== -->
+        <section class="topic-card">
+            <div class="card-header">
+                <span class="badge">2D / 3D Graphics</span>
+                <h2>3. CSS Transform Properties</h2>
+            </div>
+            <p class="section-desc">
+                The <code>transform</code> property alters element geometry without affecting surrounding layout flow (GPU-accelerated, high performance).
+            </p>
+
+            <div class="transforms-grid">
+                <!-- Translate -->
+                <div class="transform-card">
+                    <span class="card-tag">translate(x, y)</span>
+                    <div class="trans-stage">
+                        <div class="trans-box trans-translate">Hover Me</div>
+                    </div>
+                    <p class="code-caption"><code>transform: translate(25px, -15px);</code></p>
+                </div>
+
+                <!-- Rotate -->
+                <div class="transform-card">
+                    <span class="card-tag">rotate(deg)</span>
+                    <div class="trans-stage">
+                        <div class="trans-box trans-rotate">Hover Me</div>
+                    </div>
+                    <p class="code-caption"><code>transform: rotate(45deg);</code></p>
+                </div>
+
+                <!-- Scale -->
+                <div class="transform-card">
+                    <span class="card-tag">scale(x, y)</span>
+                    <div class="trans-stage">
+                        <div class="trans-box trans-scale">Hover Me</div>
+                    </div>
+                    <p class="code-caption"><code>transform: scale(1.25);</code></p>
+                </div>
+
+                <!-- Skew -->
+                <div class="transform-card">
+                    <span class="card-tag">skew(x, y)</span>
+                    <div class="trans-stage">
+                        <div class="trans-box trans-skew">Hover Me</div>
+                    </div>
+                    <p class="code-caption"><code>transform: skew(15deg, 5deg);</code></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================
+             SECTION 4: HOVER & TRANSITION
+             ========================================== -->
+        <section class="topic-card">
+            <div class="card-header">
+                <span class="badge">Smooth Interactivity</span>
+                <h2>4. CSS <code>:hover</code> & <code>transition</code></h2>
+            </div>
+            <p class="section-desc">
+                Without <code>transition</code>, state changes (like hover) happen abruptly in 0ms. <code>transition</code> smoothly interpolates values over time.
+            </p>
+
+            <div class="syntax-breakdown">
+                <h3>Shorthand Syntax:</h3>
+                <div class="code-block">
+                    <code>transition: [property] [duration] [timing-function] [delay];</code>
+                </div>
+                <div class="code-block example-code">
+                    <code>transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);</code>
+                </div>
+            </div>
+
+            <div class="transition-demo-flex">
+                <button class="interactive-btn btn-slide">Hover: Slide & Glow</button>
+                <button class="interactive-btn btn-flip">Hover: 3D Rotate</button>
+                <button class="interactive-btn btn-bounce">Hover: Scale & Bounce</button>
+            </div>
+        </section>
+
+        <!-- ==========================================
+             SECTION 5: THE FAMOUS INTERVIEW TRICK
+             ========================================== -->
+        <section class="topic-card highlight-card">
+            <div class="card-header">
+                <span class="badge special-badge">Gold Standard Interview Trick</span>
+                <h2>5. Perfect Center Alignment with Absolute + Translate</h2>
+            </div>
+            <p class="section-desc">
+                How do you perfectly center a div inside any parent without Flexbox/Grid? <strong>The Classic Absolute Centering Formula:</strong>
+            </p>
+
+            <div class="center-trick-demo">
+                <div class="trick-parent">
+                    <span class="tp-label">Parent (position: relative)</span>
+                    <div class="trick-child">
+                        <strong>PERFECTLY CENTERED</strong>
+                        <code>top: 50%; left: 50%;<br>transform: translate(-50%, -50%);</code>
+                    </div>
+                </div>
+            </div>
+
+            <div class="explanation-box">
+                <h4>Why does this work?</h4>
+                <ol>
+                    <li><code>top: 50%; left: 50%;</code> moves the <strong>top-left corner</strong> of the element to the exact center of the parent.</li>
+                    <li><code>transform: translate(-50%, -50%);</code> shifts the element backwards by <strong>50% of its OWN width & height</strong>, pulling its center point right onto the coordinate!</li>
+                </ol>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <p>Sheryians Coding School • 2.0 Cohort | Developed with ❤️ by <strong>Abhishek</strong></p>
+    </footer>
+
+</body>
+
+</html>

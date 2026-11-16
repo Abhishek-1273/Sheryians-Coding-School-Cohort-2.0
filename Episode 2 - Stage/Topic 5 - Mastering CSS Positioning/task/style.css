@@ -1,0 +1,163 @@
+/* ==========================================================================
+   Topic 5 Task: Sweaters Editorial Hero Section
+   Sheryians Coding School - 2.0 Cohort
+   Author: Abhishek
+   ========================================================================== */
+
+/* 1. Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    background-color: #2b2b2b;
+    /* Dark backdrop from video preview */
+}
+
+/* 2. Main Card Centered using Topic 5 Absolute Formula */
+#main {
+    height: 85%;
+    width: 80%;
+    background-color: #e8e4db;
+    /* Warm beige card background */
+    color: #111111;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    overflow: hidden;
+}
+
+/* 3. Top Navigation Bar */
+#nav {
+    height: 65px;
+    width: 100%;
+    padding: 0 45px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#nav a {
+    color: #333333;
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+    margin-right: 20px;
+}
+
+#nav a:last-child {
+    margin-right: 0;
+}
+
+#nav h4 {
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: #111111;
+}
+
+/* 4. Giant "Sweaters" Heading */
+#main>h1 {
+    font-size: 400px;
+    font-weight: 400;
+    letter-spacing: -4px;
+    line-height: 0.9;
+    padding-left: 45px;
+    margin-top: 70px;
+    color: #1f1f1f;
+}
+
+/* 5. Bottom Left Product Details (Absolute Positioned) */
+#btmlft {
+    width: 240px;
+    position: absolute;
+    bottom: 85px;
+    left: 45px;
+}
+
+#btmlft h3 {
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #111111;
+}
+
+#btmlft p {
+    font-size: 11px;
+    line-height: 1.5;
+    color: #555555;
+}
+
+#btmlft h4 {
+    margin-top: 25px;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 3px;
+    color: #111111;
+}
+
+/* 6. Bottom Bar (Absolute Positioned at Bottom) */
+#btm-bar {
+    width: 100%;
+    position: absolute;
+    padding: 0 45px;
+    bottom: 30px;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+#btm-bar h1 {
+    font-size: 24px;
+    font-style: italic;
+    font-weight: 400;
+    color: #222222;
+}
+
+#btm-bar a {
+    color: #111111;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+/* 7. The Three Editorial Images (Topic 5 Absolute & Stacking) */
+#main>img {
+    position: absolute;
+    object-fit: cover;
+}
+
+/* Tall Right Image (Overlapping "ers") */
+#first {
+    height: 330px;
+    width: 220px;
+    top: 38%;
+    left: 67%;
+    z-index: 2;
+}
+
+/* Center-Left Image */
+#second {
+    height: 230px;
+    width: 170px;
+    top: 50%;
+    left: 53%;
+    z-index: 1;
+}
+
+/* Bottom Overlap Image */
+#third {
+    height: 180px;
+    width: 170px;
+    top: 64%;
+    left: 61%;
+    z-index: 3;
+}
