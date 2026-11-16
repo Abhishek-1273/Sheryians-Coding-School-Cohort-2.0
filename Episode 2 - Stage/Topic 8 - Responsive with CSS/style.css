@@ -1,0 +1,553 @@
+/* ==========================================================================
+   Topic 8: Responsive with CSS - Media Queries, Mobile-First & Fluid Units
+   Sheryians Coding School - 2.0 Cohort
+   Author: Abhishek
+   ========================================================================== */
+
+/* 1. Global Reset & Box Sizing */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px; /* Base rem unit */
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: #0b0f19;
+    color: #e2e8f0;
+    line-height: 1.6;
+    padding-bottom: 60px;
+}
+
+/* 2. Live Breakpoint Detector Badge (Changes text & color automatically on resize) */
+.breakpoint-badge {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: rgba(15, 23, 42, 0.9);
+    backdrop-filter: blur(10px);
+    border: 1px solid #38bdf8;
+    color: #38bdf8;
+    padding: 8px 16px;
+    border-radius: 9999px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    z-index: 9999;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* 3. Header Section */
+.main-header {
+    background: radial-gradient(circle at top, #1e293b 0%, #0b0f19 100%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding: clamp(40px, 8vw, 70px) 20px clamp(30px, 6vw, 50px);
+    text-align: center;
+}
+
+.header-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.cohort-tag {
+    display: inline-block;
+    background: rgba(56, 189, 248, 0.15);
+    color: #38bdf8;
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    padding: 4px 14px;
+    border-radius: 9999px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+}
+
+.main-header h1 {
+    font-size: clamp(1.8rem, 4.5vw, 2.9rem); /* Fluid Heading */
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 12px;
+    letter-spacing: -0.5px;
+}
+
+.subtitle {
+    font-size: clamp(0.95rem, 1.8vw, 1.1rem);
+    color: #94a3b8;
+    max-width: 750px;
+    margin: 0 auto;
+}
+
+/* 4. Main Page Container */
+.page-container {
+    max-width: min(1100px, 92vw); /* Fluid Container using min() */
+    margin: 40px auto 0;
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+}
+
+.topic-card {
+    background: #131b2e;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 16px;
+    padding: clamp(20px, 4vw, 32px);
+    box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+}
+
+.highlight-card {
+    border-color: rgba(56, 189, 248, 0.25);
+    background: linear-gradient(180deg, #162038 0%, #101626 100%);
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+}
+
+.badge {
+    background: rgba(56, 189, 248, 0.12);
+    color: #38bdf8;
+    border: 1px solid rgba(56, 189, 248, 0.25);
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.special-badge {
+    background: rgba(249, 115, 22, 0.15);
+    color: #f97316;
+    border-color: rgba(249, 115, 22, 0.3);
+}
+
+.card-header h2 {
+    font-size: clamp(1.2rem, 2.5vw, 1.45rem);
+    font-weight: 700;
+    color: #f8fafc;
+}
+
+.section-desc {
+    color: #94a3b8;
+    font-size: 0.95rem;
+    margin-bottom: 24px;
+}
+
+/* 5. Mobile-First vs Desktop-First Grid */
+.strategy-comparison-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
+    gap: 20px;
+}
+
+.strategy-card {
+    background: #0d1322;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+}
+
+.mobile-first-card {
+    border-color: rgba(16, 185, 129, 0.3);
+}
+
+.strat-tag {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 9999px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+}
+
+.tag-green {
+    background: rgba(16, 185, 129, 0.15);
+    color: #34d399;
+    border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.tag-orange {
+    background: rgba(249, 115, 22, 0.15);
+    color: #fb923c;
+    border: 1px solid rgba(249, 115, 22, 0.3);
+}
+
+.strat-header h3 {
+    font-size: 1.15rem;
+    color: #f8fafc;
+    margin-bottom: 12px;
+}
+
+.strat-points {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 16px;
+    font-size: 0.85rem;
+    color: #cbd5e1;
+    flex-grow: 1;
+}
+
+.strat-points li strong {
+    color: #ffffff;
+}
+
+.code-preview {
+    background: #090e1a;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    padding: 14px;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.78rem;
+    color: #38bdf8;
+    line-height: 1.5;
+}
+
+/* 6. Viewport Meta Element */
+.viewport-tag-box {
+    background: #090e1a;
+    border-left: 4px solid #f97316;
+    border-radius: 8px;
+    padding: 16px 20px;
+    font-family: 'Fira Code', monospace;
+    font-size: clamp(0.75rem, 2vw, 0.95rem);
+    color: #f97316;
+    margin-bottom: 20px;
+    overflow-x: auto;
+}
+
+.viewport-breakdown {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+}
+
+.vp-item {
+    background: #0d1322;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: 10px;
+    padding: 18px;
+}
+
+.vp-item h4 {
+    font-size: 0.95rem;
+    color: #38bdf8;
+    margin-bottom: 6px;
+}
+
+.vp-item p {
+    font-size: 0.85rem;
+    color: #94a3b8;
+}
+
+/* 7. Units & Grids */
+.grid-2col {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+    gap: 20px;
+}
+
+.sub-card {
+    background: #0d1322;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: 12px;
+    padding: 22px;
+}
+
+.sub-card h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #f1f5f9;
+    margin-bottom: 10px;
+}
+
+.sub-card p {
+    font-size: 0.88rem;
+    color: #94a3b8;
+    margin-bottom: 12px;
+}
+
+.units-list,
+.breakpoint-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.units-list li,
+.breakpoint-list li {
+    font-size: 0.82rem;
+    color: #cbd5e1;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 8px 12px;
+    border-radius: 6px;
+}
+
+.units-list code,
+.breakpoint-list code {
+    color: #38bdf8;
+    font-family: 'Fira Code', monospace;
+    font-weight: 600;
+}
+
+/* 8. Math Functions (clamp, min, max) */
+.math-funcs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
+    gap: 20px;
+}
+
+.math-card {
+    background: #0d1322;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+}
+
+.math-card h3 {
+    font-size: 1.05rem;
+    color: #f1f5f9;
+    margin-bottom: 8px;
+}
+
+.math-card p {
+    font-size: 0.85rem;
+    color: #94a3b8;
+    margin-bottom: 14px;
+}
+
+.math-demo-box {
+    background: rgba(15, 23, 42, 0.7);
+    border: 1px dashed rgba(56, 189, 248, 0.3);
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 12px;
+    text-align: center;
+}
+
+.fluid-text {
+    font-size: clamp(1rem, 2.8vw, 1.8rem); /* Live clamp demonstration */
+    font-weight: 700;
+    color: #38bdf8;
+    display: block;
+}
+
+.math-card code {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.78rem;
+    color: #a7f3d0;
+    background: #090e1a;
+    padding: 8px 12px;
+    border-radius: 6px;
+    display: block;
+}
+
+.code-snippets {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+/* 9. Responsive Card Grid Demo */
+.grid-demo-section,
+.grid-areas-demo-section {
+    margin-top: 24px;
+}
+
+.grid-demo-section h3,
+.grid-areas-demo-section h3 {
+    font-size: 0.95rem;
+    color: #cbd5e1;
+    margin-bottom: 14px;
+}
+
+.responsive-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+}
+
+.res-card {
+    background: #0d1322;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    transition: transform 0.3s ease;
+}
+
+.res-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(56, 189, 248, 0.3);
+}
+
+.res-card-img {
+    height: 120px;
+    width: 100%;
+    border-radius: 6px;
+}
+
+.img-1 {
+    background: linear-gradient(135deg, #0284c7, #0369a1);
+}
+
+.img-2 {
+    background: linear-gradient(135deg, #8b5cf6, #6d28d9);
+}
+
+.img-3 {
+    background: linear-gradient(135deg, #f97316, #ea580c);
+}
+
+.res-card h4 {
+    font-size: 0.95rem;
+    color: #f8fafc;
+}
+
+.res-card p {
+    font-size: 0.8rem;
+    color: #94a3b8;
+    line-height: 1.4;
+}
+
+/* 10. Responsive CSS Grid Template Areas Stage */
+.areas-layout-stage {
+    display: grid;
+    grid-template-areas:
+        "header header"
+        "sidebar main"
+        "footer footer";
+    grid-template-columns: 220px 1fr;
+    gap: 12px;
+    min-height: 240px;
+}
+
+.area-box {
+    border-radius: 8px;
+    padding: 18px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.area-header {
+    grid-area: header;
+    background: #1e293b;
+    color: #38bdf8;
+}
+
+.area-sidebar {
+    grid-area: sidebar;
+    background: #131d33;
+    color: #fb923c;
+}
+
+.area-main {
+    grid-area: main;
+    background: linear-gradient(135deg, #0f1e36, #162a4d);
+    color: #ffffff;
+    min-height: 140px;
+}
+
+.area-footer {
+    grid-area: footer;
+    background: #1e293b;
+    color: #94a3b8;
+}
+
+/* ==========================================================================
+   11. MEDIA QUERIES (Dynamic Breakpoint Badge Updates & Grid Reordering)
+   ========================================================================== */
+
+/* Tablet Breakpoint: 641px - 1024px */
+@media (max-width: 1024px) {
+    .breakpoint-badge {
+        border-color: #8b5cf6;
+        color: #8b5cf6;
+    }
+
+    .bp-icon::before {
+        content: "📱 ";
+    }
+
+    .bp-text::before {
+        content: "Active: Tablet (<=1024px)";
+    }
+
+    .bp-text {
+        font-size: 0; /* hides default text */
+    }
+
+    .bp-text::before {
+        font-size: 0.8rem;
+    }
+}
+
+/* Mobile Breakpoint: <= 768px (Collapses Grid Template Areas to 1 Column Stack) */
+@media (max-width: 768px) {
+    .areas-layout-stage {
+        grid-template-areas:
+            "header"
+            "main"
+            "sidebar"
+            "footer";
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Mobile Breakpoint: <= 640px */
+@media (max-width: 640px) {
+    .breakpoint-badge {
+        border-color: #f97316;
+        color: #f97316;
+        top: 12px;
+        right: 12px;
+        padding: 6px 12px;
+    }
+
+    .bp-icon::before {
+        content: "📲 ";
+    }
+
+    .bp-text::before {
+        content: "Active: Mobile (<=640px)";
+    }
+}
+
+/* 11. Footer */
+.main-footer {
+    text-align: center;
+    color: #64748b;
+    font-size: 0.85rem;
+    margin-top: 50px;
+    padding-top: 25px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.main-footer strong {
+    color: #94a3b8;
+}

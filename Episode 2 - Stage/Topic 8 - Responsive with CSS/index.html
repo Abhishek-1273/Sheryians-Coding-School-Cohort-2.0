@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- Viewport Meta Element (The Heart of Responsive Design) -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Topic 8: Responsive with CSS - Media Queries, Mobile-First & Fluid Units | Sheryians Cohort 2.0</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Live Breakpoint Detector Badge -->
+    <div class="breakpoint-badge">
+        <span class="bp-icon">🖥️</span>
+        <span class="bp-text">Active: Desktop (&gt;1024px)</span>
+    </div>
+
+    <!-- Header Section -->
+    <header class="main-header">
+        <div class="header-container">
+            <span class="cohort-tag">Cohort 2.0 • Episode 2</span>
+            <h1>Topic 8: Responsive Web Design with CSS 🖥️📱</h1>
+            <p class="subtitle">Complete masterclass on Mobile-First vs Desktop-First, the Viewport Meta tag, Fluid Units, CSS Math Functions (clamp, min, max), and Media Queries.</p>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="page-container">
+
+        <!-- ==========================================
+             SECTION 1: MOBILE-FIRST VS DESKTOP-FIRST
+             ========================================== -->
+        <section class="topic-card">
+            <div class="card-header">
+                <span class="badge">Architecture Strategy</span>
+                <h2>1. Mobile-First vs Desktop-First Architecture</h2>
+            </div>
+            <p class="section-desc">
+                Responsive design ensures a single codebase renders beautifully on smartphones, tablets, laptops, and ultra-wide 4K monitors.
+            </p>
+
+            <div class="strategy-comparison-grid">
+                <!-- Mobile-First -->
+                <div class="strategy-card mobile-first-card">
+                    <div class="strat-header">
+                        <span class="strat-tag tag-green">Industry Standard (Recommended)</span>
+                        <h3>Mobile-First Design</h3>
+                    </div>
+                    <ul class="strat-points">
+                        <li><strong>Philosophy:</strong> Progressive Enhancement (start simple, add complexity as screen grows).</li>
+                        <li><strong>Media Query Type:</strong> Uses <code>min-width</code> queries (e.g. <code>@media (min-width: 768px)</code>).</li>
+                        <li><strong>Performance:</strong> Mobile devices load lightweight base CSS without parsing heavy desktop layouts.</li>
+                        <li><strong>SEO & Google:</strong> Matches Google's "Mobile-First Indexing" algorithm.</li>
+                    </ul>
+                    <div class="code-preview">
+                        <code>/* 1. Base CSS = Mobile Single Column */<br>.card { width: 100%; }<br><br>/* 2. min-width expands layout for desktop */<br>@media (min-width: 768px) {<br>&nbsp;&nbsp;.card { width: 50%; }<br>}</code>
+                    </div>
+                </div>
+
+                <!-- Desktop-First -->
+                <div class="strategy-card desktop-first-card">
+                    <div class="strat-header">
+                        <span class="strat-tag tag-orange">Legacy Approach</span>
+                        <h3>Desktop-First Design</h3>
+                    </div>
+                    <ul class="strat-points">
+                        <li><strong>Philosophy:</strong> Graceful Degradation (start with full 3-4 column layout, strip down for small screens).</li>
+                        <li><strong>Media Query Type:</strong> Uses <code>max-width</code> queries (e.g. <code>@media (max-width: 768px)</code>).</li>
+                        <li><strong>Drawback:</strong> Mobile browsers download heavy desktop overrides, requiring multiple resets.</li>
+                    </ul>
+                    <div class="code-preview">
+                        <code>/* 1. Base CSS = 3 Columns for Desktop */<br>.card { width: 33.33%; }<br><br>/* 2. max-width squishes layout on mobile */<br>@media (max-width: 768px) {<br>&nbsp;&nbsp;.card { width: 100%; }<br>}</code>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================
+             SECTION 2: VIEWPORT META ELEMENT
+             ========================================== -->
+        <section class="topic-card highlight-card">
+            <div class="card-header">
+                <span class="badge special-badge">Must-Have HTML Tag</span>
+                <h2>2. The Viewport Meta Element</h2>
+            </div>
+            <p class="section-desc">
+                Without this single tag, mobile browsers assume your website is designed for an old 980px desktop and automatically zoom way out, rendering text microscopic!
+            </p>
+
+            <div class="viewport-tag-box">
+                <code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</code>
+            </div>
+
+            <div class="viewport-breakdown">
+                <div class="vp-item">
+                    <h4><code>width=device-width</code></h4>
+                    <p>Sets the page width to follow the physical screen-width of the device in device-independent pixels (e.g., 390px on iPhone 14 instead of 980px desktop assumption).</p>
+                </div>
+                <div class="vp-item">
+                    <h4><code>initial-scale=1.0</code></h4>
+                    <p>Sets the initial zoom level when the page first loads, ensuring a crisp 1:1 pixel ratio with no default zoomed-out distortion.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================
+             SECTION 3: UNITS & FLUID SIZING
+             ========================================== -->
+        <section class="topic-card">
+            <div class="card-header">
+                <span class="badge">Measurement Units</span>
+                <h2>3. Absolute vs Relative Units for Responsiveness</h2>
+            </div>
+
+            <div class="grid-2col">
+                <div class="sub-card">
+                    <h3>3.1 Absolute Units (Avoid for Layouts)</h3>
+                    <p>Fixed physical dimensions that never adapt to screen resolutions or user browser zoom preferences.</p>
+                    <ul class="units-list">
+                        <li><code>px</code> (Pixels) &rarr; Useful for borders (1px) or small shadows, but brittle for fluid layouts.</li>
+                        <li><code>in</code> (Inches), <code>cm</code> / <code>mm</code> (Millimeters), <code>pt</code> (Points) &rarr; Intended for print stylesheets (<code>@media print</code>), almost never used in responsive screens.</li>
+                    </ul>
+                </div>
+
+                <div class="sub-card">
+                    <h3>3.2 Relative Units (Responsive Champions)</h3>
+                    <p>Units that dynamically scale based on an external reference point.</p>
+                    <ul class="units-list">
+                        <li><code>%</code> &rarr; Percentage relative to parent container's width/height.</li>
+                        <li><code>rem</code> &rarr; Relative to root <code>&lt;html&gt;</code> font size (Default 16px). Essential for accessibility!</li>
+                        <li><code>vw</code> / <code>vh</code> &rarr; 1% of the viewport width / height.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================
+             SECTION 4: CSS MATH FUNCTIONS (clamp, min, max)
+             ========================================== -->
+        <section class="topic-card">
+            <div class="card-header">
+                <span class="badge">Modern CSS Math</span>
+                <h2>4. Modern Fluid Functions: <code>clamp()</code>, <code>min()</code>, <code>max()</code></h2>
+            </div>
+            <p class="section-desc">
+                Allows fluid typography and container sizing that scales automatically between viewport boundaries <em>without writing a single media query!</em>
+            </p>
+
+            <div class="math-funcs-grid">
+                <!-- clamp() -->
+                <div class="math-card">
+                    <h3>4.1 <code>clamp(MIN, PREFERRED, MAX)</code></h3>
+                    <p>Locks a value between an absolute floor and ceiling while allowing fluid scaling in between.</p>
+                    <div class="math-demo-box">
+                        <span class="fluid-text">Fluid Typography: Resize window to see me scale smoothly!</span>
+                    </div>
+                    <code>font-size: clamp(1.2rem, 3.5vw, 2.5rem);</code>
+                </div>
+
+                <!-- min() and max() -->
+                <div class="math-card">
+                    <h3>4.2 <code>min()</code> & <code>max()</code></h3>
+                    <p><code>min(A, B)</code> picks whichever value is smaller (perfect for max-width caps). <code>max(A, B)</code> sets an unbreakable safety minimum floor.</p>
+                    <div class="code-snippets">
+                        <code>width: min(1000px, 90vw); /* Never exceeds 1000px */</code>
+                        <code>height: max(300px, 40vh); /* Never shrinks below 300px */</code>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================
+             SECTION 5: RESPONSIVE IMAGES & MEDIA QUERIES
+             ========================================== -->
+        <section class="topic-card">
+            <div class="card-header">
+                <span class="badge">Fluid Media & Breakpoints</span>
+                <h2>5. Responsive Images & Media Queries</h2>
+            </div>
+
+            <div class="grid-2col">
+                <!-- Fluid Images -->
+                <div class="sub-card">
+                    <h3>5.1 The Golden Rule for Responsive Images</h3>
+                    <p>Images have natural intrinsic pixel dimensions. If you don't constrain them, they burst out of small screens causing horizontal scrollbars!</p>
+                    <div class="code-preview">
+                        <code>img {<br>&nbsp;&nbsp;max-width: 100%;<br>&nbsp;&nbsp;height: auto;<br>&nbsp;&nbsp;display: block;<br>&nbsp;&nbsp;object-fit: cover;<br>}</code>
+                    </div>
+                </div>
+
+                <!-- Standard Breakpoints -->
+                <div class="sub-card">
+                    <h3>5.2 Standard Industry Breakpoints</h3>
+                    <ul class="breakpoint-list">
+                        <li><code>@media (min-width: 640px)</code> &rarr; Small Tablets & Large Phones</li>
+                        <li><code>@media (min-width: 768px)</code> &rarr; Standard Tablets (iPads)</li>
+                        <li><code>@media (min-width: 1024px)</code> &rarr; Laptops & Small Desktops</li>
+                        <li><code>@media (min-width: 1280px)</code> &rarr; Large Desktop Monitors</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Responsive Card Grid Demo -->
+            <div class="grid-demo-section">
+                <h3>Live Responsive Card Grid (Resize screen to see layout adapt):</h3>
+                <div class="responsive-card-grid">
+                    <div class="res-card">
+                        <div class="res-card-img img-1"></div>
+                        <h4>Responsive Card 1</h4>
+                        <p>Automatically wraps from 3 columns on desktop down to 1 column on mobile.</p>
+                    </div>
+                    <div class="res-card">
+                        <div class="res-card-img img-2"></div>
+                        <h4>Responsive Card 2</h4>
+                        <p>Built with <code>repeat(auto-fit, minmax(260px, 1fr))</code> - zero media queries needed!</p>
+                    </div>
+                    <div class="res-card">
+                        <div class="res-card-img img-3"></div>
+                        <h4>Responsive Card 3</h4>
+                        <p>Fully fluid image container using <code>height: auto</code> and <code>object-fit: cover</code>.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================
+             SECTION 6: RESPONSIVE CSS GRID
+             ========================================== -->
+        <section class="topic-card highlight-card">
+            <div class="card-header">
+                <span class="badge special-badge">2D Layout Powerhouse</span>
+                <h2>6. CSS Grid for Responsive Layouts</h2>
+            </div>
+            <p class="section-desc">
+                CSS Grid is a two-dimensional layout system that controls both rows and columns simultaneously. It is the ultimate tool for complex, responsive webpage skeletons.
+            </p>
+
+            <div class="grid-2col">
+                <!-- Core Grid Syntax -->
+                <div class="sub-card">
+                    <h3>6.1 Fundamental Grid Properties</h3>
+                    <ul class="units-list">
+                        <li><code>display: grid;</code> &rarr; Turns container into a grid context.</li>
+                        <li><code>grid-template-columns: repeat(3, 1fr);</code> &rarr; Creates 3 equal flexible columns using the <code>fr</code> (fractional) unit.</li>
+                        <li><code>gap: 20px;</code> &rarr; Creates gutters between rows and columns without messy margins.</li>
+                    </ul>
+                </div>
+
+                <!-- auto-fit vs auto-fill -->
+                <div class="sub-card">
+                    <h3>6.2 The Holy Grail: <code>repeat(auto-fit, minmax(...))</code></h3>
+                    <p>Build 100% fluid, responsive grids with <strong>ZERO media queries!</strong></p>
+                    <div class="code-preview">
+                        <code>/* Cards resize and wrap automatically */<br>grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));</code>
+                    </div>
+                    <ul class="strat-points" style="margin-top: 10px;">
+                        <li><strong><code>auto-fit</code>:</strong> Stretches available items to fill the entire row width.</li>
+                        <li><strong><code>auto-fill</code>:</strong> Preserves space for empty columns as if more items will arrive.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Responsive Grid Template Areas Demo -->
+            <div class="grid-areas-demo-section">
+                <h3>6.3 Responsive Page Skeleton via <code>grid-template-areas</code></h3>
+                <p class="section-desc" style="margin-bottom: 14px;">
+                    On Desktop, this layout has a top Header, Sidebar + Main content side-by-side, and Footer. On Mobile screens (&lt;768px), it automatically rearranges into a single vertical stack!
+                </p>
+                <div class="areas-layout-stage">
+                    <header class="area-box area-header">Header (100% Width)</header>
+                    <aside class="area-box area-sidebar">Sidebar (25% Width / Stacked on Mobile)</aside>
+                    <main class="area-box area-main">Main Content Area (75% Width)</main>
+                    <footer class="area-box area-footer">Footer (100% Width)</footer>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <p>Sheryians Coding School • 2.0 Cohort | Developed with ❤️ by <strong>Abhishek</strong></p>
+    </footer>
+
+</body>
+
+</html>
