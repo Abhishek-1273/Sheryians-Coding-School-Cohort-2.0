@@ -1,0 +1,435 @@
+/* ==========================================================================
+   Topic 10: Working With SASS (SCSS) - Compiled Output
+   Sheryians Coding School - 2.0 Cohort
+   Author: Abhishek
+   ========================================================================== */
+
+/* 1. Reset & Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  background-color: #0b0f19;
+  color: #e2e8f0;
+  line-height: 1.6;
+  padding-bottom: 60px;
+}
+
+/* 2. Header Section (Compiled from SASS Nesting) */
+.main-header {
+  background: radial-gradient(circle at top, #1e293b 0%, #0b0f19 100%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 60px 24px 45px;
+  text-align: center;
+}
+
+.main-header .header-container {
+  max-width: 850px;
+  margin: 0 auto;
+}
+
+.main-header .header-container .cohort-tag {
+  display: inline-block;
+  background: rgba(249, 115, 22, 0.15);
+  color: #fb923c;
+  border: 1px solid rgba(249, 115, 22, 0.3);
+  padding: 4px 14px;
+  border-radius: 9999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 16px;
+}
+
+.main-header .header-container h1 {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 800;
+  color: #f8fafc;
+  margin-bottom: 12px;
+  letter-spacing: -0.5px;
+}
+
+.main-header .header-container .subtitle {
+  font-size: 1.05rem;
+  color: #94a3b8;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+/* 3. Main Container */
+.page-container {
+  max-width: 1100px;
+  margin: 40px auto 0;
+  padding: 0 24px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: stretch;
+  flex-direction: column;
+  gap: 36px;
+}
+
+/* 4. Cards & Topics (Compiled from Mixins) */
+.topic-card {
+  background: #131b2e;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 15.6px;
+  padding: 32px;
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+}
+
+.topic-card.highlight-card {
+  border-color: rgba(56, 189, 248, 0.25);
+  background: linear-gradient(180deg, #162038 0%, #101626 100%);
+}
+
+.topic-card .card-header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
+  gap: 12px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.topic-card .card-header .badge {
+  background: rgba(56, 189, 248, 0.12);
+  color: #38bdf8;
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.topic-card .card-header .badge.special-badge {
+  background: rgba(249, 115, 22, 0.15);
+  color: #f97316;
+  border-color: rgba(249, 115, 22, 0.3);
+}
+
+.topic-card .card-header h2 {
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: #f8fafc;
+}
+
+.topic-card .section-desc {
+  color: #94a3b8;
+  font-size: 0.95rem;
+  margin-bottom: 24px;
+}
+
+/* 5. Preprocessor Flow Diagram */
+.preprocessor-flow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  gap: 16px;
+  background: #090e1a;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 24px;
+  flex-wrap: wrap;
+}
+
+.preprocessor-flow .flow-step {
+  flex: 1;
+  min-width: 220px;
+  background: #0d1322;
+  padding: 16px;
+  border-radius: 8px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.preprocessor-flow .flow-step .step-badge {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #94a3b8;
+  margin-bottom: 6px;
+  display: block;
+}
+
+.preprocessor-flow .flow-step h4 {
+  font-family: "Fira Code", monospace;
+  font-size: 1.1rem;
+  margin-bottom: 4px;
+}
+
+.preprocessor-flow .flow-step p {
+  font-size: 0.8rem;
+  color: #94a3b8;
+}
+
+.preprocessor-flow .flow-step.step-scss h4 {
+  color: #f472b6;
+}
+
+.preprocessor-flow .flow-step.step-css h4 {
+  color: #38bdf8;
+}
+
+.preprocessor-flow .flow-arrow {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #f97316;
+  text-align: center;
+}
+
+.preprocessor-flow .flow-arrow span {
+  display: block;
+  font-size: 0.75rem;
+  color: #94a3b8;
+  font-family: "Fira Code", monospace;
+}
+
+/* 6. Grids & Subcards */
+.grid-2col {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 20px;
+}
+
+.sub-card {
+  background: #0d1322;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: 12px;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+}
+
+.sub-card.highlight-subcard {
+  border-color: rgba(16, 185, 129, 0.3);
+}
+
+.sub-card .card-title-row {
+  margin-bottom: 12px;
+}
+
+.sub-card .card-title-row .syntax-tag {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 9999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+}
+
+.sub-card .card-title-row .syntax-tag.tag-green {
+  background: rgba(16, 185, 129, 0.15);
+  color: #34d399;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.sub-card .card-title-row .syntax-tag.tag-orange {
+  background: rgba(249, 115, 22, 0.15);
+  color: #fb923c;
+  border: 1px solid rgba(249, 115, 22, 0.3);
+}
+
+.sub-card .card-title-row h3 {
+  font-size: 1.1rem;
+  color: #f8fafc;
+}
+
+.sub-card p {
+  font-size: 0.88rem;
+  color: #94a3b8;
+  margin-bottom: 16px;
+}
+
+.code-preview {
+  background: #090e1a;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 14px;
+  font-family: "Fira Code", monospace;
+  font-size: 0.78rem;
+  color: #38bdf8;
+  line-height: 1.5;
+}
+
+/* 7. Setup Steps Grid */
+.setup-steps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.setup-steps-grid .setup-step {
+  background: #0d1322;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  padding: 18px;
+}
+
+.setup-steps-grid .setup-step .step-num {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #f97316;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.setup-steps-grid .setup-step h4 {
+  font-size: 0.95rem;
+  color: #f8fafc;
+  margin-bottom: 6px;
+}
+
+.setup-steps-grid .setup-step p {
+  font-size: 0.82rem;
+  color: #94a3b8;
+}
+
+/* 8. Superpowers Grid */
+.superpowers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 18px;
+}
+
+.superpowers-grid .feature-card {
+  background: #0d1322;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: 10px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+}
+
+.superpowers-grid .feature-card .feat-badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #38bdf8;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.superpowers-grid .feature-card h3 {
+  font-size: 1rem;
+  color: #f8fafc;
+  margin-bottom: 8px;
+}
+
+.superpowers-grid .feature-card p {
+  font-size: 0.82rem;
+  color: #94a3b8;
+  margin-bottom: 14px;
+  flex-grow: 1;
+}
+
+/* 9. Live Component Showcase (Demonstrating SCSS In Action) */
+.live-demo-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0;
+}
+
+.sass-interactive-card {
+  width: 100%;
+  max-width: 480px;
+  background: #090e1a;
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  border-radius: 16px;
+  padding: 28px;
+  text-align: center;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.sass-interactive-card:hover {
+  transform: translateY(-6px);
+  border-color: #38bdf8;
+  box-shadow: 0 20px 45px rgba(2, 132, 199, 0.2);
+}
+
+.sass-interactive-card .card-badge {
+  display: inline-block;
+  background: rgba(139, 92, 246, 0.15);
+  color: #c4b5fd;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  margin-bottom: 12px;
+  font-family: "Fira Code", monospace;
+}
+
+.sass-interactive-card h3 {
+  font-size: 1.35rem;
+  color: #f8fafc;
+  margin-bottom: 8px;
+}
+
+.sass-interactive-card p {
+  font-size: 0.88rem;
+  color: #94a3b8;
+  margin-bottom: 22px;
+  line-height: 1.5;
+}
+
+.sass-interactive-card .card-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
+.sass-interactive-card .card-actions .btn {
+  padding: 10px 22px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.sass-interactive-card .card-actions .btn.btn-primary {
+  background: #0284c7;
+  color: #ffffff;
+  border: none;
+}
+
+.sass-interactive-card .card-actions .btn.btn-primary:hover {
+  background: #0ea5e9;
+  box-shadow: 0 6px 20px rgba(2, 132, 199, 0.4);
+}
+
+.sass-interactive-card .card-actions .btn.btn-outline {
+  background: transparent;
+  color: #38bdf8;
+  border: 1px solid #38bdf8;
+}
+
+.sass-interactive-card .card-actions .btn.btn-outline:hover {
+  background: rgba(56, 189, 248, 0.1);
+  color: #ffffff;
+}
+
+/* 10. Footer */
+.main-footer {
+  text-align: center;
+  color: #64748b;
+  font-size: 0.85rem;
+  margin-top: 50px;
+  padding-top: 25px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.main-footer strong {
+  color: #94a3b8;
+}

@@ -1,0 +1,448 @@
+// ==========================================================================
+// Topic 10: Working With SASS (SCSS)
+// Sheryians Coding School - 2.0 Cohort
+// Author: Abhishek
+// ==========================================================================
+
+// 1. SASS Variables (Superpower 1)
+$bg-dark: #0b0f19;
+$card-bg: #131b2e;
+$subcard-bg: #0d1322;
+$primary-blue: #0284c7;
+$sky-blue: #38bdf8;
+$accent-orange: #f97316;
+$accent-purple: #8b5cf6;
+$text-light: #f8fafc;
+$text-muted: #94a3b8;
+$font-main: 'Plus Jakarta Sans', sans-serif;
+$font-code: 'Fira Code', monospace;
+$base-radius: 12px;
+$base-spacing: 16px;
+
+// 2. SASS Mixins with Parameters (Superpower 3)
+@mixin flex-layout($justify: flex-start, $align: stretch, $direction: row, $gap: 0px) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  flex-direction: $direction;
+  gap: $gap;
+}
+
+@mixin flex-center($gap: 0px) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: $gap;
+}
+
+@mixin glass-card($border-color: rgba(255, 255, 255, 0.06), $bg: $card-bg) {
+  background: $bg;
+  border: 1px solid $border-color;
+  border-radius: $base-radius * 1.3;
+  padding: $base-spacing * 2;
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+}
+
+// 3. Global Reset & Body Setup
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $font-main;
+  background-color: $bg-dark;
+  color: #e2e8f0;
+  line-height: 1.6;
+  padding-bottom: 60px;
+}
+
+// 4. Header Section (SASS Nesting: Superpower 2)
+.main-header {
+  background: radial-gradient(circle at top, #1e293b 0%, $bg-dark 100%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 60px 24px 45px;
+  text-align: center;
+
+  .header-container {
+    max-width: 850px;
+    margin: 0 auto;
+
+    .cohort-tag {
+      display: inline-block;
+      background: rgba($accent-orange, 0.15);
+      color: lighten($accent-orange, 10%); // SASS Function (Superpower 4)
+      border: 1px solid rgba($accent-orange, 0.3);
+      padding: 4px 14px;
+      border-radius: 9999px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 800;
+      color: $text-light;
+      margin-bottom: 12px;
+      letter-spacing: -0.5px;
+    }
+
+    .subtitle {
+      font-size: 1.05rem;
+      color: $text-muted;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+  }
+}
+
+// 5. Main Page Container
+.page-container {
+  max-width: 1100px;
+  margin: 40px auto 0;
+  padding: 0 24px;
+  @include flex-layout(flex-start, stretch, column, 36px);
+}
+
+.topic-card {
+  @include glass-card();
+
+  &.highlight-card {
+    border-color: rgba($sky-blue, 0.25);
+    background: linear-gradient(180deg, #162038 0%, #101626 100%);
+  }
+
+  .card-header {
+    @include flex-layout(flex-start, center, row, 12px);
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+
+    .badge {
+      background: rgba($sky-blue, 0.12);
+      color: $sky-blue;
+      border: 1px solid rgba($sky-blue, 0.25);
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+
+      &.special-badge {
+        background: rgba($accent-orange, 0.15);
+        color: $accent-orange;
+        border-color: rgba($accent-orange, 0.3);
+      }
+    }
+
+    h2 {
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: $text-light;
+    }
+  }
+
+  .section-desc {
+    color: $text-muted;
+    font-size: 0.95rem;
+    margin-bottom: 24px;
+  }
+}
+
+// 6. Preprocessor Flow Diagram
+.preprocessor-flow {
+  @include flex-layout(space-between, center, row, 16px);
+  background: #090e1a;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: $base-radius;
+  padding: 24px;
+  flex-wrap: wrap;
+
+  .flow-step {
+    flex: 1;
+    min-width: 220px;
+    background: $subcard-bg;
+    padding: 16px;
+    border-radius: 8px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+
+    .step-badge {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: $text-muted;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    h4 {
+      font-family: $font-code;
+      font-size: 1.1rem;
+      color: $sky-blue;
+      margin-bottom: 4px;
+    }
+
+    p {
+      font-size: 0.8rem;
+      color: $text-muted;
+    }
+
+    &.step-scss h4 { color: #f472b6; }
+    &.step-css h4 { color: #38bdf8; }
+  }
+
+  .flow-arrow {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: $accent-orange;
+    text-align: center;
+
+    span {
+      display: block;
+      font-size: 0.75rem;
+      color: $text-muted;
+      font-family: $font-code;
+    }
+  }
+}
+
+// 7. Grids & Subcards
+.grid-2col {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 20px;
+}
+
+.sub-card {
+  background: $subcard-bg;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: $base-radius;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+
+  &.highlight-subcard {
+    border-color: rgba(#10b981, 0.3);
+  }
+
+  .card-title-row {
+    margin-bottom: 12px;
+
+    .syntax-tag {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 9999px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+
+      &.tag-green {
+        background: rgba(#10b981, 0.15);
+        color: #34d399;
+        border: 1px solid rgba(#10b981, 0.3);
+      }
+
+      &.tag-orange {
+        background: rgba($accent-orange, 0.15);
+        color: lighten($accent-orange, 10%);
+        border: 1px solid rgba($accent-orange, 0.3);
+      }
+    }
+
+    h3 {
+      font-size: 1.1rem;
+      color: $text-light;
+    }
+  }
+
+  p {
+    font-size: 0.88rem;
+    color: $text-muted;
+    margin-bottom: 16px;
+  }
+}
+
+.code-preview {
+  background: #090e1a;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 14px;
+  font-family: $font-code;
+  font-size: 0.78rem;
+  color: $sky-blue;
+  line-height: 1.5;
+}
+
+// 8. Setup Steps Grid
+.setup-steps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+
+  .setup-step {
+    background: $subcard-bg;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    padding: 18px;
+
+    .step-num {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: $accent-orange;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    h4 {
+      font-size: 0.95rem;
+      color: $text-light;
+      margin-bottom: 6px;
+    }
+
+    p {
+      font-size: 0.82rem;
+      color: $text-muted;
+    }
+  }
+}
+
+// 9. Superpowers Grid
+.superpowers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 18px;
+
+  .feature-card {
+    background: $subcard-bg;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: 10px;
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+
+    .feat-badge {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: $sky-blue;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    h3 {
+      font-size: 1rem;
+      color: $text-light;
+      margin-bottom: 8px;
+    }
+
+    p {
+      font-size: 0.82rem;
+      color: $text-muted;
+      margin-bottom: 14px;
+      flex-grow: 1;
+    }
+  }
+}
+
+// 10. Live Component Showcase (Demonstrating SCSS In Action)
+.live-demo-wrapper {
+  @include flex-center();
+  padding: 20px 0;
+}
+
+.sass-interactive-card {
+  width: 100%;
+  max-width: 480px;
+  background: #090e1a;
+  border: 1px solid rgba($sky-blue, 0.3);
+  border-radius: 16px;
+  padding: 28px;
+  text-align: center;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease, border-color 0.3s ease;
+
+  &:hover {
+    transform: translateY(-6px);
+    border-color: $sky-blue;
+    box-shadow: 0 20px 45px rgba(2, 132, 199, 0.2);
+  }
+
+  .card-badge {
+    display: inline-block;
+    background: rgba($accent-purple, 0.15);
+    color: lighten($accent-purple, 15%);
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 9999px;
+    margin-bottom: 12px;
+    font-family: $font-code;
+  }
+
+  h3 {
+    font-size: 1.35rem;
+    color: $text-light;
+    margin-bottom: 8px;
+  }
+
+  p {
+    font-size: 0.88rem;
+    color: $text-muted;
+    margin-bottom: 22px;
+    line-height: 1.5;
+  }
+
+  .card-actions {
+    @include flex-center(12px);
+
+    .btn {
+      padding: 10px 22px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.25s ease;
+
+      &.btn-primary {
+        background: $primary-blue;
+        color: #ffffff;
+        border: none;
+
+        &:hover {
+          background: lighten($primary-blue, 8%);
+          box-shadow: 0 6px 20px rgba($primary-blue, 0.4);
+        }
+      }
+
+      &.btn-outline {
+        background: transparent;
+        color: $sky-blue;
+        border: 1px solid $sky-blue;
+
+        &:hover {
+          background: rgba($sky-blue, 0.1);
+          color: #ffffff;
+        }
+      }
+    }
+  }
+}
+
+// 11. Footer
+.main-footer {
+  text-align: center;
+  color: #64748b;
+  font-size: 0.85rem;
+  margin-top: 50px;
+  padding-top: 25px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+
+  strong {
+    color: $text-muted;
+  }
+}

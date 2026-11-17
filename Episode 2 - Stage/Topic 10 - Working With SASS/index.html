@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Topic 10: Working With SASS (SCSS) | Sheryians Cohort 2.0</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Compiled CSS from style.scss -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Header Section -->
+    <header class="main-header">
+        <div class="header-container">
+            <span class="cohort-tag">Cohort 2.0 • Episode 2</span>
+            <h1>Topic 10: Working With SASS (SCSS) 🤩</h1>
+            <p class="subtitle">Supercharging CSS with Preprocessors: Variables, Intelligent Nesting, Reusable Mixins, Math Operators, and Live Sass Compilation.</p>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="page-container">
+
+        <!-- ==========================================
+             SECTION 1: WHAT IS SASS & PREPROCESSORS
+             ========================================== -->
+        <section class="topic-card">
+            <div class="card-header">
+                <span class="badge">Core Fundamentals</span>
+                <h2>1. What is SASS? (CSS Preprocessor)</h2>
+            </div>
+            <p class="section-desc">
+                Browsers can <strong>only understand standard CSS</strong>. Standard CSS lacks programming features like logic, variables, and reusability. <strong>SASS (Syntactically Awesome Style Sheets)</strong> is a CSS preprocessor that compiles down to clean, valid CSS before reaching the browser.
+            </p>
+
+            <div class="preprocessor-flow">
+                <div class="flow-step step-scss">
+                    <span class="step-badge">Developer Writes</span>
+                    <h4>style.scss</h4>
+                    <p>Variables, Nesting, Mixins, Math Functions</p>
+                </div>
+                <div class="flow-arrow">&rarr; <span>Compiler (Live Sass / Dart Sass)</span> &rarr;</div>
+                <div class="flow-step step-css">
+                    <span class="step-badge">Browser Reads</span>
+                    <h4>style.css</h4>
+                    <p>Pure, standard vanilla CSS that any browser renders</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================
+             SECTION 2: SCSS VS SASS
+             ========================================== -->
+        <section class="topic-card">
+            <div class="card-header">
+                <span class="badge">Syntax Comparison</span>
+                <h2>2. SCSS vs SASS (Which One & Why?)</h2>
+            </div>
+            <p class="section-desc">
+                SASS has two distinct file formats and syntaxes. <strong>SCSS is the modern, universal industry standard!</strong>
+            </p>
+
+            <div class="grid-2col">
+                <!-- SCSS (Recommended) -->
+                <div class="sub-card highlight-subcard">
+                    <div class="card-title-row">
+                        <span class="syntax-tag tag-green">Modern Standard (.scss)</span>
+                        <h3>SCSS (Sassy CSS)</h3>
+                    </div>
+                    <p>Uses standard CSS curly braces <code>{}</code> and semicolons <code>;</code>. Every valid CSS file is automatically valid SCSS!</p>
+                    <div class="code-preview">
+                        <code>// style.scss<br>$primary: #38bdf8;<br><br>.button {<br>&nbsp;&nbsp;background: $primary;<br>&nbsp;&nbsp;&amp;:hover {<br>&nbsp;&nbsp;&nbsp;&nbsp;background: darken($primary, 10%);<br>&nbsp;&nbsp;}<br>}</code>
+                    </div>
+                </div>
+
+                <!-- SASS (Indented) -->
+                <div class="sub-card">
+                    <div class="card-title-row">
+                        <span class="syntax-tag tag-orange">Legacy Indented (.sass)</span>
+                        <h3>SASS (Original Syntax)</h3>
+                    </div>
+                    <p>Uses indentation instead of braces and newlines instead of semicolons (like Python). Less common in teams.</p>
+                    <div class="code-preview">
+                        <code>// style.sass<br>$primary: #38bdf8<br><br>.button<br>&nbsp;&nbsp;background: $primary<br>&nbsp;&nbsp;&amp;:hover<br>&nbsp;&nbsp;&nbsp;&nbsp;background: darken($primary, 10%)</code>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================
+             SECTION 3: ENVIRONMENT SETUP
+             ========================================== -->
+        <section class="topic-card highlight-card">
+            <div class="card-header">
+                <span class="badge special-badge">Workflow Guide</span>
+                <h2>3. Setting Up the Environment for SCSS in VS Code</h2>
+            </div>
+            <p class="section-desc">
+                How do we automatically compile <code>.scss</code> to <code>.css</code> while we code?
+            </p>
+
+            <div class="setup-steps-grid">
+                <div class="setup-step">
+                    <span class="step-num">Step 1</span>
+                    <h4>Install VS Code Extension</h4>
+                    <p>Search Extensions (Ctrl+Shift+X) for <strong>"Live Sass Compiler"</strong> (by Glenn Marks).</p>
+                </div>
+                <div class="setup-step">
+                    <span class="step-num">Step 2</span>
+                    <h4>Create <code>style.scss</code></h4>
+                    <p>Create your stylesheet with the <code>.scss</code> extension instead of <code>.css</code>.</p>
+                </div>
+                <div class="setup-step">
+                    <span class="step-num">Step 3</span>
+                    <h4>Click "Watch Sass"</h4>
+                    <p>In the VS Code bottom blue status bar, click <strong>Watch Sass</strong>. It auto-generates <code>style.css</code> on every save!</p>
+                </div>
+                <div class="setup-step">
+                    <span class="step-num">Step 4</span>
+                    <h4>Link <code>style.css</code> in HTML</h4>
+                    <p>Always link the compiled <code>style.css</code> inside <code>&lt;head&gt;</code>, never the <code>.scss</code> file.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================
+             SECTION 4: THE 4 SUPERPOWERS OF SCSS
+             ========================================== -->
+        <section class="topic-card">
+            <div class="card-header">
+                <span class="badge">Language Features</span>
+                <h2>4. The 4 Core Superpowers of SASS</h2>
+            </div>
+
+            <div class="superpowers-grid">
+                <!-- 1. Variables -->
+                <div class="feature-card">
+                    <span class="feat-badge">Superpower 1</span>
+                    <h3>SASS Variables (<code>$</code>)</h3>
+                    <p>Define global colors, fonts, or padding once using the <code>$</code> symbol. Change it in one spot to update the entire app!</p>
+                    <div class="code-preview">
+                        <code>$primary-color: #0284c7;<br>$border-radius: 12px;<br><br>.card {<br>&nbsp;&nbsp;background: $primary-color;<br>&nbsp;&nbsp;border-radius: $border-radius;<br>}</code>
+                    </div>
+                </div>
+
+                <!-- 2. Nesting & & -->
+                <div class="feature-card">
+                    <span class="feat-badge">Superpower 2</span>
+                    <h3>Nesting & Parent Selector (<code>&</code>)</h3>
+                    <p>Nest CSS rules inside one another matching your HTML hierarchy. Use <code>&</code> to reference the immediate parent (essential for <code>&:hover</code> and BEM!).</p>
+                    <div class="code-preview">
+                        <code>.navbar {<br>&nbsp;&nbsp;background: #111;<br>&nbsp;&nbsp;a {<br>&nbsp;&nbsp;&nbsp;&nbsp;color: #fff;<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;:hover { color: #38bdf8; }<br>&nbsp;&nbsp;}<br>}</code>
+                    </div>
+                </div>
+
+                <!-- 3. Mixins -->
+                <div class="feature-card">
+                    <span class="feat-badge">Superpower 3</span>
+                    <h3>Mixins (<code>@mixin</code> & <code>@include</code>)</h3>
+                    <p>Reusable blocks of styles that accept dynamic parameters like functions! Eliminates repetitive code.</p>
+                    <div class="code-preview">
+                        <code>@mixin flex-center($gap: 10px) {<br>&nbsp;&nbsp;display: flex;<br>&nbsp;&nbsp;justify-content: center;<br>&nbsp;&nbsp;align-items: center;<br>&nbsp;&nbsp;gap: $gap;<br>}<br><br>.box { @include flex-center(20px); }</code>
+                    </div>
+                </div>
+
+                <!-- 4. Functions & Operators -->
+                <div class="feature-card">
+                    <span class="feat-badge">Superpower 4</span>
+                    <h3>Functions & Math Operators</h3>
+                    <p>Perform math directly in styles (<code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>) and use built-in functions like <code>lighten()</code> and <code>darken()</code>.</p>
+                    <div class="code-preview">
+                        <code>$base-padding: 8px;<br><br>.button {<br>&nbsp;&nbsp;padding: ($base-padding * 2) ($base-padding * 3);<br>&nbsp;&nbsp;background: darken(#38bdf8, 15%);<br>}</code>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================
+             SECTION 5: LIVE COMPONENT SHOWCASE
+             ========================================== -->
+        <section class="topic-card">
+            <div class="card-header">
+                <span class="badge">Live Playground</span>
+                <h2>5. Live Component Styled with SCSS</h2>
+            </div>
+            <p class="section-desc">
+                This interactive card is built using actual SCSS variables, mixins with dynamic parameters, nested hover pseudo-classes (<code>&amp;:hover</code>), and math operators!
+            </p>
+
+            <div class="live-demo-wrapper">
+                <div class="sass-interactive-card">
+                    <span class="card-badge">Compiled from style.scss</span>
+                    <h3>SASS Master Card</h3>
+                    <p>Notice the smooth color transitions, nested button states, and perfectly centered elements styled via SASS <code>@mixin</code>!</p>
+                    <div class="card-actions">
+                        <button class="btn btn-primary">Hover Me (&amp;:hover)</button>
+                        <button class="btn btn-outline">Outline Button</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <p>Sheryians Coding School • 2.0 Cohort | Developed with ❤️ by <strong>Abhishek</strong></p>
+    </footer>
+
+</body>
+
+</html>

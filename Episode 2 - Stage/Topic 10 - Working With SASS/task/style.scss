@@ -1,0 +1,73 @@
+// ==========================================================================
+// Topic 10 Task: SASS Project
+// Sheryians Coding School - 2.0 Cohort
+// Author: Abhishek
+// ==========================================================================
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+
+// Global Reset
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body,
+html {
+  height: 100%;
+  width: 100%;
+}
+
+main {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  gap: 10px;
+
+  section {
+    height: 100%;
+    flex-grow: 1;
+    border: 2px solid black;
+    background-size: cover;
+    background-position: center;
+    transition: all 0.7s cubic-bezier(0.19, 1, 0.22, 1);
+    cursor: pointer;
+    @include flex-center;
+  }
+
+  section:nth-child(1) {
+    background-image: url("https://i.pinimg.com/736x/8d/b0/db/8db0db215a4b855a484bd070edc6b025.jpg");
+  }
+
+  section:nth-child(2) {
+    background-image: url("https://i.pinimg.com/1200x/ad/8b/e3/ad8be3a1d4295a1453f752c660c60bb4.jpg");
+  }
+
+  section:nth-child(3) {
+    background-image: url("https://i.pinimg.com/1200x/55/69/05/556905c203149521cdfc3445b0fbb974.jpg");
+  }
+
+  section:nth-child(4) {
+    background-image: url("https://i.pinimg.com/736x/b5/8f/84/b58f846271857a7b6cb8cb710e026541.jpg");
+  }
+
+  section:nth-child(5) {
+    background-image: url("https://i.pinimg.com/736x/c1/68/d1/c168d12bd64f61817ba95616e325898a.jpg");
+  }
+
+  section:hover {
+    flex-grow: 2;
+  }
+
+  .text{
+    color: white;
+  }
+
+
+}
