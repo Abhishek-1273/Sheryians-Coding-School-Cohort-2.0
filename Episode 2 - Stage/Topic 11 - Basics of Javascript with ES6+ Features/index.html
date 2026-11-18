@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Topic 11: Basics of JavaScript with ES6+ | Sheryians Cohort 2.0</title>
+    <!-- Google Fonts: Plus Jakarta Sans & Fira Code -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="site-wrapper">
+
+        <!-- Header -->
+        <header class="header">
+            <div class="breadcrumb">Episode 2 — Stage / Topic 11</div>
+            <h1>Basics of JavaScript & ES6+ Features</h1>
+            <p class="description">
+                JavaScript ka complete foundational masterclass: script linking, console, comments, statements & semicolons, expressions, variables, hoisting, data types, special values, strings, aur operators.
+            </p>
+        </header>
+
+        <main class="content">
+
+            <!-- ==========================================
+                 01. INTRODUCTION TO JAVASCRIPT
+                 ========================================== -->
+            <section class="section">
+                <div class="section-title">
+                    <span class="number">01</span>
+                    <h2>Introduction to JavaScript & Why It Matters</h2>
+                </div>
+                
+                <p>
+                    Web development me teeno technologies milkar kaam karti hain:
+                </p>
+
+                <div class="concept-grid">
+                    <div class="concept-item card-html">
+                        <span class="concept-tag tag-html">HTML</span>
+                        <h4>Structure</h4>
+                        <p>Page ka layout aur content (headings, paragraphs, buttons, images).</p>
+                    </div>
+                    <div class="concept-item card-css">
+                        <span class="concept-tag tag-css">CSS</span>
+                        <h4>Styling</h4>
+                        <p>Colors, design, responsive layout, aur smooth animations.</p>
+                    </div>
+                    <div class="concept-item card-js highlight">
+                        <span class="concept-tag tag-js">JavaScript</span>
+                        <h4>Logic & Functionality</h4>
+                        <p>Interactivity, events, backend se data fetch karna, aur dynamic actions.</p>
+                    </div>
+                </div>
+
+                <p>
+                    <strong>JavaScript kya karta hai?</strong><br>
+                    HTML aur CSS se page ban toh jata hai, par wo static rehta hai. JavaScript se page me jaan aati hai — jaise button click hone par kya hoga, form submit karne par data kaise validate hoga, popup kab dikhega, aur page ko bina reload kiye live data kaise update hoga.
+                </p>
+            </section>
+
+            <!-- ==========================================
+                 02. LINKING JS & BROWSER CONSOLE
+                 ========================================== -->
+            <section class="section">
+                <div class="section-title">
+                    <span class="number">02</span>
+                    <h2>Linking JavaScript & Browser Console</h2>
+                </div>
+
+                <p>
+                    JavaScript file ko HTML ke sath link karne ke liye <code>&lt;script src="script.js"&gt;&lt;/script&gt;</code> tag use hota hai.
+                </p>
+
+                <div class="code-wrapper">
+                    <div class="code-header">
+                        <span class="terminal-dots"><span></span><span></span><span></span></span>
+                        <span class="file-label">index.html</span>
+                    </div>
+                    <pre><code>&lt;!-- Hamesha &lt;/body&gt; closing tag se theek pehle link karein --&gt;
+&lt;script src="script.js"&gt;&lt;/script&gt;
+&lt;/body&gt;</code></pre>
+                </div>
+
+                <div class="callout-box callout-blue">
+                    <strong>Rule: Script tag ko hamesha <code>&lt;/body&gt;</code> ke end me kyun rakhte hain?</strong><br>
+                    Kyunki browser code ko top to bottom line-by-line read karta hai. Agar hum script ko head me rakh denge, toh JS pehle execute ho jayegi jabki HTML elements screen par bane hi nahi honge. Isliye pehle poora HTML DOM load hone dete hain, phir last me script run karte hain.
+                </div>
+
+                <div class="callout-box callout-emerald">
+                    <strong>Browser Console:</strong> Browser me <code>F12</code> ya <code>Ctrl + Shift + I</code> press karke <strong>Console</strong> tab open karo. Ye ek live REPL playground hai jahan aap directly JS code likh kar test kar sakte ho.
+                </div>
+            </section>
+
+            <!-- ==========================================
+                 03. COMMENTS IN JAVASCRIPT
+                 ========================================== -->
+            <section class="section">
+                <div class="section-title">
+                    <span class="number">03</span>
+                    <h2>Comments in JavaScript</h2>
+                </div>
+
+                <p>
+                    Comments code me wo lines hoti hain jise JavaScript engine ignore kar deta hai (run nahi karta). Comments hum code ko explain karne ke liye, ya debugging ke dauran kisi code ko temporary disable karne ke liye likhte hain.
+                </p>
+
+                <div class="code-wrapper">
+                    <div class="code-header">
+                        <span class="terminal-dots"><span></span><span></span><span></span></span>
+                        <span class="file-label">script.js</span>
+                    </div>
+                    <pre><code>// 1. Single-line Comment: Ye sirf ek line ke liye hota hai (// se shuru hota hai)
+let age = 21; // Age variable yahan declare kiya
+
+/* 
+   2. Multi-line Comment:
+   Jab explanation lamba ho aur multiple lines me likhna ho,
+   toh hum /* se shuru karke */ band karte hain.
+*/
+function calculateTotal() {
+    // logic here
+}</code></pre>
+                </div>
+            </section>
+
+            <!-- ==========================================
+                 04. STATEMENTS & SEMICOLONS
+                 ========================================== -->
+            <section class="section">
+                <div class="section-title">
+                    <span class="number">04</span>
+                    <h2>What are Statements and Semicolons in JS?</h2>
+                </div>
+
+                <p>
+                    JavaScript me likhi gayi har complete instruction jo koi action perform karti hai, use <strong>Statement</strong> kehte hain.
+                </p>
+
+                <p>
+                    <strong>Semicolons (<code>;</code>) ka kya role hai?</strong><br>
+                    Semicolon ek statement ka end (khatma) mark karta hai. Jaise English me sentence ke baad full stop (<code>.</code>) lagta hai, waise hi JS me statement ke baad <code>;</code> lagaya jata hai.
+                </p>
+
+                <div class="callout-box callout-blue">
+                    <strong>ASI (Automatic Semicolon Insertion):</strong><br>
+                    JavaScript me agar aap semicolon <code>;</code> lagana bhool bhi jaate ho, toh browser ka JavaScript engine internally khud semicolon add kar deta hai (ise ASI bolte hain). Lekin best practice yahi hai ki aap explicitly semicolon lagao taaki kabhi edge-cases me unexpected bugs na aayein.
+                </div>
+
+                <div class="code-wrapper">
+                    <div class="code-header">
+                        <span class="terminal-dots"><span></span><span></span><span></span></span>
+                        <span class="file-label">Statements & Semicolons</span>
+                    </div>
+                    <pre><code>let score = 100;    // Statement 1: Variable declare kiya aur 100 assign kiya
+score = score + 10; // Statement 2: Calculation karke re-assign kiya
+console.log(score); // Statement 3: Output print karne ka instruction</code></pre>
+                </div>
+            </section>
+
+            <!-- ==========================================
+                 05. EXPRESSIONS VS STATEMENTS
+                 ========================================== -->
+            <section class="section">
+                <div class="section-title">
+                    <span class="number">05</span>
+                    <h2>Expressions vs Statements (Difference)</h2>
+                </div>
+
+                <p>
+                    Ye JavaScript ka sabse important fundamental concept hai:
+                </p>
+
+                <div class="concept-grid">
+                    <div class="concept-item">
+                        <span class="concept-tag tag-html">Statement</span>
+                        <h4>Action Perform Karta Hai</h4>
+                        <p>Poora sentence jo computer ko koi kaam (declaration, loop, if-condition) karne ko bolta hai. Ye direct kisi value me evaluate nahi hota.</p>
+                    </div>
+                    <div class="concept-item highlight">
+                        <span class="concept-tag tag-js">Expression</span>
+                        <h4>Value Produce Karta Hai</h4>
+                        <p>Code ka har wo tukda jo execute hokar ek concrete VALUE return karta hai (jaise number, string, boolean).</p>
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <table class="minimal-table">
+                        <thead>
+                            <tr>
+                                <th>Expression (Value deta hai)</th>
+                                <th>Evaluation Result</th>
+                                <th>Statement (Action karta hai)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>10 + 20</code></td>
+                                <td><code>30</code></td>
+                                <td><code>let total = 10 + 20;</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>"Sheryians" + " Cohort"</code></td>
+                                <td><code>"Sheryians Cohort"</code></td>
+                                <td><code>console.log("Hello");</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>age &gt;= 18</code></td>
+                                <td><code>true</code> ya <code>false</code></td>
+                                <td><code>if (age &gt;= 18) { ... }</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- ==========================================
+                 06. VARIABLES: var vs let vs const
+                 ========================================== -->
+            <section class="section">
+                <div class="section-title">
+                    <span class="number">06</span>
+                    <h2>Variables & Keywords: var, let, const</h2>
+                </div>
+
+                <p>
+                    Variable ek container hota hai jisme hum apna data store karte hain taaki program me aage use kar sakein. Modern JavaScript me variables declare karne ke 3 keywords hain:
+                </p>
+
+                <div class="table-container">
+                    <table class="minimal-table">
+                        <thead>
+                            <tr>
+                                <th>Feature</th>
+                                <th><code>var</code> (Legacy ES5)</th>
+                                <th><code>let</code> (Modern ES6)</th>
+                                <th><code>const</code> (Modern ES6)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Scope</strong></td>
+                                <td>Function scoped (block <code>{}</code> ke bahar leak ho jata hai)</td>
+                                <td>Block scoped (apne <code>{}</code> ke andar locked rehta hai)</td>
+                                <td>Block scoped (apne <code>{}</code> ke andar locked rehta hai)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Re-declaration</strong></td>
+                                <td><span class="badge badge-warning">Allowed</span> (same naam dobara — risky)</td>
+                                <td><span class="badge badge-danger">Not allowed</span> (ek naam se ek hi banega)</td>
+                                <td><span class="badge badge-danger">Not allowed</span> (ek naam se ek hi banega)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Re-assignment</strong></td>
+                                <td><span class="badge badge-success">Allowed</span> (value badal sakte ho)</td>
+                                <td><span class="badge badge-success">Allowed</span> (value change ho sakti hai)</td>
+                                <td><span class="badge badge-danger">Not allowed</span> (value fixed rahegi)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Hoisting</strong></td>
+                                <td>Hoisted, default <code>undefined</code></td>
+                                <td>Hoisted, par TDZ (Dead Zone) me</td>
+                                <td>Hoisted, par TDZ (Dead Zone) me</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Best Practice</strong></td>
+                                <td><span class="badge badge-danger">Avoid</span> (use mat karo)</td>
+                                <td><span class="badge badge-primary">Use</span> (jab value aage change ho)</td>
+                                <td><span class="badge badge-success">Default choice</span> (hamesha use karo)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="code-wrapper">
+                    <div class="code-header">
+                        <span class="terminal-dots"><span></span><span></span><span></span></span>
+                        <span class="file-label">script.js</span>
+                    </div>
+                    <pre><code>// 1. var - Re-declaration aur Re-assignment dono allowed hain
+var a = 10;
+var a = 20; // Re-declare ho gaya bina kisi error ke
+
+// 2. let - Re-declare nahi ho sakta, sirf re-assign hota hai
+let age = 22;
+age = 23;     // Allowed (Value change ho gayi)
+// let age = 25; // Error: Identifier 'age' has already been declared
+
+// 3. const - Na re-declare hoga, na value change hogi
+const PI = 3.14;
+// PI = 3.15; // Error: Assignment to constant variable</code></pre>
+                </div>
+            </section>
+
+            <!-- ==========================================
+                 07. VARIABLE HOISTING & TDZ
+                 ========================================== -->
+            <section class="section">
+                <div class="section-title">
+                    <span class="number">07</span>
+                    <h2>Variable Hoisting in JavaScript</h2>
+                </div>
+
+                <p>
+                    <strong>Hoisting kya hota hai?</strong><br>
+                    JavaScript code run hone se pehle ek <em>Creation Phase (Memory Allocation)</em> se guzarta hai. Is phase me JavaScript engine saare variable aur function declarations ko scope ke top par move (hoist) kar deta hai.
+                </p>
+
+                <div class="table-container">
+                    <table class="minimal-table">
+                        <thead>
+                            <tr>
+                                <th>Keyword</th>
+                                <th>Hoisting Behavior</th>
+                                <th>Declare karne se pehle access kiya toh?</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>var</code></td>
+                                <td>Top par hoist hota hai aur turant <code>undefined</code> se initialize ho jata hai.</td>
+                                <td><code>undefined</code> print hota hai (koi error nahi aata!).</td>
+                            </tr>
+                            <tr>
+                                <td><code>let</code> &amp; <code>const</code></td>
+                                <td>Hoist hote hain, par initialize nahi hote. Wo <strong>Temporal Dead Zone (TDZ)</strong> me rehte hain.</td>
+                                <td><code>ReferenceError: Cannot access variable before initialization</code> error aata hai!</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="code-wrapper">
+                    <div class="code-header">
+                        <span class="terminal-dots"><span></span><span></span><span></span></span>
+                        <span class="file-label">Hoisting Examples</span>
+                    </div>
+                    <pre><code>// 1. var ke sath hoisting:
+console.log(x); // Output: undefined (Error nahi aaya!)
+var x = 10;
+
+// 2. let aur const ke sath (Temporal Dead Zone):
+// console.log(y); // Uncaught ReferenceError: Cannot access 'y' before initialization
+let y = 20; // Yahan TDZ khatam hua, ab y accessible hai</code></pre>
+                </div>
+
+                <div class="callout-box callout-amber">
+                    <strong>TDZ (Temporal Dead Zone) kya hai?</strong><br>
+                    Scope shuru hone se lekar jab tak <code>let</code> ya <code>const</code> variable ki actual declaration line execute nahi ho jaati, us beech ke time-period ko Temporal Dead Zone kehte hain. Is zone ke andar variable ko access karna strictly mana hai.
+                </div>
+            </section>
+
+            <!-- ==========================================
+                 08. LOGGING & USER DIALOGS
+                 ========================================== -->
+            <section class="section">
+                <div class="section-title">
+                    <span class="number">08</span>
+                    <h2>Logging & User Dialogs (Alert & Prompt)</h2>
+                </div>
+
+                <p>
+                    JavaScript me output dekhne ke liye debugging console methods use hote hain, aur user se quick interaction ke liye browser dialogs use hote hain.
+                </p>
+
+                <div class="action-bar">
+                    <span class="action-label">Click karke test karein (F12 Console me output dekhein):</span>
+                    <div class="button-row">
+                        <button class="btn btn-log" onclick="console.log('Testing console.log() output!')">console.log()</button>
+                        <button class="btn btn-info" onclick="console.info('Testing console.info() message!')">console.info()</button>
+                        <button class="btn btn-warn" onclick="console.warn('Testing console.warn() warning!')">console.warn()</button>
+                        <button class="btn btn-alert" onclick="alert('Hello from alert()!')">alert()</button>
+                        <button class="btn btn-prompt" onclick="var name = prompt('Apna naam enter karo:'); console.log('Entered Name:', name);">prompt()</button>
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <table class="minimal-table">
+                        <thead>
+                            <tr>
+                                <th>Method</th>
+                                <th>Use Case & Explanation</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code class="code-log">console.log()</code></td>
+                                <td>Normal message ya variable ki value console me print karne ke liye. Sabse zyada yahi use hota hai.</td>
+                            </tr>
+                            <tr>
+                                <td><code class="code-info">console.info()</code></td>
+                                <td>Informational logs show karne ke liye use hota hai.</td>
+                            </tr>
+                            <tr>
+                                <td><code class="code-warn">console.warn()</code></td>
+                                <td>Console me yellow warning highlight ke sath print karta hai taaki developer ka dhyan jaye.</td>
+                            </tr>
+                            <tr>
+                                <td><code class="code-alert">alert("msg")</code></td>
+                                <td>Screen par ek popup alert modal kholta hai jisme sirf ek OK button hota hai. Jab tak user OK nahi karta, script pause rehti hai.</td>
+                            </tr>
+                            <tr>
+                                <td><code class="code-prompt">prompt("msg")</code></td>
+                                <td>User se text input lene ke liye dialog kholta hai. User jo likhega wo string format me return hota hai, aur cancel karne par <code>null</code> aata hai.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- ==========================================
+                 09. DATA TYPES & PRIMITIVE VS RELATIVE (REFERENCE)
+                 ========================================== -->
+            <section class="section">
+                <div class="section-title">
+                    <span class="number">09</span>
+                    <h2>JavaScript Data Types: Primitive vs Relative (Reference)</h2>
+                </div>
+
+                <p>
+                    JavaScript ek <strong>Dynamically Typed</strong> language hai — iska matlab hume variable banate waqt uska data type (jaise int, string) explicitly likhna nahi padta, value assign hone par JS engine khud type decide karta hai.
+                </p>
+
+                <!-- Primitive vs Relative Concept Grid -->
+                <div class="concept-grid">
+                    <div class="concept-item">
+                        <span class="concept-tag tag-css">1. Primitive Data Types</span>
+                        <h4>Direct Value (Stack Memory)</h4>
+                        <p>Ye immutable (unchangeable) hote hain. Variable me inki direct original value store hoti hai. Copy karne par bilkul nayi independent copy banti hai.</p>
+                        <p style="margin-top: 8px;"><strong>Types:</strong> <code>number</code>, <code>float (number)</code>, <code>string</code>, <code>boolean</code>, <code>null</code>, <code>undefined</code>, <code>Symbol</code>, <code>BigInt</code></p>
+                    </div>
+                    <div class="concept-item highlight">
+                        <span class="concept-tag tag-js">2. Relative / Reference Data Types</span>
+                        <h4>Address / Reference (Heap Memory)</h4>
+                        <p>Inhe <strong>Relative ya Reference types</strong> kehte hain kyunki ye actual value store karne ke bajaye memory (Heap) ke address se relate (point) karte hain. Copy karne par address share hota hai.</p>
+                        <p style="margin-top: 8px;"><strong>Types:</strong> <code>Array []</code>, <code>Object {}</code>, <code>Function ()</code></p>
+                    </div>
+                </div>
+
+                <!-- Complete Data Types Table -->
+                <div class="table-container">
+                    <table class="minimal-table">
+                        <thead>
+                            <tr>
+                                <th>Data Type</th>
+                                <th>Category</th>
+                                <th>Example</th>
+                                <th><code>typeof</code> Result</th>
+                                <th>Asaan Explanation (Hinglish)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>number</code></td>
+                                <td>Primitive</td>
+                                <td><code>42</code>, <code>-10</code></td>
+                                <td><code>"number"</code></td>
+                                <td>Saare integers (positive, negative, zero) number type me aate hain.</td>
+                            </tr>
+                            <tr>
+                                <td><code>float</code></td>
+                                <td>Primitive</td>
+                                <td><code>3.14</code>, <code>99.99</code></td>
+                                <td><code>"number"</code></td>
+                                <td><strong>Important:</strong> JS me float alag se koi keyword ya data type nahi hota! Decimal values bhi internally <code>number</code> (64-bit float) hi hoti hain.</td>
+                            </tr>
+                            <tr>
+                                <td><code>string</code></td>
+                                <td>Primitive</td>
+                                <td><code>"Abhishek"</code>, <code>'Cohort'</code></td>
+                                <td><code>"string"</code></td>
+                                <td>Text data jise quotes ya backticks me likha jata hai.</td>
+                            </tr>
+                            <tr>
+                                <td><code>boolean</code></td>
+                                <td>Primitive</td>
+                                <td><code>true</code>, <code>false</code></td>
+                                <td><code>"boolean"</code></td>
+                                <td>Sirf do values hoti hain: true (haan/sahi) ya false (nahi/galat). Condition check me use hota hai.</td>
+                            </tr>
+                            <tr>
+                                <td><code>null</code></td>
+                                <td>Primitive</td>
+                                <td><code>null</code></td>
+                                <td><code>"object"</code> ⚠️</td>
+                                <td>Developer ne explicitly bataya hai ki ye variable khali (empty) hai. (typeof "object" aana JS ka historic bug hai).</td>
+                            </tr>
+                            <tr>
+                                <td><code>undefined</code></td>
+                                <td>Primitive</td>
+                                <td><code>undefined</code></td>
+                                <td><code>"undefined"</code></td>
+                                <td>Variable declare kar diya par usme abhi tak koi value assign nahi ki.</td>
+                            </tr>
+                            <tr>
+                                <td><code>Symbol</code></td>
+                                <td>Primitive</td>
+                                <td><code>Symbol("id")</code></td>
+                                <td><code>"symbol"</code></td>
+                                <td>ES6 feature: Hamesha ek unique aur immutable identifier create karta hai jo kisi dusre Symbol se match nahi hota.</td>
+                            </tr>
+                            <tr>
+                                <td><code>BigInt</code></td>
+                                <td>Primitive</td>
+                                <td><code>9007199254740991n</code></td>
+                                <td><code>"bigint"</code></td>
+                                <td>Bohot bade integers jo normal number ki safe limit (2^53 - 1) se bade hote hain. End me <code>n</code> lagta hai.</td>
+                            </tr>
+                            <tr>
+                                <td><code>array</code></td>
+                                <td>Reference</td>
+                                <td><code>[10, 20, "JS"]</code></td>
+                                <td><code>"object"</code></td>
+                                <td>Multiple values ka ordered list jo square brackets <code>[]</code> me store hota hai aur index 0 se shuru hota hai.</td>
+                            </tr>
+                            <tr>
+                                <td><code>object</code></td>
+                                <td>Reference</td>
+                                <td><code>{ name: "Abhi" }</code></td>
+                                <td><code>"object"</code></td>
+                                <td>Key-value pairs ka group jo curly braces <code>{}</code> me likha jata hai. Real-world data store karne ke liye sabse important hai.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="code-wrapper">
+                    <div class="code-header">
+                        <span class="terminal-dots"><span></span><span></span><span></span></span>
+                        <span class="file-label">Primitive (Value) vs Relative (Reference) Memory Behavior</span>
+                    </div>
+                    <pre><code>// 1. PRIMITIVE DATA TYPE (Call by Value):
+let x = 100;
+let y = x; // y ko x ki nayi copy mili
+y = 200;   // y ko change kiya
+console.log(x); // 100 -> x bilkul safe hai, change nahi hua!
+
+// 2. RELATIVE / REFERENCE DATA TYPE (Call by Reference):
+let originalArray = ["HTML", "CSS"];
+let copyArray = originalArray; // copyArray ko memory address (reference) mila
+
+copyArray.push("JavaScript"); // copyArray me add kiya
+console.log(originalArray); // ["HTML", "CSS", "JavaScript"] -> originalArray bhi change ho gaya!</code></pre>
+                </div>
+            </section>
+
+            <!-- ==========================================
+                 10. IMPORTANT SPECIAL VALUES
+                 ========================================== -->
+            <section class="section">
+                <div class="section-title">
+                    <span class="number">10</span>
+                    <h2>Some Important Values: undefined, null, NaN, Infinity</h2>
+                </div>
+
+                <p>
+                    JavaScript me 4 special values aksar confuse karti hain:
+                </p>
+
+                <div class="table-container">
+                    <table class="minimal-table">
+                        <thead>
+                            <tr>
+                                <th>Value</th>
+                                <th>Matlab (Simple Hindi)</th>
+                                <th>Typeof Result</th>
+                                <th>Example</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>undefined</code></td>
+                                <td>Variable declare kar diya par abhi tak koi value assign nahi ki (JS ki default value).</td>
+                                <td><code>"undefined"</code></td>
+                                <td><code>let x; console.log(x);</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>null</code></td>
+                                <td>Developer ne explicitly bataya hai ki ye dabba jaan-boojh kar "khali" (empty) hai.</td>
+                                <td><code>"object"</code> (JS ka historic bug!)</td>
+                                <td><code>let user = null;</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>NaN</code></td>
+                                <td><strong>Not a Number</strong>: Invalid mathematical operation ka result (jaise string ko number se multiply karna).</td>
+                                <td><code>"number"</code></td>
+                                <td><code>"apple" * 5 // NaN</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>Infinity</code></td>
+                                <td>Jab koi calculation mathematical limit se bahar ho jaye (jaise kisi number ko 0 se divide karna).</td>
+                                <td><code>"number"</code></td>
+                                <td><code>10 / 0 // Infinity</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="callout-box callout-blue">
+                    <strong>undefined vs null interview question:</strong><br>
+                    <code>undefined == null</code> returns <code>true</code> (loose comparison, dono falsy hain).<br>
+                    <code>undefined === null</code> returns <code>false</code> (strict comparison, kyunki dono ka type alag hai).
+                </div>
+            </section>
+
+            <!-- ==========================================
+                 11. WORKING WITH STRINGS
+                 ========================================== -->
+            <section class="section">
+                <div class="section-title">
+                    <span class="number">11</span>
+                    <h2>Working with Strings & Core Methods</h2>
+                </div>
+
+                <p>
+                    JavaScript me text data ko String kehte hain, jise quotes <code>'...'</code>, <code>"..."</code> ya backticks <code>`...`</code> me likhte hain.
+                </p>
+                <p>
+                    <strong>Important Concept:</strong> Strings JavaScript me <strong>immutable</strong> hoti hain — matlab koi bhi string method original string ko directly modify nahi karta, hamesha ek nayi string return karta hai.
+                </p>
+
+                <div class="code-wrapper">
+                    <div class="code-header">
+                        <span class="terminal-dots"><span></span><span></span><span></span></span>
+                        <span class="file-label">String Methods Practice</span>
+                    </div>
+                    <pre><code>let str = "Sheryians Coding School";
+
+// 1. slice(start, end) -> String ka ek hissa cut karke nikalta hai
+// Note: End index include nahi hota (0 se 9 matlab 0 se 8 tak)
+console.log(str.slice(0, 9)); // "Sheryians"
+
+// 2. Template Strings (ES6 Backticks ``) -> Clean string formatting
+let student = "Abhishek";
+let course = "Cohort 2.0";
+let msg = `Hello ${student}, welcome to ${course}!`; // ${} se direct variables inject hote hain
+console.log(msg);
+
+// 3. split(separator) -> String ko tod kar Array me convert karta hai
+console.log(str.split(" ")); // ["Sheryians", "Coding", "School"]
+
+// 4. replace(old, new) -> Pehle matching word ko replace karta hai
+console.log(str.replace("Coding", "Development")); // "Sheryians Development School"
+
+// 5. includes(search) -> Check karta hai ki word string me present hai ya nahi (true/false)
+console.log(str.includes("Coding")); // true
+console.log(str.includes("Python")); // false</code></pre>
+                </div>
+
+                <div class="callout-box callout-amber">
+                    <strong>Interview Question: slice() vs splice() me kya difference hai?</strong><br>
+                    Ye interview ka bohot popular trick question hai! <strong>Strings par sirf <code>slice()</code> hota hai, <code>splice()</code> method nahi hota!</strong><br>
+                    <code>splice()</code> strictly <strong>Arrays</strong> ka method hai jo original array ke andar se elements ko add/remove karta hai. Strings immutable hoti hain, isliye strings par <code>splice()</code> exist hi nahi karta.
+                </div>
+            </section>
+
+            <!-- ==========================================
+                 12. BASIC OPERATORS IN JAVASCRIPT
+                 ========================================== -->
+            <section class="section">
+                <div class="section-title">
+                    <span class="number">12</span>
+                    <h2>Basic Operators in JavaScript</h2>
+                </div>
+
+                <p>
+                    Operators wo symbols hote hain jo variables aur values par mathematical, comparison ya logical operations perform karte hain.
+                </p>
+
+                <div class="table-container">
+                    <table class="minimal-table">
+                        <thead>
+                            <tr>
+                                <th>Category</th>
+                                <th>Operators</th>
+                                <th>Examples & Meaning</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Arithmetic</strong></td>
+                                <td><code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>%</code> (modulus/remainder), <code>**</code> (exponent/power)</td>
+                                <td><code>10 % 3 // 1</code> (Remainder)<br><code>2 ** 3 // 8</code> (2 ki power 3)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Assignment</strong></td>
+                                <td><code>=</code>, <code>+=</code>, <code>-=</code>, <code>*=</code>, <code>/=</code></td>
+                                <td><code>x += 5</code> matlab <code>x = x + 5</code></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Increment / Decrement</strong></td>
+                                <td><code>++</code> (pre/post increment), <code>--</code> (pre/post decrement)</td>
+                                <td><code>x++</code> (pehle use karo, baad me badhao)<br><code>++x</code> (pehle badhao, phir use karo)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Comparison</strong></td>
+                                <td><code>==</code> (loose), <code>===</code> (strict type check), <code>!=</code>, <code>!==</code>, <code>&gt;</code>, <code>&lt;</code>, <code>&gt;=</code>, <code>&lt;=</code></td>
+                                <td><code>5 == "5" // true</code> (Sirf value check)<br><code>5 === "5" // false</code> (Value + Type check)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Logical</strong></td>
+                                <td><code>&amp;&amp;</code> (AND), <code>||</code> (OR), <code>!</code> (NOT)</td>
+                                <td><code>true &amp;&amp; false // false</code><br><code>true || false // true</code><br><code>!true // false</code></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Bitwise</strong></td>
+                                <td><code>&amp;</code> (AND), <code>|</code> (OR), <code>^</code> (XOR), <code>~</code> (NOT), <code>&lt;&lt;</code>, <code>&gt;&gt;</code></td>
+                                <td>Bits level par calculation: <code>5 &amp; 1 // 1</code> (0101 & 0001)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="code-wrapper">
+                    <div class="code-header">
+                        <span class="terminal-dots"><span></span><span></span><span></span></span>
+                        <span class="file-label">Operators Demo</span>
+                    </div>
+                    <pre><code>// Comparison: == vs ===
+console.log(10 == "10");  // true  (Type coercion: string number me convert ho gaya)
+console.log(10 === "10"); // false (Strict check: number !== string)
+
+// Increment behavior
+let count = 5;
+console.log(count++); // 5 print hua (Post-increment: agle line se 6 hoga)
+console.log(count);   // 6
+
+// Logical Operator
+let isLoggedIn = true;
+let hasPermission = false;
+console.log(isLoggedIn && hasPermission); // false</code></pre>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <span>Sheryians Coding School • Cohort 2.0</span>
+            <span>Abhishek</span>
+        </footer>
+
+    </div>
+
+    <!-- External Script -->
+    <script src="script.js"></script>
+
+</body>
+</html>
