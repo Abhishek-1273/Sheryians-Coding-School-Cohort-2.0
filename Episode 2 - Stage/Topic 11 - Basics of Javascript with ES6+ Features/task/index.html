@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Assignment (27-Oct-2025) Solutions | Sheryians Cohort 2.0</title>
+    <!-- Google Fonts: Plus Jakarta Sans & Fira Code -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="site-wrapper">
+
+        <!-- Header -->
+        <header class="header">
+            <div class="breadcrumb">Episode 2 — Stage / Topic 11 / Task</div>
+            <h1>JavaScript Assignment Solutions (27-Oct-2025)</h1>
+            <p class="description">
+                Official Sheryians Cohort 2.0 assignment: 12 hands-on challenges covering Introduction, Linking, Console REPL, Variables, Logging, Strings, Statements, Comments, Expressions, Data Types, Special Values, aur Primitive vs Reference.
+            </p>
+        </header>
+
+        <main class="content">
+
+            <!-- ==========================================
+                 1. INTRODUCTION TO JAVASCRIPT
+                 ========================================== -->
+            <section class="section">
+                <div class="section-title">
+                    <span class="number">01</span>
+                    <h2>Introduction to JavaScript</h2>
+                </div>
+                <div class="task-card">
+                    <div class="task-question">
+                        <strong>Q1.1:</strong> Open any website &rarr; Inspect &rarr; Console &rarr; type <code>document.title</code><br>
+                        <strong>Q1.2:</strong> Try <code>alert("Hello from Sheryians!")</code><br>
+                        <strong>Q1.3:</strong> In your own words: "If HTML is skeleton, CSS is clothes — what is JS?"<br>
+                        <strong>Q1.4:</strong> Write one example of where you've seen JS being used.
+                    </div>
+                    
+                    <div class="answer-box">
+                        <p><strong>Answer 1.3:</strong> <em>JavaScript is the brain, nervous system, and muscles.</em> HTML structure banata hai, CSS look deta hai, aur JS webpage ko decision-making power aur movement deta hai.</p>
+                        <p><strong>Answer 1.4:</strong> E-commerce websites me <em>"Add to Cart"</em> click karne par bina page reload hue cart counter ka update hona, ya login popup ka smooth open hona.</p>
+                    </div>
+
+                    <div class="action-row">
+                        <button class="btn btn-primary" onclick="alert('Hello from Sheryians!')">Run: alert("Hello from Sheryians!")</button>
+                        <button class="btn btn-secondary" onclick="console.log('Current Page Title:', document.title)">Run: document.title in Console</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ==========================================
+                 2. LINKING JAVASCRIPT FILES
+                 ========================================== -->
+            <section class="section">
+                <div class="section-title">
+                    <span class="number">02</span>
+                    <h2>Linking JavaScript Files</h2>
+                </div>
+                <div class="task-card">
+                    <div class="task-question">
+                        <strong>Q2.1 - Q2.4:</strong> Linking JS file, testing <code>app.js</code>, placing script in <code>&lt;head&gt;</code> vs <code>&lt;body&gt;</code>, aur <code>defer</code> keyword ka use.
+                    </div>
+
+                    <div class="code-wrapper">
+                        <div class="code-header">
+                            <span class="terminal-dots"><span></span><span></span><span></span></span>
+                            <span class="file-label">index.html (Recommended Pattern)</span>
+                        </div>
+                        <pre><code>&lt;!-- Method 1: Using defer in &lt;head&gt; (Modern Best Practice) --&gt;
+&lt;script defer src="script.js"&gt;&lt;/script&gt;
+
+&lt;!-- Method 2: Bottom of &lt;body&gt; (Classic Standard) --&gt;
+&lt;script src="script.js"&gt;&lt;/script&gt;
+&lt;/body&gt;</code></pre>
+                    </div>
+
+                    <div class="answer-box">
+                        <p><strong>Observation:</strong> Agar bina <code>defer</code> ke script tag ko <code>&lt;head&gt;</code> me daal dein, toh HTML parse hone se pehle JS run ho jati hai, jisse DOM elements <code>null</code> milte hain. <code>defer</code> attribute lagane se script parallel download hoti hai par execute HTML DOM ready hone ke baad hi hoti hai.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ==========================================
+                 3. RUNNING JS IN BROWSER CONSOLE
+                 ========================================== -->
+            <section class="section">
+                <div class="section-title">
+                    <span class="number">03</span>
+                    <h2>Running JS in Browser Console</h2>
+                </div>
+                <div class="task-card">
+                    <div class="task-question">
+                        Test in Console: <code>2 + 2</code>, <code>alert("Hi")</code>, <code>prompt("Your name?")</code>, aur <code>let city = "Bhopal"; city</code>.
+                    </div>
+
+                    <div class="action-row">
+                        <button class="btn btn-sky" onclick="console.log('2 + 2 =', 2 + 2)">Calculate 2 + 2</button>
+                        <button class="btn btn-rose" onclick="alert('Hi')">Trigger alert("Hi")</button>
+                        <button class="btn btn-emerald" onclick="var n = prompt('Your name?'); console.log('Entered:', n);">Trigger prompt("Your name?")</button>
+                        <button class="btn btn-amber" onclick="let city = 'Bhopal'; console.log('City:', city);">Log city ("Bhopal")</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ==========================================
+                 4. VARIABLES AND KEYWORDS (var, let, const)
+                 ========================================== -->
+            <section class="section">
+                <div class="section-title">
+                    <span class="number">04</span>
+                    <h2>Variables and Keywords (var, let, const)</h2>
+                </div>
+                <div class="task-card">
+                    <div class="task-question">
+                        <strong>Q4.1 - Q4.5:</strong> Declare names with <code>var</code>, <code>let</code>, <code>const</code>, test re-assignment, block scope test inside <code>{}</code>, predict outputs, aur 3 use-cases of <code>const</code>.
+                    </div>
+
+                    <div class="code-wrapper">
+                        <div class="code-header">
+                            <span class="terminal-dots"><span></span><span></span><span></span></span>
+                            <span class="file-label">variables-test.js</span>
+                        </div>
+                        <pre><code>// 1. Declarations
+var a = "abhi";
+let b = "Sheryians";
+const c = "School";
+
+// 2. Re-assignment Test
+a = "Updated"; // Allowed
+b = "Updated"; // Allowed
+// c = "Updated"; // Uncaught TypeError: Assignment to constant variable
+
+// 3. Block Scope Test
+{
+    let blockVar = "Secret";
+}
+// console.log(blockVar); // Uncaught ReferenceError: blockVar is not defined</code></pre>
+                    </div>
+
+                    <div class="answer-box">
+                        <p><strong>3 Real-world Examples of <code>const</code>:</strong></p>
+                        <ul style="margin-left: 20px; line-height: 1.6;">
+                            <li><code>const PI = 3.14159;</code> &rarr; Fixed mathematical constant.</li>
+                            <li><code>const API_BASE_URL = "https://api.sheryians.com/v1";</code> &rarr; Immutable backend server endpoint.</li>
+                            <li><code>const MAX_RETRY_LIMIT = 3;</code> &rarr; Fixed configuration limit in business logic.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ==========================================
+                 5. LOGGING AND INTERACTION
+                 ========================================== -->
+            <section class="section">
+                <div class="section-title">
+                    <span class="number">05</span>
+                    <h2>Logging and Interaction (console, alert, prompt)</h2>
+                </div>
+                <div class="task-card">
+                    <div class="task-question">
+                        <strong>Q5.1 - Q5.4:</strong> Log details with <code>console.log/info/warn</code>, prompt name &rarr; alert welcome, log <code>typeof</code> user input, test <code>let age = prompt("Enter age:"); console.log(age + 5);</code> and observe.
+                    </div>
+
+                    <div class="action-row">
+                        <button class="btn btn-primary" onclick="testLoggingMethods()">Test log, info, warn</button>
+                        <button class="btn btn-emerald" onclick="testPromptAlert()">Prompt Name &rarr; Welcome Alert</button>
+                        <button class="btn btn-amber" onclick="testAgeCoercion()">Test Age + 5 (String Concatenation)</button>
+                    </div>
+
+                    <div class="answer-box" style="margin-top: 14px;">
+                        <p><strong>Observation on <code>age + 5</code>:</strong></p>
+                        <p>Jab user <code>20</code> enter karta hai, toh output <code>25</code> nahi balki <strong><code>"205"</code></strong> aata hai! Kyunki <code>prompt()</code> hamesha <strong>String</strong> return karta hai, aur JavaScript <code>+</code> operator dekh kar dono ko jodh (concatenate) deta hai. Correct math ke liye <code>Number(age) + 5</code> use karna padta hai.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ==========================================
+                 6. WORKING WITH STRINGS
+                 ========================================== -->
+            <section class="section">
+                <div class="section-title">
+                    <span class="number">06</span>
+                    <h2>Working with Strings</h2>
+                </div>
+                <div class="task-card">
+                    <div class="task-question">
+                        Given: <code>let msg = "I love Sheryians";</code><br>
+                        Test: <code>msg.slice(2, 6)</code>, <code>msg.split(" ")</code> word count, <code>msg.replace("love", "study at")</code>, template string, aur <code>msg.includes("love")</code>.
+                    </div>
+
+                    <div class="table-container">
+                        <table class="minimal-table">
+                            <thead>
+                                <tr>
+                                    <th>Operation</th>
+                                    <th>Code</th>
+                                    <th>Result</th>
+                                    <th>Prediction Explanation</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Slice</strong></td>
+                                    <td><code>msg.slice(2, 6)</code></td>
+                                    <td><code>"love"</code></td>
+                                    <td>Index 2 se shuru hokar index 5 tak (end index 6 exclude hota hai).</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Split &amp; Count</strong></td>
+                                    <td><code>msg.split(" ").length</code></td>
+                                    <td><code>3</code> words</td>
+                                    <td>Array banta hai <code>["I", "love", "Sheryians"]</code>, jiska length 3 hai.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Replace</strong></td>
+                                    <td><code>msg.replace("love", "study at")</code></td>
+                                    <td><code>"I study at Sheryians"</code></td>
+                                    <td>"love" word replace hokar "study at" ban jata hai.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Template Literal</strong></td>
+                                    <td><code>`Hey ${name}, welcome to JS!`</code></td>
+                                    <td><code>"Hey Abhi, welcome to JS!"</code></td>
+                                    <td>Backticks ke andar direct dynamic variable embed hota hai.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Includes</strong></td>
+                                    <td><code>msg.includes("love")</code></td>
+                                    <td><code>true</code></td>
+                                    <td>Case-sensitive check confirm karta hai ki word maujood hai.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ==========================================
+                 7. STATEMENTS AND SEMICOLONS
+                 ========================================== -->
+            <section class="section">
+                <div class="section-title">
+                    <span class="number">07</span>
+                    <h2>Statements and Semicolons</h2>
+                </div>
+                <div class="task-card">
+                    <div class="task-question">
+                        <strong>Q7.1:</strong> Remove semicolon and check if code still runs.<br>
+                        <strong>Q7.2:</strong> Combine two statements in one line without semicolon and see if it breaks.<br>
+                        <strong>Q7.3:</strong> Write 3 <code>console.log</code> statements without semicolons and predict output.
+                    </div>
+
+                    <div class="answer-box">
+                        <p><strong>Q7.1 Result:</strong> Code bina semicolon ke bhi perfectly run hota hai kyunki browser ka engine internally <strong>ASI (Automatic Semicolon Insertion)</strong> perform karta hai.</p>
+                        <p><strong>Q7.2 Result:</strong> <code>let x = 10 let y = 20</code> &rarr; <strong>Uncaught SyntaxError: Unexpected identifier 'let'</strong>! Single line me multiple statements likhte waqt semicolon lagana mandatory hai: <code>let x = 10; let y = 20;</code>.</p>
+                        <p><strong>Q7.3 Result:</strong> 3 alag-alag lines par likhe hue <code>console.log</code> bina semicolon ke bhi sequentially clean execute hote hain.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ==========================================
+                 8. COMMENTS
+                 ========================================== -->
+            <section class="section">
+                <div class="section-title">
+                    <span class="number">08</span>
+                    <h2>Comments in JavaScript</h2>
+                </div>
+                <div class="task-card">
+                    <div class="code-wrapper">
+                        <div class="code-header">
+                            <span class="terminal-dots"><span></span><span></span><span></span></span>
+                            <span class="file-label">comments-demo.js</span>
+                        </div>
+                        <pre><code>// 1. Single-line comment: Abhishek
+let student = "Abhishek";
+
+/* 
+   2. Three-line comment:
+   This JavaScript script executes the entire
+   Sheryians Coding School Cohort 2.0 assignment
+   covering fundamental language features.
+*/
+
+// 3. Hide one console.log using comment:
+// console.log("Ye message print nahi hoga!");
+console.log("Ye message print hoga!");</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ==========================================
+                 9. EXPRESSIONS VS STATEMENTS
+                 ========================================== -->
+            <section class="section">
+                <div class="section-title">
+                    <span class="number">09</span>
+                    <h2>Expressions vs Statements</h2>
+                </div>
+                <div class="task-card">
+                    <div class="task-question">
+                        <strong>Q9.1 - Q9.5:</strong> Type <code>5 + 10</code>, type <code>let x = 10;</code>, which gives value immediately? Test <code>let y = (5 + 10) * 2; console.log(y)</code>, aur 1-line difference.
+                    </div>
+
+                    <div class="table-container">
+                        <table class="minimal-table">
+                            <thead>
+                                <tr>
+                                    <th>Code Snippet</th>
+                                    <th>Type</th>
+                                    <th>Console REPL Output</th>
+                                    <th>Reason</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>5 + 10</code></td>
+                                    <td>Expression</td>
+                                    <td><code>15</code></td>
+                                    <td>Expression turant execute hokar concrete value deta hai.</td>
+                                </tr>
+                                <tr>
+                                    <td><code>let x = 10;</code></td>
+                                    <td>Statement</td>
+                                    <td><code>undefined</code></td>
+                                    <td>Statement sirf ek action/order perform karta hai, value return nahi karta.</td>
+                                </tr>
+                                <tr>
+                                    <td><code>let y = (5 + 10) * 2;</code></td>
+                                    <td>Statement containing Expression</td>
+                                    <td><code>console.log(y) &rarr; 30</code></td>
+                                    <td><code>(5 + 10) * 2</code> expression 30 bana, jo variable <code>y</code> me store hua.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="callout-box callout-blue">
+                        <strong>One-Line Difference:</strong> <em>"An Expression produces/evaluates to a value, while a Statement performs an action/instruction."</em>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ==========================================
+                 10. DATA TYPES
+                 ========================================== -->
+            <section class="section">
+                <div class="section-title">
+                    <span class="number">10</span>
+                    <h2>Data Types (typeof Audit)</h2>
+                </div>
+                <div class="task-card">
+                    <div class="task-question">
+                        Given variables: <code>age</code>, <code>name</code>, <code>isStudent</code>, <code>skills</code>, <code>user</code>, <code>x</code>, <code>y</code>, <code>z</code>. Log typeof each, change one value and recheck, aur number + string test.
+                    </div>
+
+                    <div class="table-container">
+                        <table class="minimal-table">
+                            <thead>
+                                <tr>
+                                    <th>Variable</th>
+                                    <th>Value Assigned</th>
+                                    <th><code>typeof</code> Result</th>
+                                    <th>Note</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td><code>age</code></td><td><code>25</code></td><td><code>"number"</code></td><td>Integers &amp; floats are both numbers</td></tr>
+                                <tr><td><code>name</code></td><td><code>"Abhi"</code></td><td><code>"string"</code></td><td>Text sequence</td></tr>
+                                <tr><td><code>isStudent</code></td><td><code>true</code></td><td><code>"boolean"</code></td><td>Boolean flag</td></tr>
+                                <tr><td><code>skills</code></td><td><code>["JS", "HTML"]</code></td><td><code>"object"</code></td><td>Arrays are specialized objects</td></tr>
+                                <tr><td><code>user</code></td><td><code>{ city: "Bhopal" }</code></td><td><code>"object"</code></td><td>Key-value dictionary</td></tr>
+                                <tr><td><code>x</code></td><td><code>null</code></td><td><code>"object"</code></td><td>JS legacy bug</td></tr>
+                                <tr><td><code>y</code></td><td><code>undefined</code></td><td><code>"undefined"</code></td><td>Declared without assignment</td></tr>
+                                <tr><td><code>z</code></td><td><code>Symbol("id")</code></td><td><code>"symbol"</code></td><td>Unique primitive identifier</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="answer-box">
+                        <p><strong>Dynamic Typing Test:</strong> <code>age = "Twenty Five";</code> karne par <code>typeof age</code> turant <code>"string"</code> ban jata hai.</p>
+                        <p><strong>Number + String Test:</strong> <code>25 + "5"</code> gives <code>"255"</code> (String coercion).</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ==========================================
+                 11. SPECIAL VALUES
+                 ========================================== -->
+            <section class="section">
+                <div class="section-title">
+                    <span class="number">11</span>
+                    <h2>Special Values (undefined, null, NaN, Infinity)</h2>
+                </div>
+                <div class="task-card">
+                    <div class="task-question">
+                        Log <code>1 / 0</code>, <code>0 / 0</code>, <code>Number("abc")</code>, <code>undefined + 1</code>. Write what appears, aur 1-line explanation of null vs undefined.
+                    </div>
+
+                    <div class="table-container">
+                        <table class="minimal-table">
+                            <thead>
+                                <tr>
+                                    <th>Operation</th>
+                                    <th>Result Output</th>
+                                    <th>Typeof Result</th>
+                                    <th>Why it occurs?</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>1 / 0</code></td>
+                                    <td><code>Infinity</code></td>
+                                    <td><code>"number"</code></td>
+                                    <td>Division by zero exceeds mathematical limit.</td>
+                                </tr>
+                                <tr>
+                                    <td><code>0 / 0</code></td>
+                                    <td><code>NaN</code></td>
+                                    <td><code>"number"</code></td>
+                                    <td>0 divided by 0 is mathematically undefined (Not a Number).</td>
+                                </tr>
+                                <tr>
+                                    <td><code>Number("abc")</code></td>
+                                    <td><code>NaN</code></td>
+                                    <td><code>"number"</code></td>
+                                    <td>Non-numeric characters cannot convert into a number.</td>
+                                </tr>
+                                <tr>
+                                    <td><code>undefined + 1</code></td>
+                                    <td><code>NaN</code></td>
+                                    <td><code>"number"</code></td>
+                                    <td><code>undefined</code> coerces to <code>NaN</code> in arithmetic addition.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="callout-box callout-amber">
+                        <strong>Null vs Undefined (One-Line Difference):</strong><br>
+                        <em>"<code>undefined</code> means a variable has been declared but not assigned any value (system default), whereas <code>null</code> is an intentional assignment representing an explicitly empty or non-existent value (developer's choice)."</em>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ==========================================
+                 12. PRIMITIVE VS REFERENCE
+                 ========================================== -->
+            <section class="section">
+                <div class="section-title">
+                    <span class="number">12</span>
+                    <h2>Primitive vs Reference (Relative) Types</h2>
+                </div>
+                <div class="task-card">
+                    <div class="task-question">
+                        <strong>Q12.1:</strong> <code>let x = 5; let y = x; y = 10; console.log(x, y)</code><br>
+                        <strong>Q12.2:</strong> <code>let obj1 = { name: "Abhi" }; let obj2 = obj1; obj2.name = "Sheryians"; console.log(obj1.name)</code><br>
+                        <strong>Q12.3:</strong> Observe which one changes together.<br>
+                        <strong>Q12.4:</strong> Visualize with memory boxes (Stack vs Heap).
+                    </div>
+
+                    <div class="concept-grid">
+                        <div class="concept-item">
+                            <span class="concept-tag tag-css">Primitive (Call by Value)</span>
+                            <h4>Stack Memory Box</h4>
+                            <p><code>x = 5</code> aur <code>y = 10</code>. Har variable ka apna alag independent memory box hota hai. <code>y</code> ko change karne se <code>x</code> par koi farak nahi padta.</p>
+                            <p><strong>Result:</strong> <code>x = 5, y = 10</code></p>
+                        </div>
+                        <div class="concept-item highlight">
+                            <span class="concept-tag tag-js">Reference (Call by Reference)</span>
+                            <h4>Heap Memory Pointer</h4>
+                            <p><code>obj1</code> aur <code>obj2</code> dono Stack me sirf memory address store karte hain jo Heap ke same ek hi object <code>{ name: ... }</code> ko point karta hai.</p>
+                            <p><strong>Result:</strong> <code>obj1.name</code> becomes <strong><code>"Sheryians"</code></strong>!</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <span>Sheryians Coding School • Cohort 2.0 • Assignment Solution</span>
+            <span>Abhishek</span>
+        </footer>
+
+    </div>
+
+    <!-- External Script -->
+    <script src="script.js"></script>
+
+</body>
+</html>
