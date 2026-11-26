@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Topic 12: Loops & Conditionals in JavaScript | Sheryians Cohort 2.0</title>
+    <!-- Google Fonts: Plus Jakarta Sans & Fira Code -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="site-wrapper">
+
+        <!-- Header -->
+        <header class="header">
+            <div class="breadcrumb">Episode 2 — Stage / Topic 12</div>
+            <h1>Loops &amp; Conditionals in JavaScript</h1>
+            <p class="description">
+                Control Flow mastery: decision making (if, else-if, ternary, switch, truthy &amp; falsy values), standard iteration (for, while, do-while), modern iterators (forEach, for-in, for-of), loop controls (break, continue), aur deep recursion logic.
+            </p>
+        </header>
+
+        <main class="content">
+
+            <!-- ==========================================
+                 01. UNDERSTANDING CONDITION OPERATORS (if, else, else-if)
+                 ========================================== -->
+            <section class="section">
+                <div class="section-title">
+                    <span class="number">01</span>
+                    <h2>Conditionals in JavaScript: if, else, else-if</h2>
+                </div>
+
+                <p>
+                    JavaScript me <strong>Conditionals</strong> ka use code ka flow control karne ke liye kiya jata hai. Inki madad se program alag-alag situations (conditions) ke aadhar par alag-alag decisions leta hai.
+                </p>
+
+                <div class="concept-grid">
+                    <div class="concept-item">
+                        <span class="concept-tag tag-sky">if Block</span>
+                        <h4>Single Decision</h4>
+                        <p>Agar di gayi condition <code>true</code> hoti hai, tabhi iske andar ka code block execute hota hai.</p>
+                    </div>
+                    <div class="concept-item">
+                        <span class="concept-tag tag-amber">else Block</span>
+                        <h4>Fallback Alternative</h4>
+                        <p>Jab <code>if</code> condition <code>false</code> ho jaye, tab <code>else</code> block automatically run hota hai.</p>
+                    </div>
+                    <div class="concept-item highlight">
+                        <span class="concept-tag tag-indigo">else-if Ladder</span>
+                        <h4>Multiple Conditions</h4>
+                        <p>Jab do se zyada conditions check karni ho (e.g. grading system: A, B, C, Fail).</p>
+                    </div>
+                </div>
+
+                <div class="code-wrapper">
+                    <div class="code-header">
+                        <span class="terminal-dots"><span></span><span></span><span></span></span>
+                        <span class="file-label">conditionals-demo.js</span>
+                    </div>
+                    <pre><code>let marks = 82;
+
+if (marks &gt;= 90) {
+    console.log("Grade: A+");
+} else if (marks &gt;= 75) {
+    console.log("Grade: A"); // Ye execute hoga!
+} else if (marks &gt;= 60) {
+    console.log("Grade: B");
+} else {
+    console.log("Grade: Needs Improvement");
+}</code></pre>
+                </div>
+            </section>
+
+            <!-- ==========================================
+                 02. TERNARY OPERATOR
+                 ========================================== -->
+            <section class="section">
+                <div class="section-title">
+                    <span class="number">02</span>
+                    <h2>Ternary Operator (? :)</h2>
+                </div>
+
+                <p>
+                    Ternary Operator simple <code>if-else</code> statement ka ek-line clean alternative hota hai. Isme 3 operands hote hain: <em>Condition, Expression if True, aur Expression if False</em>.
+                </p>
+
+                <div class="table-container">
+                    <table class="minimal-table">
+                        <thead>
+                            <tr>
+                                <th>Syntax</th>
+                                <th>Traditional if-else</th>
+                                <th>Ternary Equivalent</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>condition ? expr1 : expr2</code></td>
+                                <td>
+                                    <code>if (age &gt;= 18) { status = "Adult"; } else { status = "Minor"; }</code>
+                                </td>
+                                <td>
+                                    <code>let status = age &gt;= 18 ? "Adult" : "Minor";</code>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="code-wrapper">
+                    <div class="code-header">
+                        <span class="terminal-dots"><span></span><span></span><span></span></span>
+                        <span class="file-label">ternary-demo.js</span>
+                    </div>
+                    <pre><code>let userRole = "admin";
+let welcomeMsg = userRole === "admin" ? "Dashboard Access Granted" : "Welcome, Guest!";
+console.log(welcomeMsg); // "Dashboard Access Granted"
+
+// Nested / Chained Ternary (Multiple Conditions):
+let score = 85;
+let result = score &gt;= 90 ? "Excellent" : score &gt;= 70 ? "Good" : "Average";
+console.log(result); // "Good"</code></pre>
+                </div>
+            </section>
+
+            <!-- ==========================================
+                 03. SWITCH STATEMENT
+                 ========================================== -->
+            <section class="section">
+                <div class="section-title">
+                    <span class="number">03</span>
+                    <h2>The switch Statement</h2>
+                </div>
+
+                <p>
+                    Jab kisi ek specific variable ki value ko multiple options (cases) ke sath compare karna ho, toh lamba <code>if-else</code> likhne ke bajaye <code>switch</code> statement use karna zyada readable aur fast hota hai.
+                </p>
+
+                <div class="callout-box callout-amber">
+                    <strong>Crucial Rule: break aur Fallthrough kya hai?</strong><br>
+                    Har <code>case</code> ke end me <code>break;</code> lagana zaroori hota hai. Agar aap <code>break;</code> lagana bhool jaate ho, toh agle saare cases bina condition match hue bhi execute ho jaate hain — is behavior ko <strong>Fallthrough</strong> kehte hain!
+                </div>
+
+                <div class="code-wrapper">
+                    <div class="code-header">
+                        <span class="terminal-dots"><span></span><span></span><span></span></span>
+                        <span class="file-label">switch-demo.js</span>
+                    </div>
+                    <pre><code>let day = 3;
+
+switch (day) {
+    case 1:
+        console.log("Monday");
+        break;
+    case 2:
+        console.log("Tuesday");
+        break;
+    case 3:
+        console.log("Wednesday"); // Match hua -> Ye execute hoga!
+        break;
+    case 4:
+        console.log("Thursday");
+        break;
+    case 5:
+        console.log("Friday");
+        break;
+    default:
+        console.log("Weekend!"); // Agar koi case match na ho
+        break;
+}</code></pre>
+                </div>
+            </section>
+
+            <!-- ==========================================
+                 04. TRUTHY & FALSY VALUES
+                 ========================================== -->
+            <section class="section">
+                <div class="section-title">
+                    <span class="number">04</span>
+                    <h2>Truthy &amp; Falsy Values in JavaScript</h2>
+                </div>
+
+                <p>
+                    JavaScript me jab bhi aap kisi condition (<code>if</code>, ternary, ya <code>while</code>) me koi non-boolean value pass karte hain, JS engine automatically us value ko <code>true</code> ya <code>false</code> me convert karta hai. Is basis par har value do categories me aati hai: <strong>Truthy</strong> aur <strong>Falsy</strong>.
+                </p>
+
+                <div class="concept-grid">
+                    <div class="concept-item">
+                        <span class="concept-tag tag-rose">Falsy Values (Sirf Ye 7)</span>
+                        <h4>Jo False Ban Jaati Hain</h4>
+                        <p><code>false</code>, <code>0</code> (and <code>-0</code> / <code>0n</code>), <code>""</code> (empty string), <code>null</code>, <code>undefined</code>, <code>NaN</code>, aur <code>document.all</code>.</p>
+                    </div>
+                    <div class="concept-item highlight">
+                        <span class="concept-tag tag-emerald">Truthy Values (Baaki Sab!)</span>
+                        <h4>Jo True Ban Jaati Hain</h4>
+                        <p>Upar ki 7 falsy values ko chhod kar JS me <strong>har cheez truthy hai</strong> — jaise <code>"0"</code>, <code>"false"</code>, <code>" "</code> (space), <code>[]</code>, aur <code>{}</code>!</p>
+                    </div>
+                </div>
+
+                <div class="callout-box callout-amber">
+                    <strong>Classic Interview Traps (Dhyan Rakhna!):</strong><br>
+                    <code>""</code> (empty string) <strong>Falsy</strong> hai, par <code>" "</code> (ek space) ya <code>"false"</code> string <strong>Truthy</strong> hoti hai! Isi tarah empty array <code>[]</code> aur empty object <code>{}</code> bhi <strong>Truthy</strong> hote hain.
+                </div>
+
+                <div class="code-wrapper">
+                    <div class="code-header">
+                        <span class="terminal-dots"><span></span><span></span><span></span></span>
+                        <span class="file-label">truthy-falsy-demo.js</span>
+                    </div>
+                    <pre><code>// Check karne ke liye Boolean(value) ya if() use kar sakte hain:
+if ("") {
+    console.log("Ye nahi chalega"); // "" is Falsy
+} else {
+    console.log("Empty string Falsy hai!");
+}
+
+if ("0") {
+    console.log('"0" ek non-empty string hai -> Truthy!'); // Ye chalega!
+}
+
+if ([]) {
+    console.log("Empty array [] bhi Truthy hota hai!"); // Ye chalega!
+}
+
+console.log(Boolean(0));         // false
+console.log(Boolean(null));      // false
+console.log(Boolean(undefined)); // false
+console.log(Boolean(NaN));       // false
+console.log(Boolean("false"));   // true (kyunki string khali nahi hai)</code></pre>
+                </div>
+            </section>
+
+            <!-- ==========================================
+                 05. THE FOR LOOP
+                 ========================================== -->
+            <section class="section">
+                <div class="section-title">
+                    <span class="number">05</span>
+                    <h2>The for Loop in JavaScript</h2>
+                </div>
+
+                <p>
+                    <strong>Loop kya hota hai?</strong> Jab hume kisi kaam ko baar-baar repeat karna ho bina baar-baar code copy-paste kiye, tab hum Loop ka use karte hain.
+                </p>
+
+                <p>
+                    <code>for</code> loop sabse common loop hai jisme 3 parts ek hi line me aate hain:
+                    <strong>Initialization</strong>, <strong>Condition</strong>, aur <strong>Increment / Decrement</strong>.
+                </p>
+
+                <div class="code-wrapper">
+                    <div class="code-header">
+                        <span class="terminal-dots"><span></span><span></span><span></span></span>
+                        <span class="file-label">for-loop-demo.js</span>
+                    </div>
+                    <pre><code>// Syntax: for (initialization; condition; increment/decrement)
+for (let i = 1; i &lt;= 5; i++) {
+    console.log("Iteration number:", i);
+}
+
+// Dry Run:
+// i = 1 (1 &lt;= 5 true)  -&gt; print 1, i badhkar 2 hua
+// i = 2 (2 &lt;= 5 true)  -&gt; print 2, i badhkar 3 hua
+// i = 3 (3 &lt;= 5 true)  -&gt; print 3, i badhkar 4 hua
+// i = 4 (4 &lt;= 5 true)  -&gt; print 4, i badhkar 5 hua
+// i = 5 (5 &lt;= 5 true)  -&gt; print 5, i badhkar 6 hua
+// i = 6 (6 &lt;= 5 false) -&gt; Loop terminated!</code></pre>
+                </div>
+            </section>
+
+            <!-- ==========================================
+                 06. THE WHILE LOOP
+                 ========================================== -->
+            <section class="section">
+                <div class="section-title">
+                    <span class="number">06</span>
+                    <h2>The while Loop in JavaScript</h2>
+                </div>
+
+                <p>
+                    <code>while</code> loop ek <strong>Entry-Controlled Loop</strong> hai. Iska matlab hai ki code run hone se pehle hi condition check hoti hai. Agar shuru me hi condition <code>false</code> hui, toh loop ek bar bhi execute nahi hoga.
+                </p>
+
+                <div class="callout-box callout-blue">
+                    <strong>for loop vs while loop kab use karein?</strong><br>
+                    Jab hume <strong>pehle se pata ho</strong> ki loop kitni baar chalana hai (e.g. 10 bar), tab <code>for</code> loop best hota hai.<br>
+                    Jab hume <strong>iterations ka count nahi pata</strong> ho par sirf ek condition pata ho (e.g. jab tak user correct password na dale), tab <code>while</code> loop best hota hai.
+                </div>
+
+                <div class="code-wrapper">
+                    <div class="code-header">
+                        <span class="terminal-dots"><span></span><span></span><span></span></span>
+                        <span class="file-label">while-loop-demo.js</span>
+                    </div>
+                    <pre><code>let count = 1; // Initialization bahar hota hai
+
+while (count &lt;= 3) { // Condition check pehle hoti hai
+    console.log("Count is:", count);
+    count++; // Increment/Decrement loop ke andar manually karna padta hai
+}
+// Output: 1, 2, 3</code></pre>
+                </div>
+            </section>
+
+            <!-- ==========================================
+                 07. THE DO...WHILE LOOP
+                 ========================================== -->
+            <section class="section">
+                <div class="section-title">
+                    <span class="number">07</span>
+                    <h2>The do...while Loop in JavaScript</h2>
+                </div>
+
+                <p>
+                    <code>do...while</code> loop ek <strong>Exit-Controlled Loop</strong> hai. Iski sabse badi khasiyat ye hai ki ye <strong>kam se kam ek baar zaroor chalta hai</strong>, chahe condition pehle se hi <code>false</code> kyun na ho!
+                </p>
+
+                <div class="code-wrapper">
+                    <div class="code-header">
+                        <span class="terminal-dots"><span></span><span></span><span></span></span>
+                        <span class="file-label">do-while-demo.js</span>
+                    </div>
+                    <pre><code>let num = 10;
+
+do {
+    console.log("Ye kam se kam 1 bar zaroor chalega! Num is:", num);
+    num++;
+} while (num &lt; 5); // 11 &lt; 5 false hai, par pehli bar execute ho chuka!</code></pre>
+                </div>
+            </section>
+
+            <!-- ==========================================
+                 08. FOREACH IN JAVASCRIPT
+                 ========================================== -->
+            <section class="section">
+                <div class="section-title">
+                    <span class="number">08</span>
+                    <h2>forEach in JavaScript</h2>
+                </div>
+
+                <p>
+                    <code>forEach</code> Arrays ka ek built-in higher-order method hai. Ye array ke har ek element par ek callback function ko run karta hai. Isme hume index ya length manage karne ki zaroorat nahi padti.
+                </p>
+
+                <div class="callout-box callout-amber">
+                    <strong>Note:</strong> <code>forEach</code> kuch return nahi karta (iska return value <code>undefined</code> hota hai) aur iske andar <code>break</code> ya <code>continue</code> kaam nahi karta!
+                </div>
+
+                <div class="code-wrapper">
+                    <div class="code-header">
+                        <span class="terminal-dots"><span></span><span></span><span></span></span>
+                        <span class="file-label">foreach-demo.js</span>
+                    </div>
+                    <pre><code>const techSkills = ["HTML", "CSS", "JavaScript", "SASS"];
+
+// element, index, complete array
+techSkills.forEach(function(skill, index) {
+    console.log(`Index ${index}: ${skill}`);
+});
+
+// Arrow function syntax (ES6):
+techSkills.forEach((skill) => console.log("Skill:", skill));</code></pre>
+                </div>
+            </section>
+
+            <!-- ==========================================
+                 09. FOR...IN LOOP
+                 ========================================== -->
+            <section class="section">
+                <div class="section-title">
+                    <span class="number">09</span>
+                    <h2>The for...in Loop (Iterating Objects)</h2>
+                </div>
+
+                <p>
+                    <code>for...in</code> loop kisi <strong>Object ki Keys (Properties)</strong> ke upar iterate (loop) karne ke liye banaya gaya hai.
+                </p>
+
+                <div class="code-wrapper">
+                    <div class="code-header">
+                        <span class="terminal-dots"><span></span><span></span><span></span></span>
+                        <span class="file-label">for-in-demo.js</span>
+                    </div>
+                    <pre><code>const student = {
+    name: "Abhishek",
+    cohort: "2.0",
+    city: "Bhopal",
+    language: "JavaScript"
+};
+
+for (let key in student) {
+    // key = property name, student[key] = value
+    console.log(`${key} : ${student[key]}`);
+}
+
+// Output:
+// name : Abhishek
+// cohort : 2.0
+// city : Bhopal
+// language : JavaScript</code></pre>
+                </div>
+            </section>
+
+            <!-- ==========================================
+                 10. FOR...OF LOOP
+                 ========================================== -->
+            <section class="section">
+                <div class="section-title">
+                    <span class="number">10</span>
+                    <h2>The for...of Loop (Iterating Values)</h2>
+                </div>
+
+                <p>
+                    Modern ES6 me introduce hua <code>for...of</code> loop <strong>Iterables (Arrays, Strings, Maps, Sets)</strong> ki direct <strong>Values</strong> par loop karne ke liye use hota hai.
+                </p>
+
+                <div class="table-container">
+                    <table class="minimal-table">
+                        <thead>
+                            <tr>
+                                <th>Loop</th>
+                                <th>Main Purpose</th>
+                                <th>Kya deta hai?</th>
+                                <th>Best Used For</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>for...in</code></td>
+                                <td>Objects ke liye</td>
+                                <td><strong>Keys</strong> (property names) deta hai</td>
+                                <td>Objects <code>{}</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>for...of</code></td>
+                                <td>Iterables ke liye</td>
+                                <td>Direct <strong>Values</strong> deta hai</td>
+                                <td>Arrays <code>[]</code>, Strings</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="code-wrapper">
+                    <div class="code-header">
+                        <span class="terminal-dots"><span></span><span></span><span></span></span>
+                        <span class="file-label">for-of-demo.js</span>
+                    </div>
+                    <pre><code>// 1. Array ke upar for...of:
+const fruits = ["Apple", "Mango", "Banana"];
+for (let item of fruits) {
+    console.log("Fruit:", item); // Direct value milti hai!
+}
+
+// 2. String ke upar for...of (Character by character):
+const word = "Sheryians";
+for (let char of word) {
+    console.log(char); // 'S', 'h', 'e', 'r'...
+}</code></pre>
+                </div>
+            </section>
+
+            <!-- ==========================================
+                 11. LOOP CONTROL STATEMENTS: BREAK & CONTINUE
+                 ========================================== -->
+            <section class="section">
+                <div class="section-title">
+                    <span class="number">11</span>
+                    <h2>Loop Control Statements: break &amp; continue</h2>
+                </div>
+
+                <p>
+                    Loops ke natural execution flow ko modify karne ke liye do keywords use hote hain:
+                </p>
+
+                <div class="concept-grid">
+                    <div class="concept-item">
+                        <span class="concept-tag tag-rose">break</span>
+                        <h4>Stop &amp; Exit Immediately</h4>
+                        <p>Loop ko turant wahi par khatam karke loop se bahar nikal deta hai.</p>
+                    </div>
+                    <div class="concept-item highlight">
+                        <span class="concept-tag tag-emerald">continue</span>
+                        <h4>Skip Current &amp; Next Step</h4>
+                        <p>Sirf current iteration ko skip karke agle round (iteration) par jump karta hai.</p>
+                    </div>
+                </div>
+
+                <div class="code-wrapper">
+                    <div class="code-header">
+                        <span class="terminal-dots"><span></span><span></span><span></span></span>
+                        <span class="file-label">break-continue-demo.js</span>
+                    </div>
+                    <pre><code>// 1. break Example: 3 aate hi loop band ho jayega
+for (let i = 1; i &lt;= 5; i++) {
+    if (i === 3) {
+        console.log("Breaking loop at 3!");
+        break;
+    }
+    console.log("break test i:", i);
+}
+// Output: 1, 2, "Breaking loop at 3!" (4 aur 5 nahi aayenge)
+
+// 2. continue Example: 3 ko skip karke 4 aur 5 chalega
+for (let j = 1; j &lt;= 5; j++) {
+    if (j === 3) {
+        console.log("Skipping 3!");
+        continue; // 3 ke liye neeche ka code run nahi hoga
+    }
+    console.log("continue test j:", j);
+}
+// Output: 1, 2, "Skipping 3!", 4, 5</code></pre>
+                </div>
+            </section>
+
+            <!-- ==========================================
+                 12. RECURSION IN JAVASCRIPT
+                 ========================================== -->
+            <section class="section">
+                <div class="section-title">
+                    <span class="number">12</span>
+                    <h2>Recursion in JavaScript</h2>
+                </div>
+
+                <p>
+                    <strong>Recursion kya hai?</strong> Jab koi function <strong>khud apne aap ko call kare</strong> kisi problem ko chhote hisson me todne ke liye, use Recursion bolte hain.
+                </p>
+
+                <div class="concept-grid">
+                    <div class="concept-item">
+                        <span class="concept-tag tag-rose">1. Base Case (Rukne Ki Shart)</span>
+                        <h4>Must Have Stop Condition</h4>
+                        <p>Wo condition jahan par function khud ko call karna band kar deta hai. Agar Base Case na ho, toh infinite loop ban jayega!</p>
+                    </div>
+                    <div class="concept-item highlight">
+                        <span class="concept-tag tag-indigo">2. Recursive Step</span>
+                        <h4>Function Calling Itself</h4>
+                        <p>Har step par input ko chhota karke function dubara call hota hai taaki wo Base Case ki taraf pahuche.</p>
+                    </div>
+                </div>
+
+                <div class="callout-box callout-amber">
+                    <strong>Stack Overflow Kya Hai?</strong><br>
+                    Har function call JavaScript ke <strong>Call Stack</strong> me memory leti hai. Agar hum Base Case likhna bhool jayein, toh function infinite times call hota rahega aur browser ka Call Stack bhar jayega, jisse <code>RangeError: Maximum call stack size exceeded</code> (Stack Overflow) crash ho jata hai!
+                </div>
+
+                <div class="code-wrapper">
+                    <div class="code-header">
+                        <span class="terminal-dots"><span></span><span></span><span></span></span>
+                        <span class="file-label">recursion-demo.js</span>
+                    </div>
+                    <pre><code>// Classic Example 1: Countdown from N to 1
+function countDown(n) {
+    // 1. BASE CASE (Rukne ka rule)
+    if (n &lt;= 0) {
+        console.log("Done!");
+        return;
+    }
+
+    console.log(n);
+    // 2. RECURSIVE CALL (Naya chhota input)
+    countDown(n - 1);
+}
+countDown(3); // Prints: 3, 2, 1, "Done!"
+
+// Classic Example 2: Factorial of a Number (5! = 5 * 4 * 3 * 2 * 1)
+function factorial(n) {
+    if (n === 1 || n === 0) return 1; // Base case
+    return n * factorial(n - 1);       // Recursive step
+}
+console.log("Factorial of 5:", factorial(5)); // 120</code></pre>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <span>Sheryians Coding School • Cohort 2.0</span>
+            <span>Abhishek</span>
+        </footer>
+
+    </div>
+
+    <!-- External Script -->
+    <script src="script.js"></script>
+
+</body>
+</html>

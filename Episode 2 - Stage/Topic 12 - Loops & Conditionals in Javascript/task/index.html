@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Assignment (29-Oct-2025) Solutions | Sheryians Cohort 2.0</title>
+    <!-- Google Fonts: Plus Jakarta Sans & Fira Code -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="site-wrapper">
+
+        <!-- Header -->
+        <header class="header">
+            <div class="breadcrumb">Episode 2 — Stage / Topic 12 / Task</div>
+            <h1>JavaScript Assignment Solutions (29-Oct-2025)</h1>
+            <p class="description">
+                Official Sheryians Cohort 2.0 assignment: Complete solutions covering Basic Operators, Variable &amp; Function Hoisting, aur Conditionals (if-else, Ternary, switch-case).
+            </p>
+        </header>
+
+        <main class="content">
+
+            <!-- ==========================================
+                 PART 1: BASIC OPERATORS
+                 ========================================== -->
+            <section class="section">
+                <div class="section-title">
+                    <span class="number">01</span>
+                    <h2>Basic Operators (Arithmetic, Assignment, Increment, Logical, Bitwise)</h2>
+                </div>
+
+                <div class="task-card">
+                    <div class="task-question">
+                        <strong>(a) Arithmetic:</strong> <code>a = 10, b = 3</code>. Log <code>a + b</code>, <code>a - b</code>, <code>a * b</code>, <code>a / b</code>, <code>a % b</code>.<br>
+                        <strong>(b) Assignment:</strong> <code>let x = 5; x = x + 3;</code> Rewrite using <code>+=</code>, <code>-=</code>, <code>*=</code>, <code>/=</code>.<br>
+                        <strong>(c) Increment/Decrement:</strong> <code>let count = 5;</code> Test <code>count++</code> and <code>count--</code> before &amp; after.<br>
+                        <strong>(d) Equality:</strong> Compare <code>5 == "5"</code> vs <code>5 === "5"</code>.<br>
+                        <strong>(e) Comparison:</strong> Check if 10 is &gt; 5, &lt; 20, and == 10.<br>
+                        <strong>(f) Logical:</strong> <code>true &amp;&amp; false</code>, <code>true || false</code>, <code>!(true)</code>.<br>
+                        <strong>(g) Predict:</strong> <code>5 &gt; 3 &amp;&amp; 10 &gt; 8</code>, <code>5 &gt; 3 || 10 &lt; 8</code>.<br>
+                        <strong>(h) Bitwise:</strong> Evaluate <code>5 &amp; 1</code> and <code>5 | 1</code>.
+                    </div>
+
+                    <div class="table-container">
+                        <table class="minimal-table">
+                            <thead>
+                                <tr>
+                                    <th>Sub-task</th>
+                                    <th>Code / Expression</th>
+                                    <th>Output Result</th>
+                                    <th>Concept &amp; Explanation</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>(a) Arithmetic</strong></td>
+                                    <td><code>10 + 3</code>, <code>10 - 3</code>, <code>10 * 3</code>, <code>10 / 3</code>, <code>10 % 3</code></td>
+                                    <td><code>13, 7, 30, 3.333..., 1</code></td>
+                                    <td><code>%</code> (Modulus) remainder deta hai: 10 ko 3 se divide karne par 1 bachta hai.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>(b) Assignment</strong></td>
+                                    <td><code>x += 3</code>, <code>x -= 3</code>, <code>x *= 3</code>, <code>x /= 3</code></td>
+                                    <td>Shorthand syntax</td>
+                                    <td><code>x += 3</code> ka exact matlab hota hai <code>x = x + 3</code>.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>(c) Post-Increment</strong></td>
+                                    <td><code>console.log(count++)</code></td>
+                                    <td>Logs <code>5</code>, then value becomes <code>6</code></td>
+                                    <td>Post-increment ka rule: <em>"Pehle value use karo, baad me memory me 1 badhao!"</em></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>(d) Equality</strong></td>
+                                    <td><code>5 == "5"</code> vs <code>5 === "5"</code></td>
+                                    <td><code>true</code> vs <code>false</code></td>
+                                    <td><code>==</code> sirf value check karta hai (type coercion), <code>===</code> value aur data type dono check karta hai.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>(e) Multi-Check</strong></td>
+                                    <td><code>10 &gt; 5 &amp;&amp; 10 &lt; 20 &amp;&amp; 10 === 10</code></td>
+                                    <td><code>true</code></td>
+                                    <td>Teeno conditions satisfy hoti hain.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>(f) &amp; (g) Logical</strong></td>
+                                    <td><code>5 &gt; 3 &amp;&amp; 10 &gt; 8</code><br><code>5 &gt; 3 || 10 &lt; 8</code></td>
+                                    <td><code>true</code><br><code>true</code></td>
+                                    <td><code>&amp;&amp;</code> me dono true hone chahiye.<br><code>||</code> me koi ek bhi true ho toh result true hota hai.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>(h) Bitwise</strong></td>
+                                    <td><code>5 &amp; 1</code><br><code>5 | 1</code></td>
+                                    <td><code>1</code><br><code>5</code></td>
+                                    <td>Binary level calculation:<br>5 = <code>101</code>, 1 = <code>001</code>.<br><code>101 &amp; 001 = 001 (1)</code><br><code>101 | 001 = 101 (5)</code></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="action-row">
+                        <button class="btn btn-sky" onclick="testArithmetic()">Test Arithmetic (10 &amp; 3)</button>
+                        <button class="btn btn-emerald" onclick="testIncrement()">Test count++ Behavior</button>
+                        <button class="btn btn-amber" onclick="testBitwise()">Test Bitwise (5 &amp; 1, 5 | 1)</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ==========================================
+                 PART 2: VARIABLE HOISTING IN JAVASCRIPT
+                 ========================================== -->
+            <section class="section">
+                <div class="section-title">
+                    <span class="number">02</span>
+                    <h2>Variable &amp; Function Hoisting in JavaScript</h2>
+                </div>
+
+                <div class="task-card">
+                    <div class="task-question">
+                        <strong>(a)</strong> Predict output: <code>console.log(a); var a = 10;</code><br>
+                        <strong>(b)</strong> Predict output: <code>console.log(b); let b = 10;</code><br>
+                        <strong>(c)</strong> Predict output: <code>test(); function test() { console.log("Hello"); }</code><br>
+                        <strong>(d)</strong> Function Expression call before initialization: <code>hello(); var hello = function() { console.log("Hi"); }</code><br>
+                        <strong>(e)</strong> One-sentence rule: What gets hoisted? What does not get hoisted fully?
+                    </div>
+
+                    <div class="code-wrapper">
+                        <div class="code-header">
+                            <span class="terminal-dots"><span></span><span></span><span></span></span>
+                            <span class="file-label">hoisting-solutions.js</span>
+                        </div>
+                        <pre><code>// (a) var Hoisting:
+console.log(a); // Output: undefined (Error nahi aayega, kyunki sirf declaration hoist hui!)
+var a = 10;
+
+// (b) let Hoisting (Temporal Dead Zone):
+// console.log(b); // ❌ ReferenceError: Cannot access 'b' before initialization
+let b = 10;
+
+// (c) Function Declaration Hoisting:
+test(); // Output: "Hello" (Function apni poori body ke sath hoist hota hai!)
+function test() { 
+    console.log("Hello"); 
+}
+
+// (d) Function Expression Trap:
+// hello(); // ❌ TypeError: hello is not a function!
+var hello = function() { 
+    console.log("Hi"); 
+};</code></pre>
+                    </div>
+
+                    <div class="answer-box">
+                        <p><strong>Detailed Explanation for (d):</strong></p>
+                        <p>Yahan <code>hello</code> ek <code>var</code> variable hai. Memory Creation Phase me JS engine <code>hello</code> ko hoist karke usme default <code>undefined</code> daal deta hai. Jab hum <code>hello()</code> call karte hain, toh asal me hum <code>undefined()</code> execute karne ki koshish kar rahe hote hain, isliye error aata hai: <strong><code>TypeError: hello is not a function</code></strong>.</p>
+                    </div>
+
+                    <div class="callout-box callout-amber">
+                        <strong>(e) Final One-Sentence Rule:</strong><br>
+                        <em>"Function declarations apni poori definition ke sath fully hoist hote hain, jabki variables poori tarah hoist nahi hote — <code>var</code> sirf <code>undefined</code> ke sath hoist hota hai aur <code>let</code>/<code>const</code> Temporal Dead Zone (TDZ) me uninitialized rehte hain."</em>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ==========================================
+                 PART 3: CONDITIONAL OPERATORS
+                 ========================================== -->
+            <section class="section">
+                <div class="section-title">
+                    <span class="number">03</span>
+                    <h2>Conditional Operators (if, else, else-if, ternary, switch)</h2>
+                </div>
+
+                <div class="task-card">
+                    <div class="task-question">
+                        <strong>(a)</strong> Age prompt: <code>age &gt;= 18</code> &rarr; "Adult", else &rarr; "Minor".<br>
+                        <strong>(b)</strong> Marks grading: &gt;=90 "A grade", &gt;=75 "B grade", &gt;=50 "C grade", else "Fail".<br>
+                        <strong>(c)</strong> City check: "Bhopal" &rarr; "MP", "Delhi" &rarr; "Capital", else &rarr; "Unknown City".<br>
+                        <strong>(d)</strong> Ternary operator: <code>score = 40; score &gt;= 35 ? "Pass" : "Fail"</code>.<br>
+                        <strong>(e)</strong> Convert if-else into ternary: <code>temperature &gt; 30 ? "Hot" : "Pleasant"</code>.<br>
+                        <strong>(f)</strong> Switch case for Day 1 to 7 with default "Invalid Day".<br>
+                        <strong>(g)</strong> Logical operator condition: <code>age &gt;= 18 &amp;&amp; country === "India"</code>.
+                    </div>
+
+                    <div class="code-wrapper">
+                        <div class="code-header">
+                            <span class="terminal-dots"><span></span><span></span><span></span></span>
+                            <span class="file-label">conditionals-solutions.js</span>
+                        </div>
+                        <pre><code>// (a) Age Check:
+function checkAge(age) {
+    if (age &gt;= 18) {
+        console.log("Adult");
+    } else {
+        console.log("Minor");
+    }
+}
+
+// (b) Marks Grading Ladder:
+function calculateGrade(marks) {
+    if (marks &gt;= 90) {
+        return "A grade";
+    } else if (marks &gt;= 75) {
+        return "B grade";
+    } else if (marks &gt;= 50) {
+        return "C grade";
+    } else {
+        return "Fail";
+    }
+}
+
+// (c) City Matcher:
+let city = "Bhopal";
+if (city === "Bhopal") {
+    console.log("MP");
+} else if (city === "Delhi") {
+    console.log("Capital");
+} else {
+    console.log("Unknown City");
+}
+
+// (d) Score Ternary:
+let score = 40;
+let examResult = score &gt;= 35 ? "Pass" : "Fail";
+console.log("Exam Result:", examResult); // "Pass"
+
+// (e) Temperature Ternary Conversion:
+let temperature = 32;
+let weatherType = temperature &gt; 30 ? "Hot" : "Pleasant";
+console.log("Weather:", weatherType); // "Hot"
+
+// (f) Switch Case:
+function getDayName(dayNumber) {
+    switch (dayNumber) {
+        case 1: return "Monday";
+        case 2: return "Tuesday";
+        case 3: return "Wednesday";
+        case 4: return "Thursday";
+        case 5: return "Friday";
+        case 6: return "Saturday";
+        case 7: return "Sunday";
+        default: return "Invalid Day";
+    }
+}
+console.log("Day 3 is:", getDayName(3)); // "Wednesday"
+
+// (g) Voter Eligibility:
+let userAge = 20;
+let country = "India";
+if (userAge &gt;= 18 &amp;&amp; country === "India") {
+    console.log("Eligible for Vote");
+} else {
+    console.log("Not Eligible");
+}</code></pre>
+                    </div>
+
+                    <div class="action-row">
+                        <button class="btn btn-primary" onclick="testAgePrompt()">Run (a): Age Prompt Check</button>
+                        <button class="btn btn-emerald" onclick="testGradePrompt()">Run (b): Marks Grade Prompt</button>
+                        <button class="btn btn-amber" onclick="testDayPrompt()">Run (f): Day Number Switch Prompt</button>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <span>Sheryians Coding School • Cohort 2.0 • Assignment 29-Oct</span>
+            <span>Abhishek</span>
+        </footer>
+
+    </div>
+
+    <!-- External Script -->
+    <script src="script.js"></script>
+
+</body>
+</html>
